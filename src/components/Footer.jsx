@@ -44,7 +44,7 @@ export default function Footer() {
         className="flex justify-center gap-10 mb-8"
       >
         <a
-          href="https://github.com/YOUR_USERNAME"
+          href="https://github.com/IsmailMarkhi"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Visit GitHub profile"
