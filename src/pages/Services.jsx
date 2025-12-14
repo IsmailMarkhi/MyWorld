@@ -136,7 +136,7 @@ export default function Services() {
         </p>
 
         <a
-          href="https://wa.me/212XXXXXXXXX"
+          href="https://wa.me/212723307462"
           aria-label="Contact via WhatsApp to discuss your project"
           className="
             inline-flex px-14 py-5 rounded-full

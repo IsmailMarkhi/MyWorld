@@ -26,7 +26,7 @@ export default function Contact() {
 
       {/* CTA */}
       <a
-        href="https://wa.me/212XXXXXXXXX"
+        href="https://wa.me/212723307462"
         aria-label="Contact via WhatsApp to discuss a web development project"
         className="
           inline-flex items-center justify-center

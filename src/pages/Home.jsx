@@ -33,7 +33,7 @@ export default function Home() {
 
         {/* Primary CTA */}
         <a
-          href="https://wa.me/212XXXXXXXXX"
+          href="https://wa.me/212723307462"
           aria-label="Contact web developer on WhatsApp"
           className="
             inline-flex items-center gap-3 mt-14
