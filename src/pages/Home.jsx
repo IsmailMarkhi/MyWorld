@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Home() {
   return (
     <section
@@ -25,8 +27,8 @@ export default function Home() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="https://wa.me/212723307462"
+          <Link
+            to="/contact"
             className="
               inline-flex items-center justify-center
               px-8 py-4 rounded-full
@@ -38,10 +40,10 @@ export default function Home() {
             "
           >
             Tell me about your project
-          </a>
+          </Link>
 
-          <a
-            href="./projects"
+          <Link
+            to="/projects"
             className="
               inline-flex items-center justify-center
               px-8 py-4 rounded-full
@@ -51,7 +53,7 @@ export default function Home() {
             "
           >
             See my work
-          </a>
+          </Link>
         </div>
       </div>
     </section>
