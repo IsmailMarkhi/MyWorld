@@ -41,7 +41,7 @@ export default function Home() {
           </a>
 
           <a
-            href="/projects"
+            href="./projects"
             className="
               inline-flex items-center justify-center
               px-8 py-4 rounded-full
