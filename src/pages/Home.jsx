@@ -1,52 +1,87 @@
 export default function Home() {
   return (
     <section
-      className="min-h-[90vh] flex items-center justify-center px-6"
-      aria-labelledby="home-hero-title"
+      aria-labelledby="home-title"
+      className="
+        min-h-[90vh]
+        flex items-center
+        px-6
+      "
     >
-      <div className="text-center max-w-4xl">
-
-        {/* Main SEO + UX Heading */}
+      <div className="max-w-3xl mx-auto text-center">
+        
+        {/* Main heading */}
         <h1
-          id="home-hero-title"
+          id="home-title"
           className="
-            text-5xl md:text-7xl font-extrabold leading-tight
-            bg-gradient-to-r from-orange-500 via-red-500 to-fuchsia-600
-            bg-clip-text text-transparent
+            text-3xl sm:text-4xl md:text-5xl
+            font-extrabold
+            leading-tight
+            mb-6
           "
         >
-          Building myself<br />in public
+          I build clean, reliable websites
+          <br className="hidden sm:block" />
+          for real needs
         </h1>
 
-        {/* Hidden SEO support text */}
+        {/* Hidden SEO */}
         <p className="sr-only">
-          Personal website of a web developer documenting growth, real projects,
-          and professional web development skills.
+          Freelance web developer building modern websites using
+          React, Tailwind CSS, and PHP.
         </p>
 
         {/* Subtitle */}
-        <p className="mt-8 text-lg text-zinc-400 max-w-xl mx-auto leading-relaxed">
-          Not a portfolio. Not a promise.  
-          A real journey of learning, building, failing, and improving —
-          one project at a time.
-        </p>
-
-        {/* Primary CTA */}
-        <a
-          href="https://wa.me/212723307462"
-          aria-label="Contact web developer on WhatsApp"
+        <p
           className="
-            inline-flex items-center gap-3 mt-14
-            px-12 py-5 rounded-full
-            bg-gradient-to-r from-orange-500 to-fuchsia-600
-            text-black font-semibold text-lg
-            hover:scale-105 transition
-            focus:outline-none focus-visible:ring-2
-            focus-visible:ring-orange-500
+            text-zinc-400
+            text-base sm:text-lg
+            leading-relaxed
+            max-w-xl
+            mx-auto
+            mb-10
           "
         >
-          Start a conversation 🔥
-        </a>
+          I help individuals and small businesses turn ideas into
+          clear, fast, and usable websites — with focus on structure,
+          performance, and simplicity.
+        </p>
+
+        {/* CTA group */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="https://wa.me/212723307462"
+            aria-label="Contact freelance web developer on WhatsApp"
+            className="
+              inline-flex items-center justify-center
+              px-8 py-4
+              rounded-full
+              bg-black text-white
+              font-medium
+              hover:bg-zinc-800
+              transition
+              focus:outline-none focus-visible:ring-2
+              focus-visible:ring-black
+            "
+          >
+            Contact me
+          </a>
+
+          <a
+            href="/projects"
+            className="
+              inline-flex items-center justify-center
+              px-8 py-4
+              rounded-full
+              border border-white/20
+              text-zinc-300
+              hover:text-white hover:border-white/40
+              transition
+            "
+          >
+            View projects
+          </a>
+        </div>
 
       </div>
     </section>

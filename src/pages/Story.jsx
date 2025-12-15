@@ -1,48 +1,53 @@
 export default function Story() {
   return (
     <section
-      className="max-w-3xl mx-auto px-6 py-32"
       aria-labelledby="story-heading"
+      className="px-6 py-24 sm:py-32"
     >
-      {/* Header */}
-      <header className="mb-12">
-        <h2
-          id="story-heading"
-          className="text-4xl md:text-5xl font-extrabold mb-6"
-        >
-          The story behind the journey
-        </h2>
+      <div className="max-w-3xl mx-auto">
+        {/* Header */}
+        <header className="mb-12 sm:mb-16">
+          <h2
+            id="story-heading"
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"
+          >
+            My approach to building websites
+          </h2>
 
-        {/* SEO helper (hidden visually) */}
-        <p className="sr-only">
-          Personal story of a web developer building skills, experience,
-          and real projects through discipline, learning, and consistency.
-        </p>
-      </header>
+          {/* Hidden SEO support */}
+          <p className="sr-only">
+            Professional story of a freelance web developer focused on
+            building clean, reliable, and user-focused web solutions.
+          </p>
+        </header>
 
-      {/* Content */}
-      <div className="space-y-8 text-zinc-400 leading-relaxed text-lg">
-        <p>
-          I stopped waiting for permission and decided to take full ownership
-          of my growth as a web developer.
-        </p>
+        {/* Content */}
+        <div className="space-y-8 text-zinc-400 leading-relaxed text-base sm:text-lg">
+          <p>
+            I’m a web developer focused on building clear, reliable, and
+            maintainable websites.  
+            I value structure, simplicity, and thoughtful execution over
+            shortcuts or trends.
+          </p>
 
-        <p>
-          This website exists because comfort slows progress.
-          Real improvement comes from building, testing, failing,
-          and improving again.
-        </p>
+          <p>
+            My work is driven by real practice. I learn by building,
+            refining, and solving practical problems — not by copying
+            templates or following generic tutorials.
+          </p>
 
-        <p>
-          Every line of code here represents a real step forward —
-          learning new skills, solving problems, and growing through
-          uncertainty and pressure.
-        </p>
+          <p>
+            This website represents my current level, my way of thinking,
+            and how I approach projects. It’s intentionally honest and
+            continuously improved as I grow and take on new challenges.
+          </p>
 
-        <p>
-          This is not a finished product.
-          It’s an ongoing process of learning, discipline, and execution.
-        </p>
+          <p>
+            If you’re looking for someone who communicates clearly,
+            works with focus, and treats your project seriously,
+            I’d be glad to discuss how I can help.
+          </p>
+        </div>
       </div>
     </section>
   );

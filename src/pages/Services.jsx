@@ -66,88 +66,102 @@ export default function Services() {
 
   return (
     <section
-      className="max-w-7xl mx-auto px-6 py-32"
       aria-labelledby="services-heading"
+      className="px-6 py-24 sm:py-32"
     >
-      {/* Header */}
-      <header className="text-center mb-28">
-        <h1
-          id="services-heading"
-          className="text-5xl md:text-6xl font-extrabold mb-6"
-        >
-          How I Can Help
-        </h1>
-        <p className="text-zinc-400 max-w-2xl mx-auto text-lg">
-          Practical web development services focused on real problems,
-          clean execution, and long-term value.
-        </p>
-      </header>
-
-      {/* Services Grid */}
-      <div className="grid md:grid-cols-2 gap-14">
-        {services.map((service) => (
-          <article
-            key={service.category}
-            className="
-              relative p-10 rounded-3xl
-              bg-white/5 border border-white/10
-              hover:-translate-y-1 hover:shadow-2xl
-              transition
-            "
-            aria-labelledby={`${service.category}-title`}
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <header className="text-center mb-20 sm:mb-28">
+          <h1
+            id="services-heading"
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"
           >
-            {/* Accent */}
-            <div
+            How I Can Help
+          </h1>
+          <p className="text-zinc-400 max-w-xl mx-auto text-base sm:text-lg">
+            Practical web development services focused on clarity,
+            performance, and real business needs.
+          </p>
+        </header>
+
+        {/* Services Grid */}
+        <div className="grid gap-10 md:grid-cols-2 place-items-center">
+          {services.map((service) => (
+            <article
+              key={service.category}
+              aria-labelledby={`${service.category}-title`}
               className="
-                absolute top-0 left-10
-                h-[3px] w-16
-                bg-gradient-to-r from-orange-500 to-fuchsia-500
-                rounded-full
+                relative w-full max-w-xl
+                p-8 sm:p-10 rounded-3xl
+                bg-white/5 border border-white/10
+                transition
+                hover:-translate-y-1 hover:shadow-xl
               "
-            />
-
-            <h2
-              id={`${service.category}-title`}
-              className="text-2xl font-semibold mb-2"
             >
-              {service.category}
-            </h2>
+              {/* Accent */}
+              <div
+                aria-hidden="true"
+                className="
+                  absolute top-0 left-1/2 -translate-x-1/2
+                  h-[3px] w-16
+                  bg-gradient-to-r from-orange-500 to-fuchsia-500
+                  rounded-full
+                "
+              />
 
-            <p className="sr-only">{service.seoTitle}</p>
+              <h2
+                id={`${service.category}-title`}
+                className="text-center text-xl sm:text-2xl font-semibold mb-4 mt-4"
+              >
+                {service.category}
+              </h2>
 
-            <p className="text-zinc-400 mb-6">
-              {service.desc}
-            </p>
+              {/* Hidden SEO helper */}
+              <p className="sr-only">{service.seoTitle}</p>
 
-            <ul className="space-y-2 text-zinc-300">
-              {service.items.map((item) => (
-                <li key={item}>• {item}</li>
-              ))}
-            </ul>
-          </article>
-        ))}
-      </div>
+              <p className="text-center text-zinc-400 mb-6 leading-relaxed text-sm sm:text-base">
+                {service.desc}
+              </p>
 
-      {/* CTA */}
-      <div className="text-center mt-36">
-        <p className="text-zinc-400 mb-8 text-lg">
-          Not sure which service fits your needs?  
-          We’ll figure it out together.
-        </p>
+              <ul className="space-y-2 text-sm sm:text-base text-zinc-300 text-center">
+                {service.items.map((item) => (
+                  <li key={item}>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
 
-        <a
-          href="https://wa.me/212723307462"
-          aria-label="Contact via WhatsApp to discuss your project"
-          className="
-            inline-flex px-14 py-5 rounded-full
-            bg-gradient-to-r from-orange-500 to-fuchsia-500
-            text-black font-bold text-lg
-            hover:scale-105 transition
-            focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500
-          "
-        >
-          Let’s Talk →
-        </a>
+        {/* CTA */}
+        <div className="text-center mt-28 sm:mt-36">
+          <p className="text-zinc-400 mb-8 text-base sm:text-lg max-w-lg mx-auto">
+            Not sure which service fits your needs?
+            We’ll figure it out together.
+          </p>
+
+          <a
+            href="https://wa.me/212723307462"
+            aria-label="Contact via WhatsApp to discuss your project"
+            className="
+              inline-flex items-center justify-center
+              px-10 sm:px-14
+              py-4 sm:py-5
+              rounded-full
+              bg-gradient-to-r from-orange-500 to-fuchsia-500
+              text-black
+              font-semibold sm:font-bold
+              text-base sm:text-lg
+              hover:scale-105
+              transition
+              focus:outline-none focus-visible:ring-2
+              focus-visible:ring-orange-500
+            "
+          >
+            Let’s Talk →
+          </a>
+        </div>
       </div>
     </section>
   );
