@@ -1,135 +1,88 @@
-// src/pages/Projects.jsx
 export default function Projects() {
   const projects = [
     {
-      title: "Personal Challenge Website",
-      seoTitle: "Personal Web Developer Challenge Project",
-      desc: "A public project built to document growth, discipline, and real-world frontend development.",
-      tech: ["React", "Tailwind CSS", "UX/UI", "SEO"],
-      status: "Live",
+      title: "Personal challenge website",
+      desc: "A personal website built to practice real-world web development, focusing on clarity, structure and usability.",
+      stack: "React, Tailwind, basic SEO",
       link: "https://my-world-teal.vercel.app/",
+      status: "Live",
     },
     {
-      title: "Business Landing Page",
-      seoTitle: "Modern Business Landing Page Project",
-      desc: "A fast and responsive landing page designed to clearly present a service and drive contact.",
-      tech: ["React", "Tailwind", "Responsive Design"],
+      title: "Business landing page",
+      desc: "A simple landing page designed to explain a service clearly and encourage visitors to get in touch.",
+      stack: "React, responsive layout",
+      link: "#",
       status: "Completed",
-      link: "#",
     },
     {
-      title: "PHP CRUD System",
-      seoTitle: "PHP CRUD Backend Project",
-      desc: "A simple backend system for managing data with clean PHP logic and structured code.",
-      tech: ["PHP", "MySQL", "XAMPP"],
+      title: "PHP CRUD system",
+      desc: "A small backend project to manage data with clean PHP logic and a structured approach.",
+      stack: "PHP, MySQL, XAMPP",
+      link: "#",
       status: "Completed",
-      link: "#",
     },
     {
-      title: "UI Redesign Case Study",
-      seoTitle: "Website UI Redesign Case Study",
-      desc: "A case study focused on improving usability, spacing, and accessibility of an existing interface.",
-      tech: ["UI/UX", "Tailwind", "Accessibility"],
-      status: "In Progress",
+      title: "UI redesign case",
+      desc: "A redesign focused on improving spacing, readability and overall user comfort.",
+      stack: "UI thinking, Tailwind",
       link: "#",
+      status: "In progress",
     },
   ];
 
   return (
-    <section
-      aria-labelledby="projects-heading"
-      className="px-6 py-24 sm:py-32"
-    >
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <header className="text-center mb-20 sm:mb-28">
+    <section aria-labelledby="projects-heading" className="px-6 py-24 sm:py-32">
+      <div className="max-w-5xl mx-auto text-center">
+        <header className="mb-16 sm:mb-24">
           <h2
             id="projects-heading"
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
           >
             Projects
           </h2>
-          <p className="text-zinc-400 max-w-xl mx-auto text-base sm:text-lg">
-            Selected projects that show how I approach problems,
-            build solutions, and improve through real work.
+
+          <p className="text-zinc-500 max-w-xl mx-auto text-base sm:text-lg">
+            A selection of real projects that show how I think, build and improve.
           </p>
         </header>
 
-        {/* Projects Grid */}
-        <div className="grid gap-10 md:grid-cols-2 place-items-center">
+        <div className="grid gap-12 sm:grid-cols-2">
           {projects.map((project) => (
             <article
               key={project.title}
-              aria-labelledby={`${project.title}-title`}
               className="
-                relative w-full max-w-xl
-                p-8 sm:p-10 rounded-3xl
+                p-8 rounded-2xl
                 bg-white/5 border border-white/10
-                transition
-                hover:-translate-y-1 hover:shadow-xl
+                transition hover:shadow-lg
               "
             >
-              {/* Accent */}
-              <div
-                aria-hidden="true"
-                className="
-                  absolute top-0 left-1/2 -translate-x-1/2
-                  h-[3px] w-16
-                  bg-gradient-to-r from-orange-500 to-fuchsia-500
-                  rounded-full
-                "
-              />
-
-              <h3
-                id={`${project.title}-title`}
-                className="text-center text-xl sm:text-2xl font-semibold mb-4 mt-4"
-              >
+              <h3 className="text-xl font-semibold mb-3">
                 {project.title}
               </h3>
 
-              {/* Hidden SEO helper */}
-              <p className="sr-only">{project.seoTitle}</p>
-
-              <p className="text-center text-zinc-400 mb-6 leading-relaxed text-sm sm:text-base">
+              <p className="text-zinc-500 text-sm sm:text-base mb-4">
                 {project.desc}
               </p>
 
-              {/* Tech stack */}
-              <ul className="flex flex-wrap justify-center gap-2 mb-6">
-                {project.tech.map((t) => (
-                  <li
-                    key={t}
-                    className="
-                      text-xs px-3 py-1 rounded-full
-                      bg-white/10 text-zinc-300
-                    "
-                  >
-                    {t}
-                  </li>
-                ))}
-              </ul>
+              <p className="text-zinc-400 text-sm mb-6">
+                {project.stack}
+              </p>
 
-              {/* Footer */}
               <div className="flex items-center justify-between text-sm">
-                <span className="text-zinc-500 italic">
+                <span className="text-zinc-400 italic">
                   {project.status}
                 </span>
 
-                <a
-                  href={project.link}
-                  target={project.link !== "#" ? "_blank" : undefined}
-                  rel={project.link !== "#" ? "noopener noreferrer" : undefined}
-                  aria-label={`View project ${project.title}`}
-                  className="
-                    font-medium
-                    text-orange-400 hover:text-orange-300
-                    transition
-                    focus:outline-none focus-visible:ring-2
-                    focus-visible:ring-orange-500
-                  "
-                >
-                  View →
-                </a>
+                {project.link !== "#" && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-orange-400 hover:text-orange-300 transition"
+                  >
+                    View project
+                  </a>
+                )}
               </div>
             </article>
           ))}
