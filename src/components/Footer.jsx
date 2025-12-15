@@ -33,7 +33,7 @@ export default function Footer() {
           </a>
 
           <a
-            href="https://www.linkedin.com/in/ismail-markhi"
+            href="https://www.linkedin.com/in/ismail-markhi-a67033317/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn profile"
