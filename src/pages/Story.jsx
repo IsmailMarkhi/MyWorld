@@ -1,4 +1,11 @@
+import useSEO from "../hooks/useSEO";
 export default function Story() {
+useSEO({
+  title: "My Story | Ismail Markhi – Web Developer",
+  description:
+    "Learn more about Ismail Markhi, a passionate web developer focused on building modern, reliable, and human-centered web experiences.",
+  path: "/story",
+});
   return (
     <section
       aria-labelledby="story-heading"

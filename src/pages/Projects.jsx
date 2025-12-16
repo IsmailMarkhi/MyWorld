@@ -1,4 +1,13 @@
+import useSEO from "../hooks/useSEO";
+
 export default function Projects() {
+useSEO({
+  title: "Projects & Portfolio | Ismail Markhi",
+  description:
+    "Explore real-world web development projects by Ismail Markhi, focused on performance, clean design, and practical solutions.",
+  path: "/projects",
+});
+    
   const projects = [
     {
       title: "Personal challenge website",

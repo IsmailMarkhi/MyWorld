@@ -1,4 +1,13 @@
-export default function Services() {
+import useSEO from "../hooks/useSEO";
+
+export default function Services() { 
+useSEO({
+  title: "Web Development Services | Ismail Markhi",
+  description:
+    "Professional web development services for businesses and individuals. I create responsive websites and web applications with modern technologies.",
+  path: "/services",
+});
+
   const services = [
     {
       title: "Websites",

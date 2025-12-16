@@ -1,6 +1,13 @@
 import { Link } from "react-router-dom";
+import useSEO from "../hooks/useSEO";
 
 export default function Home() {
+    useSEO({
+    title: "Ismail Markhi | Freelance Web Developer in Morocco",
+    description:
+      "I’m Ismail Markhi, a freelance web developer in Morocco. I build clean, fast, and responsive websites using React, Tailwind, PHP, and Laravel.",
+    path: "/",
+  });
   return (
     <section
       aria-labelledby="home-title"
