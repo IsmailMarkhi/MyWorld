@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://my-world-teal.vercel.app/</loc>
+  </url>
+
+  <url>
+    <loc>https://my-world-teal.vercel.app/story</loc>
+  </url>
+
+  <url>
+    <loc>https://my-world-teal.vercel.app/services</loc>
+  </url>
+
+  <url>
+    <loc>https://my-world-teal.vercel.app/projects</loc>
+  </url>
+
+  <url>
+    <loc>https://my-world-teal.vercel.app/contact</loc>
+  </url>
+
+</urlset>
