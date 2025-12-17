@@ -20,7 +20,7 @@ export default function Home() {
         >
           Simple websites 
           <br className="hidden sm:block" />
-          <span className="ml-2 pl-2">
+          <span className="sm:ml-1 sm:pl-1">
             built with care
           </span>
         </h1>
