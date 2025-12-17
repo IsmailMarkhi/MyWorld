@@ -18,7 +18,7 @@ export default function Home() {
           id="home-title"
           className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6"
         >
-          Simple websites
+          Simple websites 
           <br className="hidden sm:block" />
           built with care
         </h1>
