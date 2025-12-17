@@ -19,8 +19,7 @@ export default function Home() {
           className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6"
         >
           Simple websites 
-          
-          <br className="hidden sm:block" />
+          <br/>
           built with care
         </h1>
 
