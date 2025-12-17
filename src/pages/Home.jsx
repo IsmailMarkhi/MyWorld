@@ -20,7 +20,9 @@ export default function Home() {
         >
           Simple websites 
           <br className="hidden sm:block" />
-           built with care
+          <span className="ml-2 pl-2">
+            built with care
+          </span>
         </h1>
 
         <p className="sr-only">
