@@ -16,13 +16,8 @@ export default function Home() {
       <div className="max-w-3xl mx-auto text-center">
         <h1
           id="home-title"
-          className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6"
-        >
-          Simple websites 
-          <br className="hidden sm:block" />
-          <span className="sm:ml-1 sm:pl-1">
-            built with care
-          </span>
+          className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-6">
+          Simple websites built with care
         </h1>
 
         <p className="sr-only">
