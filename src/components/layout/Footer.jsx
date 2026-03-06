@@ -26,7 +26,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-zinc-200 bg-white">
+    <footer className="border-t border-zinc-200 bg-gradient-to-b from-white to-purple-50">
 
       <div className="max-w-6xl mx-auto px-6 py-16">
 
@@ -34,38 +34,56 @@ export default function Footer() {
 
           {/* Brand */}
           <div>
-            <h3 className="font-semibold text-zinc-900 text-lg mb-3">
-              Ismail Markhi
+
+            <h3 className="font-bold text-zinc-900 text-lg mb-3 tracking-tight">
+              Ismail <span className="text-purple-600">Markhi</span>
             </h3>
 
-            <p className="text-sm text-zinc-600 leading-relaxed">
-              Freelance web developer building modern, responsive
+            <p className="text-sm text-zinc-600 leading-relaxed mb-4">
+              Freelance web developer building modern, scalable
               and user-friendly web applications.
             </p>
+
+            <p className="text-xs text-purple-600 font-medium">
+              Available for freelance work
+            </p>
+
           </div>
 
           {/* Navigation */}
           <div>
+
             <h4 className="text-sm font-semibold text-zinc-900 mb-3">
               Navigation
             </h4>
 
             <ul className="space-y-2 text-sm text-zinc-600">
+
               <li>
-                <a href="/" className="hover:text-zinc-900 transition">
+                <a
+                  href="/"
+                  className="hover:text-purple-600 transition"
+                >
                   Home
                 </a>
               </li>
+
               <li>
-                <a href="/projects" className="hover:text-zinc-900 transition">
+                <a
+                  href="/projects"
+                  className="hover:text-purple-600 transition"
+                >
                   Projects
                 </a>
               </li>
+
             </ul>
+
           </div>
 
           {/* Social */}
           <div>
+
             <h4 className="text-sm font-semibold text-zinc-900 mb-3">
               Connect
             </h4>
@@ -80,14 +98,16 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   aria-label={name}
                   className="
-                  p-2
+                  p-3
                   border
                   border-zinc-200
-                  rounded-lg
+                  rounded-xl
                   text-zinc-600
-                  hover:text-zinc-900
-                  hover:bg-zinc-100
+                  hover:text-purple-600
+                  hover:border-purple-300
+                  hover:bg-purple-50
                   transition
+                  hover:scale-105
                   "
                 >
                   <Icon size={18} />
@@ -95,13 +115,22 @@ export default function Footer() {
               ))}
 
             </div>
+
           </div>
 
         </div>
 
-        {/* Bottom */}
-        <div className="border-t border-zinc-200 mt-12 pt-6 text-center text-xs text-zinc-500">
-          © {new Date().getFullYear()} Ismail Markhi. All rights reserved.
+        {/* Divider */}
+        <div className="border-t border-zinc-200 mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-zinc-500">
+
+          <p>
+            © {new Date().getFullYear()} Ismail Markhi
+          </p>
+
+          <p className="text-zinc-400">
+            Built with React & Tailwind
+          </p>
+
         </div>
 
       </div>
