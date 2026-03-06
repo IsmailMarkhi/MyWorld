@@ -5,7 +5,7 @@ import Footer from "./components/layout/Footer";
 
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
-// import Contact from "./pages/Contact";
+import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
