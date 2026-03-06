@@ -104,8 +104,7 @@ export default function Footer() {
           © {new Date().getFullYear()} Ismail Markhi. All rights reserved.
         </div>
 
-      </div>
-
+      </div
     </footer>
   );
 }
