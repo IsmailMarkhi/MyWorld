@@ -17,7 +17,7 @@ export default function Hero() {
             Web developer focused on building
             <span className="text-zinc-900 font-medium"> modern</span>,
             <span className="text-zinc-900 font-medium"> clean</span> and
-            <span className="text-zinc-900 font-medium"> user-friendly</span>
+            <span className="text-zinc-900 font-medium"> user-friendly </span>
             web applications using technologies like React, Laravel and Python.
           </p>
 
