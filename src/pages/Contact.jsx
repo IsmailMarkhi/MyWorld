@@ -22,13 +22,13 @@ export default function Contact() {
     {
       name: "Email",
       icon: FaEnvelope,
-      href: "mailto:youremail@example.com",
+      href: "mailto:ismailmarkhi17@gmail.com",
       color: "hover:bg-purple-50 hover:text-purple-600"
     },
     {
       name: "LinkedIn",
       icon: FaLinkedin,
-      href: "https://linkedin.com",
+      href: "https://www.linkedin.com/in/ismail-markhi-a67033317/",
       color: "hover:bg-blue-50 hover:text-blue-600"
     },
     {
