@@ -26,38 +26,86 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-zinc-200 px-6 py-16 bg-white">
-      <div className="max-w-5xl mx-auto text-center space-y-8">
+    <footer className="border-t border-zinc-200 bg-white">
 
-        <p className="text-zinc-900 text-sm font-semibold">
-          Ismail Markhi
-        </p>
+      <div className="max-w-6xl mx-auto px-6 py-16">
 
-        <p className="text-zinc-500 text-sm max-w-xl mx-auto">
-          Freelance web developer focused on building clear, reliable
-          and easy-to-use websites.
-        </p>
+        <div className="grid gap-10 md:grid-cols-3 text-center md:text-left">
 
-        <div className="flex justify-center gap-6">
-          {socialLinks.map(({ name, href, icon: Icon }) => (
-            <a
-              key={name}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-zinc-500 hover:text-zinc-900 transition"
-              aria-label={name}
-            >
-              <Icon size={20} />
-            </a>
-          ))}
+          {/* Brand */}
+          <div>
+            <h3 className="font-semibold text-zinc-900 text-lg mb-3">
+              Ismail Markhi
+            </h3>
+
+            <p className="text-sm text-zinc-600 leading-relaxed">
+              Freelance web developer building modern, responsive
+              and user-friendly web applications.
+            </p>
+          </div>
+
+          {/* Navigation */}
+          <div>
+            <h4 className="text-sm font-semibold text-zinc-900 mb-3">
+              Navigation
+            </h4>
+
+            <ul className="space-y-2 text-sm text-zinc-600">
+              <li>
+                <a href="/" className="hover:text-zinc-900 transition">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="/projects" className="hover:text-zinc-900 transition">
+                  Projects
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Social */}
+          <div>
+            <h4 className="text-sm font-semibold text-zinc-900 mb-3">
+              Connect
+            </h4>
+
+            <div className="flex justify-center md:justify-start gap-4">
+
+              {socialLinks.map(({ name, href, icon: Icon }) => (
+                <a
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={name}
+                  className="
+                  p-2
+                  border
+                  border-zinc-200
+                  rounded-lg
+                  text-zinc-600
+                  hover:text-zinc-900
+                  hover:bg-zinc-100
+                  transition
+                  "
+                >
+                  <Icon size={18} />
+                </a>
+              ))}
+
+            </div>
+          </div>
+
         </div>
 
-        <p className="text-zinc-400 text-xs">
-          © {new Date().getFullYear()} Ismail Markhi
-        </p>
+        {/* Bottom */}
+        <div className="border-t border-zinc-200 mt-12 pt-6 text-center text-xs text-zinc-500">
+          © {new Date().getFullYear()} Ismail Markhi. All rights reserved.
+        </div>
 
       </div>
+
     </footer>
   );
 }
