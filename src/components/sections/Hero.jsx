@@ -1,6 +1,7 @@
 import Container from "../ui/Container";
 import Button from "../ui/Button";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { SiFiverr } from "react-icons/si";
 
 export default function Hero() {
   return (
@@ -72,7 +73,7 @@ export default function Hero() {
             </a>
 
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/ismail-markhi-a67033317/"
               target="_blank"
               className="
               p-3
@@ -88,6 +89,24 @@ export default function Hero() {
               "
             >
               <FaLinkedin size={20} />
+            </a>
+            <a
+              href="https://www.fiverr.com/ismail1markhi"
+              target="_blank"
+              className="
+              p-3
+              border
+              border-zinc-200
+              rounded-xl
+              text-zinc-600
+              hover:text-purple-600
+              hover:border-purple-300
+              hover:bg-purple-50
+              transition
+              hover:scale-105
+              "
+            >
+              <SiFiverr size={20} />
             </a>
 
           </div>
