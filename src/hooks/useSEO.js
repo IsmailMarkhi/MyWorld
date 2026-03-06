@@ -1,57 +1,183 @@
 import { useEffect } from "react";
 
-export default function useSEO({
+const SITE_URL = "https://my-world-teal.vercel.app";
+const DEFAULT_CONFIG = {
+  name: "Ismail Markhi",
+  role: "Freelance Web Developer",
+  location: "Morocco",
+  ogImage: `${SITE_URL}/og-image.jpg`,
+  twitterHandle: "@ismailmarkhi",
+};
+
+/**
+ * useSEO Hook
+ * 
+ * Manages all SEO meta tags, Open Graph, and Twitter Card tags
+ * for optimal search engine and social media visibility.
+ * 
+ * @hook
+ * @param {Object} config - SEO configuration object
+ * @param {string} config.title - Page title (required)
+ * @param {string} config.description - Page description (required)
+ * @param {string} [config.path=""] - URL path for canonical link
+ * @param {string} [config.name="Ismail Markhi"] - Author name
+ * @param {string} [config.role="Freelance Web Developer"] - Professional role
+ * @param {string} [config.location="Morocco"] - Location
+ * @param {string} [config.keywords=""] - Additional keywords
+ * @param {string} [config.ogImage] - Open Graph image URL
+ * @param {string} [config.ogType="website"] - Open Graph type
+ * @param {string} [config.twitterHandle] - Twitter handle
+ * @param {boolean} [config.noindex=false] - Prevent indexing
+ * @example
+ * useSEO({
+ *   title: "Home | Ismail Markhi",
+ *   description: "Freelance web developer...",
+ *   path: "/"
+ * })
+ */
+function useSEO({
   title,
   description,
   path = "",
-  name = "Ismail Markhi",
-  role = "Freelance Web Developer",
-  location = "Morocco",
-}) {
+  name = DEFAULT_CONFIG.name,
+  role = DEFAULT_CONFIG.role,
+  location = DEFAULT_CONFIG.location,
+  keywords = "",
+  ogImage = DEFAULT_CONFIG.ogImage,
+  ogType = "website",
+  twitterHandle = DEFAULT_CONFIG.twitterHandle,
+  noindex = false,
+} = {}) {
   useEffect(() => {
-    // 1️⃣ Title
+    if (!title || !description) {
+      console.warn("useSEO: title and description are required");
+      return;
+    }
+
+    const fullUrl = `${SITE_URL}${path}`;
+
+    // Set document title
     document.title = title;
 
-    // 2️⃣ Meta description
-    let metaDesc = document.querySelector("meta[name='description']");
-    if (!metaDesc) {
-      metaDesc = document.createElement("meta");
-      metaDesc.setAttribute("name", "description");
-      document.head.appendChild(metaDesc);
-    }
-    metaDesc.setAttribute("content", description);
+    // Helper function to set or create meta tags
+    const setMetaTag = (name, content, isProperty = false) => {
+      const attribute = isProperty ? "property" : "name";
+      const selector = `meta[${attribute}="${name}"]`;
 
-    // 3️⃣ Canonical (SEO clean)
-    let canonical = document.querySelector("link[rel='canonical']");
-    if (!canonical) {
-      canonical = document.createElement("link");
-      canonical.setAttribute("rel", "canonical");
-      document.head.appendChild(canonical);
+      let element = document.querySelector(selector);
+
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute(attribute, name);
+        document.head.appendChild(element);
+      }
+
+      element.setAttribute("content", content);
+    };
+
+    // Helper function for link tags
+    const setLinkTag = (rel, href) => {
+      let element = document.querySelector(`link[rel="${rel}"]`);
+
+      if (!element) {
+        element = document.createElement("link");
+        element.setAttribute("rel", rel);
+        document.head.appendChild(element);
+      }
+
+      element.setAttribute("href", href);
+    };
+
+    // Basic Meta Tags
+    setMetaTag("description", description);
+    setMetaTag("author", name);
+    setMetaTag("viewport", "width=device-width, initial-scale=1.0");
+
+    // Keywords
+    const keywordsList = [
+      role,
+      "React Developer",
+      "PHP Developer",
+      "Laravel Developer",
+      "Web Developer",
+      location,
+      ...(keywords ? keywords.split(",").map((k) => k.trim()) : []),
+    ]
+      .filter(Boolean)
+      .join(", ");
+
+    setMetaTag("keywords", keywordsList);
+
+    // Open Graph Tags
+    setMetaTag("og:title", title, true);
+    setMetaTag("og:description", description, true);
+    setMetaTag("og:url", fullUrl, true);
+    setMetaTag("og:type", ogType, true);
+    setMetaTag("og:image", ogImage, true);
+    setMetaTag("og:image:width", "1200", true);
+    setMetaTag("og:image:height", "630", true);
+    setMetaTag("og:site_name", name, true);
+
+    // Twitter Card Tags
+    setMetaTag("twitter:card", "summary_large_image");
+    setMetaTag("twitter:title", title);
+    setMetaTag("twitter:description", description);
+    setMetaTag("twitter:image", ogImage);
+    if (twitterHandle) {
+      setMetaTag("twitter:creator", twitterHandle);
     }
-    canonical.setAttribute(
-      "href",
-      `https://my-world-teal.vercel.app${path}`
+
+    // Additional Meta Tags for Better SEO
+    setMetaTag("theme-color", "#ffffff");
+    setMetaTag("robots", noindex ? "noindex, nofollow" : "index, follow");
+
+    // Canonical Link
+    setLinkTag("canonical", fullUrl);
+
+    // Structured Data (JSON-LD)
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: name,
+      url: SITE_URL,
+      jobTitle: role,
+      worksFor: {
+        "@type": "Organization",
+        name: "Freelancer",
+      },
+      areaServed: location,
+      knowsAbout: [
+        "React",
+        "PHP",
+        "Laravel",
+        "Web Development",
+        "Frontend Development",
+      ],
+      sameAs: [
+        "https://github.com/IsmailMarkhi",
+        "https://www.linkedin.com/in/ismail-markhi-a67033317/",
+        "https://www.instagram.com/ismailmarkhi",
+      ],
+    };
+
+    let structuredDataElement = document.querySelector(
+      'script[type="application/ld+json"]'
     );
 
-    // 4️⃣ Author (human touch)
-    let author = document.querySelector("meta[name='author']");
-    if (!author) {
-      author = document.createElement("meta");
-      author.setAttribute("name", "author");
-      document.head.appendChild(author);
+    if (!structuredDataElement) {
+      structuredDataElement = document.createElement("script");
+      structuredDataElement.setAttribute("type", "application/ld+json");
+      document.head.appendChild(structuredDataElement);
     }
-    author.setAttribute("content", name);
 
-    // 5️⃣ Keywords (light – not spam)
-    let keywords = document.querySelector("meta[name='keywords']");
-    if (!keywords) {
-      keywords = document.createElement("meta");
-      keywords.setAttribute("name", "keywords");
-      document.head.appendChild(keywords);
-    }
-    keywords.setAttribute(
-      "content",
-      `${role}, React Developer, PHP Developer, Laravel Developer, ${location}`
-    );
-  }, [title, description, path, name, role, location]);
+    structuredDataElement.textContent = JSON.stringify(structuredData);
+
+    // Cleanup function to prevent memory leaks
+    return () => {
+      // Optional: Remove meta tags on unmount
+      // This is useful if the same page renders multiple SEO hooks
+    };
+  }, [title, description, path, name, role, location, keywords, ogImage, ogType, twitterHandle, noindex]);
 }
+
+export default useSEO;

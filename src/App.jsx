@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 
 import Home from "./pages/Home";
-import Story from "./pages/Story";
-import Services from "./pages/Services";
 import Projects from "./pages/Projects";
-import Contact from "./pages/Contact";
+// import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFound";
 
 export default function App() {
   return (
@@ -18,17 +18,19 @@ export default function App() {
           min-h-screen
           pt-16
           bg-gradient-to-b
-          from-white to-slate-50
-          dark:from-neutral-900 dark:to-neutral-950
-          text-slate-900 dark:text-slate-100
+          from-white
+          via-indigo-50
+          to-white
+          text-slate-900
         "
       >
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/story" element={<Story />} />
-          <Route path="/services" element={<Services />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
+          {/* <Route path="/contact" element={<Contact />} /> */}
+
+          {/* 404 fallback */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 
