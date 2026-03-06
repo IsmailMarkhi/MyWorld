@@ -1,5 +1,5 @@
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
-import { SiUpwork } from "react-icons/si";
+import { SiFiverr } from "react-icons/si";
 
 const socialLinks = [
   {
@@ -13,9 +13,9 @@ const socialLinks = [
     icon: FaLinkedin,
   },
   {
-    name: "Upwork",
-    href: "https://www.upwork.com",
-    icon: SiUpwork,
+    name: "Fiverr",
+    href: "https://www.fiverr.com/ismail1markhi",
+    icon: SiFiverr,
   },
   {
     name: "Instagram",
