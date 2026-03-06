@@ -12,7 +12,8 @@ import {
   SiTailwindcss,
   SiBootstrap,
   SiMysql,
-  SiLaravel
+  SiLaravel,
+  SiJira
 } from "react-icons/si";
 
 export const techStack = [
@@ -26,5 +27,8 @@ export const techStack = [
   { name: "Laravel", icon: SiLaravel, color: "text-red-500" },
   { name: "MySQL", icon: SiMysql, color: "text-blue-600" },
   { name: "Python", icon: FaPython, color: "text-yellow-500" },
-  { name: "Git", icon: FaGitAlt, color: "text-orange-600" }
+  { name: "Git", icon: FaGitAlt, color: "text-orange-600" },
+
+  // New
+  { name: "Jira", icon: SiJira, color: "text-blue-500" }
 ];
