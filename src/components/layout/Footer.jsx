@@ -26,34 +26,37 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-zinc-200 bg-gradient-to-b from-white to-purple-50">
+    <footer className="relative border-t border-zinc-200 bg-gradient-to-b from-white via-purple-50/60 to-white">
 
-      <div className="max-w-6xl mx-auto px-6 py-16">
+      {/* subtle glow */}
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.08),transparent_60%)]" />
 
-        <div className="grid gap-10 md:grid-cols-3 text-center md:text-left">
+      <div className="relative max-w-6xl mx-auto px-6 py-20">
+
+        <div className="grid gap-12 md:grid-cols-3 text-center md:text-left">
 
           {/* Brand */}
           <div>
 
-            <h3 className="font-bold text-zinc-900 text-lg mb-3 tracking-tight">
+            <h3 className="font-bold text-xl text-zinc-900 tracking-tight mb-4">
               Ismail <span className="text-purple-600">Markhi</span>
             </h3>
 
-            <p className="text-sm text-zinc-600 leading-relaxed mb-4">
+            <p className="text-sm text-zinc-600 leading-relaxed mb-5 max-w-xs mx-auto md:mx-0">
               Freelance web developer building modern, scalable
               and user-friendly web applications.
             </p>
 
-            <p className="text-xs text-purple-600 font-medium">
+            <span className="inline-block text-xs font-medium text-purple-600 bg-purple-100 px-3 py-1 rounded-full">
               Available for freelance work
-            </p>
+            </span>
 
           </div>
 
           {/* Navigation */}
           <div>
 
-            <h4 className="text-sm font-semibold text-zinc-900 mb-3">
+            <h4 className="text-sm font-semibold text-zinc-900 mb-4">
               Navigation
             </h4>
 
@@ -62,7 +65,7 @@ export default function Footer() {
               <li>
                 <a
                   href="/"
-                  className="hover:text-purple-600 transition"
+                  className="hover:text-purple-600 transition-colors"
                 >
                   Home
                 </a>
@@ -71,7 +74,7 @@ export default function Footer() {
               <li>
                 <a
                   href="/projects"
-                  className="hover:text-purple-600 transition"
+                  className="hover:text-purple-600 transition-colors"
                 >
                   Projects
                 </a>
@@ -84,7 +87,7 @@ export default function Footer() {
           {/* Social */}
           <div>
 
-            <h4 className="text-sm font-semibold text-zinc-900 mb-3">
+            <h4 className="text-sm font-semibold text-zinc-900 mb-4">
               Connect
             </h4>
 
@@ -103,9 +106,12 @@ export default function Footer() {
                   border-zinc-200
                   rounded-xl
                   text-zinc-600
+                  bg-white
+                  shadow-sm
                   hover:text-purple-600
                   hover:border-purple-300
                   hover:bg-purple-50
+                  hover:shadow-md
                   transition
                   hover:scale-105
                   "
@@ -121,14 +127,14 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-zinc-200 mt-12 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-zinc-500">
+        <div className="border-t border-zinc-200 mt-14 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-zinc-500">
 
           <p>
             © {new Date().getFullYear()} Ismail Markhi
           </p>
 
           <p className="text-zinc-400">
-            Built with React & Tailwind
+            Built with React • Tailwind • Vite
           </p>
 
         </div>

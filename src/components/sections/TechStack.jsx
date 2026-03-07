@@ -4,7 +4,10 @@ import { techStack } from "../../data/tech";
 
 export default function TechStack() {
   return (
-    <section className="py-24 bg-zinc-50">
+    <section className="relative py-24 bg-gradient-to-b from-white via-purple-50/40 to-white">
+
+      {/* glow background */}
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.08),transparent_70%)]" />
 
       <Container>
 
@@ -20,8 +23,8 @@ export default function TechStack() {
           sm:grid-cols-3
           md:grid-cols-4
           lg:grid-cols-6
-          gap-8
-          mt-12
+          gap-6
+          mt-14
         "
         >
 
@@ -32,6 +35,7 @@ export default function TechStack() {
               <div
                 key={tech.name}
                 className="
+                group
                 flex flex-col
                 items-center
                 justify-center
@@ -40,15 +44,25 @@ export default function TechStack() {
                 border
                 border-zinc-200
                 rounded-xl
-                hover:shadow-lg
+                shadow-sm
+                hover:shadow-md
                 hover:-translate-y-1
+                hover:border-purple-200
                 transition
               "
               >
 
-                <Icon className={`text-4xl mb-3 ${tech.color}`} />
+                <Icon
+                  className={`
+                  text-4xl
+                  mb-3
+                  ${tech.color}
+                  transition
+                  group-hover:scale-110
+                  `}
+                />
 
-                <p className="text-sm font-medium text-zinc-700">
+                <p className="text-sm font-medium text-zinc-700 group-hover:text-zinc-900">
                   {tech.name}
                 </p>
 

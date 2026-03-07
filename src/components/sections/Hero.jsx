@@ -5,7 +5,11 @@ import { SiFiverr } from "react-icons/si";
 
 export default function Hero() {
   return (
-    <section className="py-32 bg-gradient-to-b from-white via-purple-50 to-white">
+    <section className="relative py-32 bg-gradient-to-b from-white via-purple-50/70 to-white overflow-hidden">
+
+      {/* subtle glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-200/20 blur-3xl rounded-full pointer-events-none"></div>
+
       <Container>
 
         <div className="max-w-3xl">
@@ -26,7 +30,7 @@ export default function Hero() {
           </h1>
 
           {/* Description */}
-          <p className="text-zinc-600 text-base sm:text-lg leading-relaxed max-w-xl mb-8">
+          <p className="text-zinc-600 text-base sm:text-lg leading-relaxed max-w-xl mb-10">
             Web developer focused on building
             <span className="text-zinc-900 font-medium"> modern</span>,
             <span className="text-zinc-900 font-medium"> clean</span> and
@@ -38,7 +42,7 @@ export default function Hero() {
           </p>
 
           {/* CTA */}
-          <div className="flex flex-wrap gap-4 mb-8">
+          <div className="flex flex-wrap gap-4 mb-10">
 
             <Button to="/projects">
               View Projects
@@ -62,9 +66,12 @@ export default function Hero() {
               border-zinc-200
               rounded-xl
               text-zinc-600
+              bg-white
+              shadow-sm
               hover:text-purple-600
               hover:border-purple-300
               hover:bg-purple-50
+              hover:shadow-md
               transition
               hover:scale-105
               "
@@ -81,15 +88,19 @@ export default function Hero() {
               border-zinc-200
               rounded-xl
               text-zinc-600
+              bg-white
+              shadow-sm
               hover:text-purple-600
               hover:border-purple-300
               hover:bg-purple-50
+              hover:shadow-md
               transition
               hover:scale-105
               "
             >
               <FaLinkedin size={20} />
             </a>
+
             <a
               href="https://www.fiverr.com/ismail1markhi"
               target="_blank"
@@ -99,9 +110,12 @@ export default function Hero() {
               border-zinc-200
               rounded-xl
               text-zinc-600
-              hover:text-purple-600
-              hover:border-purple-300
-              hover:bg-purple-50
+              bg-white
+              shadow-sm
+              hover:text-green-500
+              hover:border-green-300
+              hover:bg-green-50
+              hover:shadow-md
               transition
               hover:scale-105
               "
@@ -114,6 +128,7 @@ export default function Hero() {
         </div>
 
       </Container>
+
     </section>
   );
 }

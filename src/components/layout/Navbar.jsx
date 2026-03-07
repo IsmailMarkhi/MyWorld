@@ -18,25 +18,33 @@ export default function Navbar() {
   return (
     <>
       {/* Navbar */}
-      <header className="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur border-b border-zinc-200">
+      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-lg bg-white/70 border-b border-zinc-200">
+
         <nav className="max-w-7xl mx-auto h-16 px-6 flex items-center justify-between">
 
-          <Link to="/" className="font-semibold text-zinc-900">
-            Ismail Markhi
+          {/* Logo */}
+          <Link
+            to="/"
+            className="font-semibold text-zinc-900 tracking-tight hover:text-purple-600 transition"
+          >
+            Ismail <span className="text-purple-600">Markhi</span>
           </Link>
 
           {/* Desktop */}
           <ul className="hidden md:flex items-center gap-8 text-sm">
+
             {links.map((link) => {
               const Icon = link.icon;
+              const active = pathname === link.to;
+
               return (
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className={`flex items-center gap-2 transition ${
-                      pathname === link.to
-                        ? "text-zinc-900"
-                        : "text-zinc-500 hover:text-zinc-900"
+                    className={`flex items-center gap-2 px-2 py-1 rounded-md transition ${
+                      active
+                        ? "text-purple-600 font-medium"
+                        : "text-zinc-600 hover:text-purple-600"
                     }`}
                   >
                     <Icon size={16} />
@@ -45,31 +53,56 @@ export default function Navbar() {
                 </li>
               );
             })}
+
+            {/* GitHub */}
+            <a
+              href="https://github.com/IsmailMarkhi"
+              target="_blank"
+              className="
+              flex items-center gap-2
+              text-zinc-600
+              hover:text-purple-600
+              transition
+              "
+            >
+              <Github size={16} />
+              GitHub
+            </a>
+
           </ul>
 
           {/* Mobile button */}
           <button
             onClick={() => setOpen(true)}
-            className="md:hidden"
+            className="md:hidden text-zinc-700 hover:text-purple-600 transition"
           >
-            <Menu size={22} />
+            <Menu size={24} />
           </button>
 
         </nav>
+
       </header>
 
       {/* Mobile overlay */}
       {open && (
-        <div className="fixed inset-0 z-50 bg-black/40">
+        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm">
 
           {/* Sidebar */}
-          <div className="fixed right-0 top-0 h-full w-72 bg-white shadow-xl p-6">
+          <div className="fixed right-0 top-0 h-full w-72 bg-white shadow-xl p-6 animate-slide-in">
 
             <div className="flex items-center justify-between mb-10">
-              <p className="font-semibold">Ismail Markhi</p>
-              <button onClick={() => setOpen(false)}>
+
+              <p className="font-semibold text-zinc-900">
+                Ismail <span className="text-purple-600">Markhi</span>
+              </p>
+
+              <button
+                onClick={() => setOpen(false)}
+                className="text-zinc-600 hover:text-purple-600 transition"
+              >
                 <X size={22} />
               </button>
+
             </div>
 
             <ul className="space-y-6">
@@ -81,7 +114,12 @@ export default function Navbar() {
                   <li key={link.to}>
                     <Link
                       to={link.to}
-                      className="flex items-center gap-3 text-zinc-700 text-sm"
+                      className="
+                      flex items-center gap-3
+                      text-zinc-700
+                      hover:text-purple-600
+                      transition
+                      "
                     >
                       <Icon size={18} />
                       {link.label}
@@ -94,7 +132,12 @@ export default function Navbar() {
                 <a
                   href="https://github.com/IsmailMarkhi"
                   target="_blank"
-                  className="flex items-center gap-3 text-zinc-700 text-sm"
+                  className="
+                  flex items-center gap-3
+                  text-zinc-700
+                  hover:text-purple-600
+                  transition
+                  "
                 >
                   <Github size={18} />
                   GitHub
@@ -104,6 +147,7 @@ export default function Navbar() {
             </ul>
 
           </div>
+
         </div>
       )}
     </>

@@ -57,7 +57,10 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="py-24 bg-zinc-50">
+    <section className="relative py-24 bg-gradient-to-b from-white via-purple-50/40 to-white">
+
+      {/* subtle glow */}
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.08),transparent_70%)]" />
 
       <Container>
 
@@ -66,7 +69,7 @@ export default function Services() {
           description="Practical development services I can help you with."
         />
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-12">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-14">
 
           {services.map((service) => {
             const Icon = service.icon;
@@ -75,23 +78,38 @@ export default function Services() {
               <article
                 key={service.title}
                 className="
-                p-6
+                group
+                p-7
                 bg-white
                 border border-zinc-200
                 rounded-xl
-                hover:shadow-lg
+                shadow-sm
+                hover:shadow-md
                 hover:-translate-y-1
+                hover:border-purple-200
                 transition
                 "
               >
 
-                <Icon className="text-indigo-600 text-2xl mb-4" />
+                {/* icon */}
+                <div className="
+                  w-11 h-11
+                  flex items-center justify-center
+                  rounded-lg
+                  bg-purple-100
+                  text-purple-600
+                  mb-4
+                  group-hover:scale-110
+                  transition
+                ">
+                  <Icon size={20} />
+                </div>
 
                 <h3 className="text-lg font-semibold text-zinc-900 mb-2">
                   {service.title}
                 </h3>
 
-                <p className="text-sm text-zinc-600">
+                <p className="text-sm text-zinc-600 leading-relaxed">
                   {service.desc}
                 </p>
 
