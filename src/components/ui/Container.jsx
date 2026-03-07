@@ -2,9 +2,11 @@ export default function Container({ children, className = "" }) {
   return (
     <div
       className={`
-        max-w-7xl
+        w-full
+        max-w-6xl
         mx-auto
-        px-6
+        px-5
+        sm:px-6
         lg:px-8
         ${className}
       `}
