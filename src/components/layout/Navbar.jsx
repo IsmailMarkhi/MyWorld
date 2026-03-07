@@ -22,15 +22,24 @@ export default function Navbar() {
 
         <nav className="max-w-7xl mx-auto h-16 px-6 flex items-center justify-between">
 
-          {/* Logo */}
+          {/* Logo desktop */}
           <Link
             to="/"
-            className="font-semibold text-zinc-900 tracking-tight hover:text-purple-600 transition"
+            className="hidden sm:block font-semibold text-zinc-900 tracking-tight hover:text-purple-600 transition"
           >
             Ismail <span className="text-purple-600">Markhi</span>
           </Link>
 
-          {/* Desktop */}
+          {/* Logo mobile */}
+          <Link to="/" className="sm:hidden">
+            <img
+              src="/preview.png"
+              alt="logo"
+              className="w-8 h-8 rounded-md"
+            />
+          </Link>
+
+          {/* Desktop menu */}
           <ul className="hidden md:flex items-center gap-8 text-sm">
 
             {links.map((link) => {
@@ -47,7 +56,10 @@ export default function Navbar() {
                         : "text-zinc-600 hover:text-purple-600"
                     }`}
                   >
-                    <Icon size={16} />
+                    <Icon
+                      size={16}
+                      className={active ? "text-purple-600" : ""}
+                    />
                     {link.label}
                   </Link>
                 </li>
@@ -58,12 +70,7 @@ export default function Navbar() {
             <a
               href="https://github.com/IsmailMarkhi"
               target="_blank"
-              className="
-              flex items-center gap-2
-              text-zinc-600
-              hover:text-purple-600
-              transition
-              "
+              className="flex items-center gap-2 text-zinc-600 hover:text-purple-600 transition"
             >
               <Github size={16} />
               GitHub
@@ -83,73 +90,73 @@ export default function Navbar() {
 
       </header>
 
-      {/* Mobile overlay */}
-      {open && (
-        <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm">
+      {/* Overlay */}
+      <div
+        className={`fixed inset-0 z-50 bg-black/40 backdrop-blur-sm transition-opacity duration-300 ${
+          open ? "opacity-100 visible" : "opacity-0 invisible"
+        }`}
+        onClick={() => setOpen(false)}
+      />
 
-          {/* Sidebar */}
-          <div className="fixed right-0 top-0 h-full w-72 bg-white shadow-xl p-6 animate-slide-in">
+      {/* Sidebar */}
+      <div
+        className={`fixed right-0 top-0 z-50 h-full w-72 bg-white shadow-xl p-6 transform transition-transform duration-300 ${
+          open ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
 
-            <div className="flex items-center justify-between mb-10">
+        <div className="flex items-center justify-between mb-10">
 
-              <p className="font-semibold text-zinc-900">
-                Ismail <span className="text-purple-600">Markhi</span>
-              </p>
+          <p className="font-semibold text-zinc-900">
+            Ismail <span className="text-purple-600">Markhi</span>
+          </p>
 
-              <button
-                onClick={() => setOpen(false)}
-                className="text-zinc-600 hover:text-purple-600 transition"
-              >
-                <X size={22} />
-              </button>
-
-            </div>
-
-            <ul className="space-y-6">
-
-              {links.map((link) => {
-                const Icon = link.icon;
-
-                return (
-                  <li key={link.to}>
-                    <Link
-                      to={link.to}
-                      className="
-                      flex items-center gap-3
-                      text-zinc-700
-                      hover:text-purple-600
-                      transition
-                      "
-                    >
-                      <Icon size={18} />
-                      {link.label}
-                    </Link>
-                  </li>
-                );
-              })}
-
-              <li>
-                <a
-                  href="https://github.com/IsmailMarkhi"
-                  target="_blank"
-                  className="
-                  flex items-center gap-3
-                  text-zinc-700
-                  hover:text-purple-600
-                  transition
-                  "
-                >
-                  <Github size={18} />
-                  GitHub
-                </a>
-              </li>
-
-            </ul>
-
-          </div>
+          <button
+            onClick={() => setOpen(false)}
+            className="text-zinc-600 hover:text-purple-600 transition"
+          >
+            <X size={22} />
+          </button>
 
         </div>
-      )}
+
+        <ul className="space-y-6">
+
+          {links.map((link) => {
+            const Icon = link.icon;
+            const active = pathname === link.to;
+
+            return (
+              <li key={link.to}>
+                <Link
+                  to={link.to}
+                  className={`flex items-center gap-3 text-sm transition ${
+                    active
+                      ? "text-purple-600 font-medium"
+                      : "text-zinc-700 hover:text-purple-600"
+                  }`}
+                >
+                  <Icon size={18} />
+                  {link.label}
+                </Link>
+              </li>
+            );
+          })}
+
+          <li>
+            <a
+              href="https://github.com/IsmailMarkhi"
+              target="_blank"
+              className="flex items-center gap-3 text-zinc-700 hover:text-purple-600 transition"
+            >
+              <Github size={18} />
+              GitHub
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
     </>
   );
 }
