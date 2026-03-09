@@ -1,32 +1,52 @@
 @import "tailwindcss";
+
+/* ring animation */
+
 @keyframes spin-border {
-  from {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+
+  100% {
     transform: rotate(360deg);
   }
 }
+
+/* link container */
+
+.nav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* spinning ring */
 
 .nav-ring {
   position: absolute;
   inset: -6px;
   border-radius: 9999px;
+
   background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    #f97316 90deg,
-    #d946ef 180deg,
-    transparent 270deg,
-    transparent 360deg
+    transparent,
+    #f97316,
+    #d946ef,
+    transparent
   );
+
   opacity: 0;
+  pointer-events: none;
 }
+
+/* hover effect */
 
 .nav-link:hover .nav-ring {
   opacity: 1;
-  animation: spin-border 0.8s linear 1;
+  animation: spin-border 0.8s linear;
 }
+
+/* active page */
 
 .nav-link.active .nav-ring {
   opacity: 1;
