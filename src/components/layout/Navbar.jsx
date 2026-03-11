@@ -10,26 +10,6 @@ const links = [
 export default function Navbar() {
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
-  //tg
-  const [cooldown, setCooldown] = useState(false);
-  const [dark, setDark] = useState(false);
-  const toogleTheme=()=>{
-    if(cooldown) return;
-    const html=document.getElement;
-    if(dark){
-      html.classList.remove("dark");
-      localStorage.setItem("theme","light");
-    }else{
-      html.classList.add("dark");
-      localStorage.setItem("theme","dark");
-    }
-    setDark(!dark);
-    setCooldown(true);
-
-    setTimeout(()=>{
-      setCooldown(false);
-    },1000);
-  };
 
   useEffect(() => {
     setOpen(false);
@@ -105,7 +85,7 @@ export default function Navbar() {
           >
             <Menu size={24} />
           </button>
-          
+
         </nav>
 
       </header>
