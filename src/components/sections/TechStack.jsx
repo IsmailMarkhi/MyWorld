@@ -2,9 +2,31 @@ import Container from "../ui/Container";
 import SectionTitle from "../ui/SectionTitle";
 import { techStack } from "../../data/tech";
 
+import { motion } from "framer-motion";
+
 export default function TechStack() {
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 40 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4 }
+    }
+  };
+
   return (
-    <section className="relative py-24 bg-gradient-to-b from-white via-purple-50/40 to-white">
+    <section className="relative py-24 bg-gradient-to-b from-white via-purple-50/40 to-white dark:from-zinc-900 dark:via-zinc-900 dark:to-black">
 
       {/* glow background */}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.08),transparent_70%)]" />
@@ -16,7 +38,11 @@ export default function TechStack() {
           description="Tools and technologies I use to build modern web applications."
         />
 
-        <div
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
           className="
           grid
           grid-cols-2
@@ -32,7 +58,8 @@ export default function TechStack() {
             const Icon = tech.icon;
 
             return (
-              <div
+              <motion.div
+                variants={item}
                 key={tech.name}
                 className="
                 group
@@ -40,14 +67,15 @@ export default function TechStack() {
                 items-center
                 justify-center
                 p-6
-                bg-white
-                border
-                border-zinc-200
+                bg-white/80
+                dark:bg-zinc-900/80
+                backdrop-blur
+                border border-zinc-200 dark:border-zinc-800
                 rounded-xl
                 shadow-sm
-                hover:shadow-md
-                hover:-translate-y-1
-                hover:border-purple-200
+                hover:shadow-lg
+                hover:-translate-y-2
+                hover:border-purple-300
                 transition
               "
               >
@@ -62,15 +90,15 @@ export default function TechStack() {
                   `}
                 />
 
-                <p className="text-sm font-medium text-zinc-700 group-hover:text-zinc-900">
+                <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-white">
                   {tech.name}
                 </p>
 
-              </div>
+              </motion.div>
             );
           })}
 
-        </div>
+        </motion.div>
 
       </Container>
 
