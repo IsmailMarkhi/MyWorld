@@ -1,7 +1,6 @@
 import Container from "../ui/Container";
 import SectionTitle from "../ui/SectionTitle";
 import { techStack } from "../../data/tech";
-
 import { motion } from "framer-motion";
 
 export default function TechStack() {
@@ -11,38 +10,56 @@ export default function TechStack() {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.08
+        staggerChildren: 0.06
       }
     }
   };
 
   const item = {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 24 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.4 }
+      transition: { duration: 0.35 }
     }
   };
 
   return (
-    <section className="relative py-24 bg-gradient-to-b from-white via-purple-50/40 to-white dark:from-zinc-900 dark:via-zinc-900 dark:to-black">
+    <section
+      id="tech"
+      aria-labelledby="tech-title"
+      className="
+      relative
+      py-28
+      bg-gradient-to-b
+      from-white
+      via-purple-50/40
+      to-white
+      dark:from-zinc-900
+      dark:via-zinc-900
+      dark:to-black
+      "
+    >
 
-      {/* glow background */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.08),transparent_70%)]" />
+      {/* subtle glow */}
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.07),transparent_70%)]" />
 
       <Container>
 
-        <SectionTitle
-          title="Technologies I Use"
-          description="Tools and technologies I use to build modern web applications."
-        />
+        <header className="mb-16">
+          <SectionTitle
+            title="Technologies"
+            description="Technologies and tools I use to build scalable modern applications."
+          />
+        </header>
 
-        <motion.div
+
+        <motion.ul
+          role="list"
           variants={container}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-60px" }}
           className="
           grid
           grid-cols-2
@@ -50,55 +67,73 @@ export default function TechStack() {
           md:grid-cols-4
           lg:grid-cols-6
           gap-6
-          mt-14
-        "
+          "
         >
 
           {techStack.map((tech) => {
+
             const Icon = tech.icon;
 
             return (
-              <motion.div
-                variants={item}
+
+              <motion.li
                 key={tech.name}
-                className="
-                group
-                flex flex-col
-                items-center
-                justify-center
-                p-6
-                bg-white/80
-                dark:bg-zinc-900/80
-                backdrop-blur
-                border border-zinc-200 dark:border-zinc-800
-                rounded-xl
-                shadow-sm
-                hover:shadow-lg
-                hover:-translate-y-2
-                hover:border-purple-300
-                transition
-              "
+                variants={item}
               >
 
-                <Icon
-                  className={`
-                  text-4xl
-                  mb-3
-                  ${tech.color}
-                  transition
-                  group-hover:scale-110
-                  `}
-                />
+                <article
+                  className="
+                  group
+                  cursor-pointer
+                  flex
+                  flex-col
+                  items-center
+                  justify-center
+                  gap-3
+                  p-6
+                  rounded-xl
+                  border border-zinc-200
+                  dark:border-zinc-800
+                  bg-white
+                  dark:bg-zinc-900
+                  shadow-sm
+                  hover:shadow-md
+                  hover:-translate-y-1
+                  hover:border-purple-300
+                  transition-all
+                  duration-200
+                  "
+                >
 
-                <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300 group-hover:text-zinc-900 dark:group-hover:text-white">
-                  {tech.name}
-                </p>
+                  <Icon
+                    className={`
+                    text-4xl
+                    ${tech.color}
+                    transition-transform
+                    duration-200
+                    group-hover:scale-110
+                    `}
+                  />
 
-              </motion.div>
+                  <span
+                    className="
+                    text-sm
+                    font-medium
+                    text-zinc-700
+                    dark:text-zinc-300
+                    "
+                  >
+                    {tech.name}
+                  </span>
+
+                </article>
+
+              </motion.li>
+
             );
           })}
 
-        </motion.div>
+        </motion.ul>
 
       </Container>
 

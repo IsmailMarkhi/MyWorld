@@ -1,127 +1,119 @@
 import Container from "../ui/Container";
-import Button from "../ui/Button";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiFiverr } from "react-icons/si";
 
 export default function Hero() {
   return (
-    <section className="relative py-32 bg-gradient-to-b from-white via-purple-50/70 to-white overflow-hidden">
-
-      {/* subtle glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-200/20 blur-3xl rounded-full pointer-events-none"></div>
+    <section className="py-32 bg-white">
 
       <Container>
 
-        <div className="max-w-3xl">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-          {/* Badge */}
-          <div className="mb-6">
-            <span className="text-xs font-medium px-3 py-1 rounded-full bg-purple-100 text-purple-700">
-              Web Developer
-            </span>
+          {/* LEFT CONTENT */}
+          <div>
+
+            <p className="text-sm text-purple-600 font-medium mb-4">
+              Freelance Web Developer
+            </p>
+
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-zinc-900 leading-tight mb-6">
+              Building modern
+              <br />
+              web experiences
+            </h1>
+
+            <p className="text-zinc-600 text-lg leading-relaxed max-w-xl mb-8">
+              I'm <span className="font-semibold text-zinc-900">Ismail Markhi</span>,
+              a developer focused on creating clean and scalable web applications
+              using React, Laravel and Python.
+            </p>
+
+            {/* CTA */}
+            <div className="flex items-center gap-6 mb-10">
+
+              <a
+                href="#projects"
+                className="
+                px-6 py-3
+                bg-purple-600
+                text-white
+                rounded-lg
+                hover:bg-purple-700
+                transition
+                "
+              >
+                View Projects
+              </a>
+
+              <a
+                href="/contact"
+                className="text-zinc-700 font-medium hover:text-purple-600 transition"
+              >
+                Contact Me →
+              </a>
+
+            </div>
+
+            {/* Social */}
+            <div className="flex gap-5 text-zinc-600">
+
+              <a href="https://github.com/IsmailMarkhi" target="_blank">
+                <FaGithub size={22} />
+              </a>
+
+              <a href="https://linkedin.com" target="_blank">
+                <FaLinkedin size={22} />
+              </a>
+
+              <a href="https://fiverr.com" target="_blank">
+                <SiFiverr size={22} />
+              </a>
+
+            </div>
+
           </div>
 
-          {/* Title */}
-          <h1 className="text-4xl md:text-6xl font-bold text-zinc-900 mb-6 leading-tight tracking-tight">
-            Hi, I'm{" "}
-            <span className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
-              Ismail Markhi
-            </span>
-          </h1>
 
-          {/* Description */}
-          <p className="text-zinc-600 text-base sm:text-lg leading-relaxed max-w-xl mb-10">
-            Web developer focused on building
-            <span className="text-zinc-900 font-medium"> modern</span>,
-            <span className="text-zinc-900 font-medium"> clean</span> and
-            <span className="text-zinc-900 font-medium"> user-friendly </span>
-            web applications using technologies like
-            <span className="text-purple-600 font-medium">
-              {" "}React, Laravel and Python
-            </span>.
-          </p>
+          {/* RIGHT SIDE */}
+          <div className="hidden lg:block">
 
-          {/* CTA */}
-          <div className="flex flex-wrap gap-4 mb-10">
+            <div className="bg-zinc-900 text-white rounded-xl p-6 shadow-lg">
 
-            <Button to="/projects">
-              View Projects
-            </Button>
+              <div className="text-xs text-zinc-400 mb-3">
+                portfolio.js
+              </div>
 
-            <Button to="/contact" variant="outline">
-              Contact Me
-            </Button>
+              <pre className="text-sm leading-relaxed">
+{`const developer = {
+  name: "Ismail Markhi",
+  role: "Web Developer",
+  stack: [
+    "React",
+    "Laravel",
+    "Python",
+    "Tailwind"
+  ],
+  available: true
+};`}
+              </pre>
 
-          </div>
+            </div>
 
-          {/* Social */}
-          <div className="flex gap-4">
+            {/* small stats */}
+            <div className="grid grid-cols-2 gap-4 mt-6">
 
-            <a
-              href="https://github.com/IsmailMarkhi"
-              target="_blank"
-              className="
-              p-3
-              border
-              border-zinc-200
-              rounded-xl
-              text-zinc-600
-              bg-white
-              shadow-sm
-              hover:text-purple-600
-              hover:border-purple-300
-              hover:bg-purple-50
-              hover:shadow-md
-              transition
-              hover:scale-105
-              "
-            >
-              <FaGithub size={20} />
-            </a>
+              <div className="border border-zinc-200 rounded-lg p-4 text-center">
+                <p className="text-xl font-semibold text-zinc-900">2+</p>
+                <p className="text-xs text-zinc-500">Years Experience</p>
+              </div>
 
-            <a
-              href="https://www.linkedin.com/in/ismail-markhi-a67033317/"
-              target="_blank"
-              className="
-              p-3
-              border
-              border-zinc-200
-              rounded-xl
-              text-zinc-600
-              bg-white
-              shadow-sm
-              hover:text-purple-600
-              hover:border-purple-300
-              hover:bg-purple-50
-              hover:shadow-md
-              transition
-              hover:scale-105
-              "
-            >
-              <FaLinkedin size={20} />
-            </a>
+              <div className="border border-zinc-200 rounded-lg p-4 text-center">
+                <p className="text-xl font-semibold text-zinc-900">15+</p>
+                <p className="text-xs text-zinc-500">Projects Built</p>
+              </div>
 
-            <a
-              href="https://www.fiverr.com/ismail1markhi"
-              target="_blank"
-              className="
-              p-3
-              border
-              border-zinc-200
-              rounded-xl
-              text-zinc-600
-              bg-white
-              shadow-sm
-              hover:text-green-500
-              hover:border-green-300
-              hover:bg-green-50
-              hover:shadow-md
-              transition
-              hover:scale-105
-              "
-            >
-              <SiFiverr size={20} />
-            </a>
+            </div>
 
           </div>
 

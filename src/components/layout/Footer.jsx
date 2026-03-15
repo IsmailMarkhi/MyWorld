@@ -2,138 +2,105 @@ import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { SiFiverr } from "react-icons/si";
 
 const socialLinks = [
-  {
-    name: "GitHub",
-    href: "https://github.com/IsmailMarkhi",
-    icon: FaGithub,
-  },
-  {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/in/ismail-markhi-a67033317",
-    icon: FaLinkedin,
-  },
-  {
-    name: "Fiverr",
-    href: "https://www.fiverr.com/ismail1markhi",
-    icon: SiFiverr,
-  },
-  {
-    name: "Instagram",
-    href: "https://www.instagram.com/ismailmarkhi",
-    icon: FaInstagram,
-  },
+  { name: "GitHub", href: "https://github.com/IsmailMarkhi", icon: FaGithub },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/ismail-markhi-a67033317", icon: FaLinkedin },
+  { name: "Fiverr", href: "https://www.fiverr.com/ismail1markhi", icon: SiFiverr },
+  { name: "Instagram", href: "https://www.instagram.com/ismailmarkhi", icon: FaInstagram }
 ];
 
 export default function Footer() {
+
   return (
-    <footer className="relative border-t border-zinc-200 bg-gradient-to-b from-white via-purple-50/60 to-white">
+    <footer className="border-t border-zinc-200 bg-white">
 
-      {/* subtle glow */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.08),transparent_60%)]" />
+      <div className="max-w-6xl mx-auto px-6 py-16">
 
-      <div className="relative max-w-6xl mx-auto px-6 py-20">
-
-        <div className="grid gap-12 md:grid-cols-3 text-center md:text-left">
+        {/* Top */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-10">
 
           {/* Brand */}
-          <div>
+          <div className="text-center md:text-left">
 
-            <h3 className="font-bold text-xl text-zinc-900 tracking-tight mb-4">
+            <h3 className="text-xl font-semibold tracking-tight">
               Ismail <span className="text-purple-600">Markhi</span>
             </h3>
 
-            <p className="text-sm text-zinc-600 leading-relaxed mb-5 max-w-xs mx-auto md:mx-0">
-              Freelance web developer building modern, scalable
-              and user-friendly web applications.
+            <p className="text-sm text-zinc-500 mt-2 max-w-sm">
+              Web developer building modern web applications
+              with React, Laravel and Python.
             </p>
 
-            <span className="inline-block text-xs font-medium text-purple-600 bg-purple-100 px-3 py-1 rounded-full">
-              Available for freelance work
-            </span>
-
           </div>
+
 
           {/* Navigation */}
-          <div>
+          <div className="flex gap-8 text-sm text-zinc-600">
 
-            <h4 className="text-sm font-semibold text-zinc-900 mb-4">
-              Navigation
-            </h4>
+            <a
+              href="#home"
+              className="hover:text-purple-600 transition"
+            >
+              Home
+            </a>
 
-            <ul className="space-y-2 text-sm text-zinc-600">
+            <a
+              href="#projects"
+              className="hover:text-purple-600 transition"
+            >
+              Projects
+            </a>
 
-              <li>
-                <a
-                  href="/"
-                  className="hover:text-purple-600 transition-colors"
-                >
-                  Home
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="/projects"
-                  className="hover:text-purple-600 transition-colors"
-                >
-                  Projects
-                </a>
-              </li>
-
-            </ul>
+            <a
+              href="#contact"
+              className="hover:text-purple-600 transition"
+            >
+              Contact
+            </a>
 
           </div>
 
+
           {/* Social */}
-          <div>
+          <div className="flex gap-4">
 
-            <h4 className="text-sm font-semibold text-zinc-900 mb-4">
-              Connect
-            </h4>
+            {socialLinks.map(({ name, href, icon: Icon }) => (
 
-            <div className="flex justify-center md:justify-start gap-4">
+              <a
+                key={name}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="
+                w-10 h-10
+                flex items-center justify-center
+                rounded-lg
+                border border-zinc-200
+                text-zinc-600
+                hover:text-purple-600
+                hover:border-purple-300
+                transition
+                "
+              >
 
-              {socialLinks.map(({ name, href, icon: Icon }) => (
-                <a
-                  key={name}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={name}
-                  className="
-                  p-3
-                  border
-                  border-zinc-200
-                  rounded-xl
-                  text-zinc-600
-                  bg-white
-                  shadow-sm
-                  hover:text-purple-600
-                  hover:border-purple-300
-                  hover:bg-purple-50
-                  hover:shadow-md
-                  transition
-                  hover:scale-105
-                  "
-                >
-                  <Icon size={18} />
-                </a>
-              ))}
+                <Icon size={18} />
 
-            </div>
+              </a>
+
+            ))}
 
           </div>
 
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-zinc-200 mt-14 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-zinc-500">
+
+        {/* Bottom */}
+        <div className="mt-12 pt-6 border-t border-zinc-200 flex flex-col md:flex-row items-center justify-between text-xs text-zinc-500 gap-3">
 
           <p>
             © {new Date().getFullYear()} Ismail Markhi
           </p>
 
-          <p className="text-zinc-400">
+          <p>
             Built with React • Tailwind • Vite
           </p>
 
