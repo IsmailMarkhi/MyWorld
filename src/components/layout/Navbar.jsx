@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Home,
   Briefcase,
@@ -15,12 +15,40 @@ const links = [
   { href: "#services", label: "Services", icon: Briefcase },
   { href: "#tech", label: "Tech", icon: Cpu },
   { href: "#projects", label: "Projects", icon: FolderKanban },
-  { href: "#contact", label: "Contact", icon: Mail },
+  { href: "#contact", label: "Contact", icon: Mail }
 ];
 
 export default function Navbar() {
 
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("#home");
+
+  /* Scroll Spy */
+  useEffect(() => {
+
+    const handleScroll = () => {
+
+      links.forEach((link) => {
+
+        const section = document.querySelector(link.href);
+
+        if (!section) return;
+
+        const rect = section.getBoundingClientRect();
+
+        if (rect.top <= 120 && rect.bottom >= 120) {
+          setActive(link.href);
+        }
+
+      });
+
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+
+  }, []);
 
   return (
     <>
@@ -45,7 +73,7 @@ export default function Navbar() {
         <nav className="h-16 px-6 flex items-center justify-between">
 
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-3 group">
+          <a href="#home" className="flex items-center gap-3">
 
             <img
               src="/preview.png"
@@ -53,7 +81,7 @@ export default function Navbar() {
               className="w-9 h-9 rounded-lg"
             />
 
-            <span className="font-semibold text-zinc-900 tracking-tight group-hover:text-purple-600 transition">
+            <span className="font-semibold text-zinc-900 tracking-tight">
               Ismail <span className="text-purple-600">Markhi</span>
             </span>
 
@@ -66,18 +94,19 @@ export default function Navbar() {
             {links.map((link) => {
 
               const Icon = link.icon;
+              const isActive = active === link.href;
 
               return (
                 <li key={link.href}>
 
                   <a
                     href={link.href}
-                    className="
-                    flex items-center gap-2
-                    text-zinc-600
-                    hover:text-purple-600
-                    transition
-                  "
+                    className={`
+                    flex items-center gap-2 transition
+                    ${isActive
+                      ? "text-purple-600 font-medium"
+                      : "text-zinc-600 hover:text-purple-600"}
+                  `}
                   >
 
                     <Icon size={16} />
@@ -96,6 +125,7 @@ export default function Navbar() {
             <a
               href="https://github.com/IsmailMarkhi"
               target="_blank"
+              rel="noopener noreferrer"
               className="
               flex items-center gap-2
               text-zinc-600
@@ -113,8 +143,9 @@ export default function Navbar() {
           </ul>
 
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Button */}
           <button
+            aria-label="Open Menu"
             onClick={() => setOpen(true)}
             className="md:hidden text-zinc-700 hover:text-purple-600 transition"
           >
@@ -130,10 +161,8 @@ export default function Navbar() {
       <div
         className={`
         fixed inset-0 z-40
-        bg-black/40
-        backdrop-blur-sm
-        transition-opacity
-        duration-300
+        bg-black/40 backdrop-blur-sm
+        transition-opacity duration-300
         ${open ? "opacity-100 visible" : "opacity-0 invisible"}
       `}
         onClick={() => setOpen(false)}
@@ -141,7 +170,7 @@ export default function Navbar() {
 
 
       {/* Mobile Sidebar */}
-      <div
+      <aside
         className={`
         fixed
         right-0
@@ -161,11 +190,12 @@ export default function Navbar() {
 
         <div className="flex items-center justify-between mb-10">
 
-          <p className="font-semibold text-zinc-900">
+          <span className="font-semibold text-zinc-900">
             Ismail <span className="text-purple-600">Markhi</span>
-          </p>
+          </span>
 
           <button
+            aria-label="Close Menu"
             onClick={() => setOpen(false)}
             className="text-zinc-600 hover:text-purple-600 transition"
           >
@@ -181,6 +211,7 @@ export default function Navbar() {
           {links.map((link) => {
 
             const Icon = link.icon;
+            const isActive = active === link.href;
 
             return (
 
@@ -189,13 +220,12 @@ export default function Navbar() {
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="
-                  flex items-center gap-3
-                  text-sm
-                  text-zinc-700
-                  hover:text-purple-600
-                  transition
-                "
+                  className={`
+                  flex items-center gap-3 text-sm transition
+                  ${isActive
+                    ? "text-purple-600 font-medium"
+                    : "text-zinc-700 hover:text-purple-600"}
+                `}
                 >
 
                   <Icon size={18} />
@@ -216,6 +246,7 @@ export default function Navbar() {
             <a
               href="https://github.com/IsmailMarkhi"
               target="_blank"
+              rel="noopener noreferrer"
               className="
               flex items-center gap-3
               text-zinc-700
@@ -234,7 +265,7 @@ export default function Navbar() {
 
         </ul>
 
-      </div>
+      </aside>
 
     </>
   );
