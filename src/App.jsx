@@ -11,30 +11,35 @@ import NotFound from "./pages/NotFound";
 export default function App() {
   return (
     <BrowserRouter>
-      <Navbar />
 
-      <main
-        className="
-          min-h-screen
-          pt-16
-          bg-gradient-to-b
-          from-white
-          via-indigo-50
-          to-white
-          text-slate-900
-        "
-      >
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
+      <div className="
+        min-h-screen
+        flex
+        flex-col
+        bg-gradient-to-b
+        from-white
+        via-indigo-50
+        to-white
+        text-slate-900
+      ">
 
-          {/* 404 fallback */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
+        <Navbar />
 
-      <Footer />
+        <main className="flex-1 pt-16">
+
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+
+        </main>
+
+        <Footer />
+
+      </div>
+
     </BrowserRouter>
   );
 }

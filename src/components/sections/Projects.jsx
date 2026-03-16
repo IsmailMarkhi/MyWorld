@@ -55,17 +55,24 @@ const projects = [
     status: "Completed",
     color: "from-rose-50 to-red-50",
   },
-{
-  id: 6,
-  title: "Smart QR Menu SaaS",
-  desc: "Cloud-native SaaS platform that lets restaurants generate QR menus, receive real-time orders, and manage them from a dashboard.",
-  stack: ["Next.js", "Tailwind", "Microservices", "Docker", "PostgreSQL", "Redis"],
-  demo: "#",
-  github: "#",
-  status: "Architecture Project",
-  badge: "Concept",
-  color: "from-indigo-50 to-blue-50",
-}
+  {
+    id: 6,
+    title: "Smart QR Menu SaaS",
+    desc: "Cloud-native SaaS platform that lets restaurants generate QR menus, receive real-time orders, and manage them from a dashboard.",
+    stack: [
+      "Next.js",
+      "Tailwind",
+      "Microservices",
+      "Docker",
+      "PostgreSQL",
+      "Redis",
+    ],
+    demo: "#",
+    github: "#",
+    status: "Architecture Project",
+    badge: "Concept",
+    color: "from-indigo-50 to-blue-50",
+  },
 ];
 
 const StatusBadge = memo(({ status, badge }) => {
@@ -123,7 +130,6 @@ const ProjectCard = memo(({ project, index }) => {
       />
 
       <div className="space-y-4">
-
         <div>
           <h3 className="text-lg font-bold text-zinc-900 mb-2">
             {project.title}
@@ -148,11 +154,9 @@ const ProjectCard = memo(({ project, index }) => {
 
         {/* Footer */}
         <div className="flex items-center justify-between pt-4 border-t border-zinc-100">
-
           <StatusBadge status={project.status} badge={project.badge} />
 
           <div className="flex gap-3">
-
             {project.demo !== "#" && (
               <a
                 href={project.demo}
@@ -174,9 +178,7 @@ const ProjectCard = memo(({ project, index }) => {
                 Code
               </a>
             )}
-
           </div>
-
         </div>
       </div>
     </article>
@@ -202,9 +204,7 @@ export default memo(function Projects() {
 
   return (
     <section className="px-4 sm:px-6 py-24 bg-gradient-to-b from-white to-zinc-50">
-
       <div className="max-w-6xl mx-auto">
-
         <header className="text-center mb-16">
           <h2 className="text-4xl font-bold text-zinc-900 mb-4">
             Projects & Work
@@ -221,9 +221,7 @@ export default memo(function Projects() {
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
-
       </div>
-
     </section>
   );
 });

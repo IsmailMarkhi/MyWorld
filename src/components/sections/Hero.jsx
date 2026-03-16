@@ -33,7 +33,7 @@ export default function Hero() {
             <div className="flex items-center gap-6 mb-10">
 
               <a
-                href="/projects"
+                href="#projects"
                 className="
                 px-6 py-3
                 bg-purple-600
@@ -47,7 +47,7 @@ export default function Hero() {
               </a>
 
               <a
-                href="/contact"
+                href="#contact"
                 className="text-zinc-700 font-medium hover:text-purple-600 transition"
               >
                 Contact Me →

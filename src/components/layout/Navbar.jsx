@@ -1,24 +1,30 @@
-import { Link, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { Home, FolderKanban, Github, Menu, X } from "lucide-react";
+import { useState } from "react";
+import {
+  Home,
+  Briefcase,
+  Cpu,
+  FolderKanban,
+  Mail,
+  Github,
+  Menu,
+  X
+} from "lucide-react";
 
 const links = [
-  { to: "/", label: "Home", icon: Home },
-  { to: "/projects", label: "Projects", icon: FolderKanban },
+  { href: "#home", label: "Home", icon: Home },
+  { href: "#services", label: "Services", icon: Briefcase },
+  { href: "#tech", label: "Tech", icon: Cpu },
+  { href: "#projects", label: "Projects", icon: FolderKanban },
+  { href: "#contact", label: "Contact", icon: Mail },
 ];
 
 export default function Navbar() {
 
-  const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
 
   return (
     <>
-      {/* Floating Navbar */}
+      {/* Navbar */}
       <header
         className="
         fixed
@@ -39,10 +45,8 @@ export default function Navbar() {
         <nav className="h-16 px-6 flex items-center justify-between">
 
           {/* Logo */}
-          <Link
-            to="/"
-            className="flex items-center gap-3 group"
-          >
+          <a href="#home" className="flex items-center gap-3 group">
+
             <img
               src="/preview.png"
               alt="logo"
@@ -52,7 +56,8 @@ export default function Navbar() {
             <span className="font-semibold text-zinc-900 tracking-tight group-hover:text-purple-600 transition">
               Ismail <span className="text-purple-600">Markhi</span>
             </span>
-          </Link>
+
+          </a>
 
 
           {/* Desktop Links */}
@@ -61,47 +66,31 @@ export default function Navbar() {
             {links.map((link) => {
 
               const Icon = link.icon;
-              const active = pathname === link.to;
 
               return (
-                <li key={link.to} className="relative group">
+                <li key={link.href}>
 
-                  <Link
-                    to={link.to}
-                    className={`flex items-center gap-2 transition ${
-                      active
-                        ? "text-purple-600"
-                        : "text-zinc-600 hover:text-purple-600"
-                    }`}
+                  <a
+                    href={link.href}
+                    className="
+                    flex items-center gap-2
+                    text-zinc-600
+                    hover:text-purple-600
+                    transition
+                  "
                   >
 
                     <Icon size={16} />
+
                     {link.label}
 
-                  </Link>
-
-                  {/* underline */}
-                  <span
-                    className={`
-                    absolute
-                    left-0
-                    -bottom-2
-                    h-[2px]
-                    w-full
-                    bg-purple-500
-                    origin-left
-                    transition
-                    ${
-                      active
-                        ? "scale-x-100"
-                        : "scale-x-0 group-hover:scale-x-100"
-                    }
-                  `}
-                  />
+                  </a>
 
                 </li>
               );
+
             })}
+
 
             {/* Github */}
             <a
@@ -111,18 +100,20 @@ export default function Navbar() {
               flex items-center gap-2
               text-zinc-600
               hover:text-purple-600
-              hover:scale-105
               transition
-              "
+            "
             >
+
               <Github size={16} />
+
               GitHub
+
             </a>
 
           </ul>
 
 
-          {/* Mobile Button */}
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setOpen(true)}
             className="md:hidden text-zinc-700 hover:text-purple-600 transition"
@@ -138,8 +129,11 @@ export default function Navbar() {
       {/* Overlay */}
       <div
         className={`
-        fixed inset-0 z-40 bg-black/40 backdrop-blur-sm
-        transition-opacity duration-300
+        fixed inset-0 z-40
+        bg-black/40
+        backdrop-blur-sm
+        transition-opacity
+        duration-300
         ${open ? "opacity-100 visible" : "opacity-0 invisible"}
       `}
         onClick={() => setOpen(false)}
@@ -181,30 +175,39 @@ export default function Navbar() {
         </div>
 
 
+        {/* Mobile Links */}
         <ul className="space-y-6">
 
           {links.map((link) => {
 
             const Icon = link.icon;
-            const active = pathname === link.to;
 
             return (
-              <li key={link.to}>
 
-                <Link
-                  to={link.to}
-                  className={`flex items-center gap-3 text-sm transition ${
-                    active
-                      ? "text-purple-600 font-medium"
-                      : "text-zinc-700 hover:text-purple-600"
-                  }`}
+              <li key={link.href}>
+
+                <a
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="
+                  flex items-center gap-3
+                  text-sm
+                  text-zinc-700
+                  hover:text-purple-600
+                  transition
+                "
                 >
+
                   <Icon size={18} />
+
                   {link.label}
-                </Link>
+
+                </a>
 
               </li>
+
             );
+
           })}
 
 
@@ -213,10 +216,18 @@ export default function Navbar() {
             <a
               href="https://github.com/IsmailMarkhi"
               target="_blank"
-              className="flex items-center gap-3 text-zinc-700 hover:text-purple-600 transition"
+              className="
+              flex items-center gap-3
+              text-zinc-700
+              hover:text-purple-600
+              transition
+            "
             >
+
               <Github size={18} />
+
               GitHub
+
             </a>
 
           </li>
@@ -224,6 +235,7 @@ export default function Navbar() {
         </ul>
 
       </div>
+
     </>
   );
 }
