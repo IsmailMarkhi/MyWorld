@@ -76,7 +76,7 @@ export default function Hero() {
 
 
           {/* RIGHT SIDE */}
-          <div className="hidden lg:block">
+          <div className="sm:flex lg:block">
 
             <div className="bg-zinc-900 text-white rounded-xl p-6 shadow-lg">
 

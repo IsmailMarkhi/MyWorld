@@ -31,17 +31,17 @@ export default function Home() {
       </section>
 
       <section
-        id="services"
-        className="scroll-mt-24 py-20 bg-purple-900"
-      >
-        <Services />
-      </section>
-
-      <section
         id="tech"
         className="scroll-mt-24 py-20"
       >
         <TechStack />
+      </section>
+
+      <section
+        id="services"
+        className="scroll-mt-24 py-20 bg-purple-900"
+      >
+        <Services />
       </section>
 
       <section
