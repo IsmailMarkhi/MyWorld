@@ -81,12 +81,12 @@ export default function Services() {
                 group
                 p-7
                 bg-white
-                border border-zinc-200
+                border border-purple-900
                 rounded-xl
                 shadow-sm
                 hover:shadow-md
                 hover:-translate-y-1
-                hover:border-purple-200
+                hover:border-purple-600
                 transition
                 "
               >
