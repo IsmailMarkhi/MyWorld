@@ -92,14 +92,14 @@ export default function TechStack() {
                   gap-3
                   p-6
                   rounded-xl
-                  border border-zinc-200
-                  dark:border-zinc-800
+                  border border-purple-200
+                  dark:border-purple-700
                   bg-white
                   dark:bg-zinc-900
                   shadow-sm
                   hover:shadow-md
                   hover:-translate-y-1
-                  hover:border-purple-300
+                  hover:border-purple-800
                   transition-all
                   duration-200
                   "
