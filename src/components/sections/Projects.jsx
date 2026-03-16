@@ -115,12 +115,12 @@ const ProjectCard = memo(({ project, index }) => {
       overflow-hidden
       p-6
       rounded-xl
-      border border-zinc-200
+      border border-purple-900
       bg-white
       transition-all duration-300
       hover:-translate-y-1
       hover:shadow-xl
-      hover:border-zinc-300
+      hover:border-purple-500
     "
       style={{ animationDelay: `${index * 100}ms` }}
     >
