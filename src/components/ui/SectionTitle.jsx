@@ -11,7 +11,7 @@ export default function SectionTitle({
         sm:text-4xl
         md:text-5xl
         font-bold
-        text-purple-900
+        text-purple-700
         mb-4
       ">
         {title}
