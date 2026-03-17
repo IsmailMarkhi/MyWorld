@@ -48,7 +48,7 @@ export default function Hero() {
 
               <a
                 href="#contact"
-                className="text-zinc-700 font-medium hover:text-purple-600 transition"
+                className="text-zinc-700 font-medium px-6 py-3 border border-zinc-700 rounded-lg dark:border-purple-600 hover:border-purple-600 hover:text-purple-600 transition"
               >
                 Contact Me →
               </a>
@@ -56,17 +56,20 @@ export default function Hero() {
             </div>
 
             {/* Social */}
-            <div className="flex gap-5 text-zinc-600">
+            <div className="flex gap-10">
 
-              <a href="https://github.com/IsmailMarkhi" target="_blank">
+              <a href="https://github.com/IsmailMarkhi" target="_blank"
+              className="hover:text-black scale-160">
                 <FaGithub size={22} />
               </a>
 
-              <a href="https://linkedin.com" target="_blank">
+              <a href="https://linkedin.com" target="_blank"
+              className="hover:text-blue-500 scale-160">
                 <FaLinkedin size={22} />
               </a>
 
-              <a href="https://fiverr.com" target="_blank">
+              <a href="https://fiverr.com" target="_blank"
+              className="hover:text-black scale-160">
                 <SiFiverr size={22} />
               </a>
 
