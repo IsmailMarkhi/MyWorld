@@ -25,7 +25,7 @@ export default function Home() {
 
       <section
         id="services"
-        className="scroll-mt-24 py-20 bg-purple-900"
+        className="scroll-mt-24 py-20"
       >
         <Services />
       </section>

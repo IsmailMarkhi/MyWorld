@@ -203,7 +203,7 @@ export default memo(function Projects() {
   }, []);
 
   return (
-    <section className="px-4 sm:px-6 py-24 bg-gradient-to-b from-white to-zinc-50">
+    <section className="px-4 sm:px-6 py-24 bg-gradient-to-b from-white via-purple-50/30 to-zinc-50">
       <div className="max-w-6xl mx-auto">
         <header className="text-center mb-16">
           <h2 className="text-4xl font-bold text-purple-700 mb-4">

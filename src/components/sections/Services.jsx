@@ -57,7 +57,11 @@ const services = [
 
 export default function Services() {
   return (
-    <section className="relative py-24 bg-gradient-to-b from-white via-purple-50/40 to-white">
+    <section className="relative py-24 
+bg-gradient-to-b 
+from-white 
+via-purple-200/30 
+to-white">
 
       {/* subtle glow */}
       <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.08),transparent_70%)]" />
