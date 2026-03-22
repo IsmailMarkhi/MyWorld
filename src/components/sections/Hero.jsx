@@ -63,12 +63,12 @@ export default function Hero() {
                 <FaGithub size={22} />
               </a>
 
-              <a href="https://linkedin.com" target="_blank"
+              <a href="https://www.linkedin.com/in/ismail-markhi-a67033317/" target="_blank"
               className="hover:text-blue-500 scale-160">
                 <FaLinkedin size={22} />
               </a>
 
-              <a href="https://fiverr.com" target="_blank"
+              <a href="https://www.fiverr.com/sellers/ismail1markhi" target="_blank"
               className="hover:text-black scale-160">
                 <SiFiverr size={22} />
               </a>
