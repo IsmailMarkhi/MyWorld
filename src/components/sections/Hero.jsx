@@ -46,7 +46,7 @@ export default function Hero() {
                 download="Ismail-Markhi-Resume.pdf"
                 className="text-zinc-700 font-medium px-6 py-3 border border-zinc-700 rounded-lg dark:border-purple-600 hover:border-purple-600 hover:text-purple-600 transition duration-300"
               >
-                Download CV
+                My CV
               </a>
 
               <a
