@@ -44,9 +44,9 @@ export default function Hero() {
               <a
                 href="/assets/resume.pdf"
                 download="Ismail-Markhi-Resume.pdf"
-                className="text-zinc-700 font-medium px-6 py-3 border border-zinc-700 rounded-lg dark:border-purple-600 hover:border-purple-600 hover:text-purple-600 transition duration-300"
+                className="text-zinc-700 font-medium p-3 border border-zinc-700 rounded-full dark:border-purple-600 hover:border-purple-600 hover:text-purple-600 transition duration-300"
               >
-                My CV
+                CV
               </a>
 
               <a
