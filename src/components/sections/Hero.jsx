@@ -42,7 +42,7 @@ export default function Hero() {
                 View Projects
               </a>
               <a
-                href="/assets/resume.pdf"
+                href="/resume.pdf"
                 download="Ismail-Markhi-Resume.pdf"
                 className="text-zinc-700 font-medium p-3 border border-zinc-700 rounded-full dark:border-purple-600 hover:border-purple-600 hover:text-purple-600 transition duration-300"
               >
