@@ -54,6 +54,9 @@ export const techStack = [
   { name: "GitHub", icon: FaGithub, color: "text-zinc-900 dark:text-white" },
   { name: "GitLab", icon: SiGitlab, color: "text-orange-500" },
 
+  { name: "XAMPP", icon: SiXampp, color: "text-orange-500" },
+  { name: "VS Code", icon: FaCode , color: "text-blue-500" },
+
   { name: "Figma", icon: FaFigma, color: "text-pink-500" },
   { name: "Jira", icon: SiJira, color: "text-blue-500" },
 
@@ -64,7 +67,4 @@ export const techStack = [
 
   { name: "Gamma Ai", icon: FaMicrosoft, color: "text-purple-500" }, // no official icon → fallback
   { name: "Prezi", icon: SiPrezi, color: "text-blue-400" },
-
-  { name: "XAMPP", icon: SiXampp, color: "text-orange-500" },
-  { name: "VS Code", icon: FaCode , color: "text-blue-500" },
 ];
