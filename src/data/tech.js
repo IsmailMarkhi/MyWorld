@@ -57,12 +57,12 @@ export const techStack = [
   { name: "Figma", icon: FaFigma, color: "text-pink-500" },
   { name: "Jira", icon: SiJira, color: "text-blue-500" },
 
-  // 🆕 Added
+//Tols & Programs || Logiciels
   { name: "Excel", icon: FaMicrosoft, color: "text-green-600" },
   { name: "Word", icon: FaMicrosoft, color: "text-blue-600" },
-  { name: "Docs", icon: FaMicrosoft, color: "text-blue-500" },
+  { name: "power point", icon: FaMicrosoft, color: "text-orange-600" },
 
-  { name: "Gamma", icon: FaMicrosoft, color: "text-purple-500" }, // no official icon → fallback
+  { name: "Gamma Ai", icon: FaMicrosoft, color: "text-purple-500" }, // no official icon → fallback
   { name: "Prezi", icon: SiPrezi, color: "text-blue-400" },
 
   { name: "XAMPP", icon: SiXampp, color: "text-orange-500" },
