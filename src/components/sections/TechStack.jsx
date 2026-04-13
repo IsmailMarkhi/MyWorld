@@ -3,140 +3,130 @@ import SectionTitle from "../ui/SectionTitle";
 import { techStack } from "../../data/tech";
 import { motion } from "framer-motion";
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.05 },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
 export default function TechStack() {
-
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.06
-      }
-    }
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 24 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.35 }
-    }
-  };
-
   return (
     <section
       id="tech"
-      aria-labelledby="tech-title"
       className="
-      relative
-      py-28
-      bg-gradient-to-b
-      from-white
-      via-purple-50/40
-      to-white
-      dark:from-zinc-900
-      dark:via-zinc-900
-      dark:to-black
+        relative overflow-hidden
+        py-24 sm:py-28
+        bg-gradient-to-b
+        from-black
+        via-zinc-950
+        to-black
       "
     >
-
-      {/* subtle glow */}
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.07),transparent_70%)]" />
+      {/* Purple glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute left-[10%] top-20 h-64 w-64 bg-purple-700/20 blur-3xl" />
+        <div className="absolute right-[10%] bottom-20 h-64 w-64 bg-fuchsia-700/20 blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.08),transparent_70%)]" />
+      </div>
 
       <Container>
-
-        <header className="mb-16">
+        <div className="mb-14 sm:mb-16">
           <SectionTitle
-            title="Technologies"
-            description="Technologies and tools I use to build scalable modern applications."
+            title="Tech Stack"
+            description="Technologies I use to build scalable and modern applications."
+            className="text-center"
+            titleClassName="text-white"
+            descriptionClassName="text-zinc-400"
           />
-        </header>
-
+        </div>
 
         <motion.ul
-          role="list"
           variants={container}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: true, amount: 0.12 }}
           className="
-          grid
-          grid-cols-2
-          sm:grid-cols-3
-          md:grid-cols-4
-          lg:grid-cols-6
-          gap-6
+            grid
+            grid-cols-2
+            gap-4
+            sm:grid-cols-3 sm:gap-5
+            md:grid-cols-4
+            lg:grid-cols-5 lg:gap-6
           "
         >
-
           {techStack.map((tech) => {
-
             const Icon = tech.icon;
 
             return (
-
-              <motion.li
-                key={tech.name}
-                variants={item}
-              >
-
+              <motion.li key={tech.name} variants={item}>
                 <article
                   className="
-                  group
-                  cursor-pointer
-                  flex
-                  flex-col
-                  items-center
-                  justify-center
-                  gap-3
-                  p-6
-                  rounded-xl
-                  border border-purple-200
-                  dark:border-purple-700
-                  bg-white
-                  dark:bg-zinc-900
-                  shadow-sm
-                  hover:shadow-md
-                  hover:-translate-y-1
-                  hover:border-purple-800
-                  transition-all
-                  duration-200
+                    group relative overflow-hidden
+                    rounded-2xl
+                    border border-zinc-800
+                    bg-zinc-900/70
+                    p-5 sm:p-6
+                    backdrop-blur-xl
+                    transition-all duration-500
+                    hover:-translate-y-2
+                    hover:border-purple-500
+                    hover:shadow-[0_0_30px_rgba(168,85,247,0.25)]
                   "
                 >
-
-                  <Icon
-                    className={`
-                    text-4xl
-                    ${tech.color}
-                    transition-transform
-                    duration-200
-                    group-hover:scale-110
-                    `}
+                  {/* Glow effect */}
+                  <div
+                    className="
+                      absolute inset-0 rounded-2xl
+                      opacity-0 group-hover:opacity-100
+                      bg-gradient-to-br from-purple-500/10 to-fuchsia-500/10
+                      transition duration-500
+                    "
                   />
 
-                  <span
-                    className="
-                    text-sm
-                    font-medium
-                    text-zinc-700
-                    dark:text-zinc-300
-                    "
-                  >
-                    {tech.name}
-                  </span>
+                  <div className="relative z-10 flex flex-col items-center text-center">
+                    <div
+                      className="
+                        mb-4 flex h-14 w-14 items-center justify-center
+                        rounded-xl
+                        border border-zinc-700
+                        bg-zinc-800
+                        transition duration-300
+                        group-hover:border-purple-500
+                      "
+                    >
+                      <Icon
+                        className={`text-2xl ${tech.color} transition duration-300 group-hover:scale-110`}
+                      />
+                    </div>
 
+                    <h3 className="text-sm font-semibold text-white sm:text-[15px]">
+                      {tech.name}
+                    </h3>
+
+                    <span className="mt-1 text-xs text-zinc-500">
+                      Tool
+                    </span>
+                  </div>
                 </article>
-
               </motion.li>
-
             );
           })}
-
         </motion.ul>
-
       </Container>
-
     </section>
   );
 }

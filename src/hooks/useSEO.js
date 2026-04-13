@@ -1,52 +1,168 @@
 import { useEffect } from "react";
 
 const SITE_URL = "https://my-world-teal.vercel.app";
-const DEFAULT_CONFIG = {
-  name: "Ismail Markhi",
+
+const DEFAULTS = {
+  siteName: "Ismail Markhi",
+  author: "Ismail Markhi",
   role: "Freelance Web Developer",
   location: "Morocco",
-  ogImage: `${SITE_URL}/og-image.jpg`,
+  locale: "en_US",
+  themeColor: "#09090b",
+  defaultPath: "/",
+  defaultImage: `${SITE_URL}/og-image.jpg`,
+  defaultImageAlt: "Ismail Markhi portfolio preview",
+  twitterCard: "summary_large_image",
   twitterHandle: "@ismailmarkhi",
+  sameAs: [
+    "https://github.com/IsmailMarkhi",
+    "https://www.linkedin.com/in/ismail-markhi-a67033317/",
+    "https://www.instagram.com/ismailmarkhi",
+  ],
+  defaultKeywords: [
+    "Ismail Markhi",
+    "Web Developer",
+    "Freelance Web Developer",
+    "React Developer",
+    "Laravel Developer",
+    "PHP Developer",
+    "Frontend Developer",
+    "Morocco",
+  ],
 };
 
-/**
- * useSEO Hook
- * 
- * Manages all SEO meta tags, Open Graph, and Twitter Card tags
- * for optimal search engine and social media visibility.
- * 
- * @hook
- * @param {Object} config - SEO configuration object
- * @param {string} config.title - Page title (required)
- * @param {string} config.description - Page description (required)
- * @param {string} [config.path=""] - URL path for canonical link
- * @param {string} [config.name="Ismail Markhi"] - Author name
- * @param {string} [config.role="Freelance Web Developer"] - Professional role
- * @param {string} [config.location="Morocco"] - Location
- * @param {string} [config.keywords=""] - Additional keywords
- * @param {string} [config.ogImage] - Open Graph image URL
- * @param {string} [config.ogType="website"] - Open Graph type
- * @param {string} [config.twitterHandle] - Twitter handle
- * @param {boolean} [config.noindex=false] - Prevent indexing
- * @example
- * useSEO({
- *   title: "Home | Ismail Markhi",
- *   description: "Freelance web developer...",
- *   path: "/"
- * })
- */
-function useSEO({
+const MANAGED_ATTR = "data-seo-managed";
+const MANAGED_VALUE = "useSEO";
+
+function normalizePath(path = "/") {
+  if (!path) return "/";
+  return path.startsWith("/") ? path : `/${path}`;
+}
+
+function buildUrl(path = "/") {
+  return new URL(normalizePath(path), SITE_URL).toString();
+}
+
+function uniqueKeywords(input = []) {
+  return [...new Set(input.map((k) => String(k).trim()).filter(Boolean))];
+}
+
+function upsertMeta({ key, attr, value, content }) {
+  const selector = `meta[${MANAGED_ATTR}="${MANAGED_VALUE}"][${attr}="${value}"]`;
+  let el = document.head.querySelector(selector);
+
+  if (!el) {
+    el = document.createElement("meta");
+    el.setAttribute(MANAGED_ATTR, MANAGED_VALUE);
+    el.setAttribute(attr, value);
+    document.head.appendChild(el);
+  }
+
+  el.setAttribute("content", content);
+  el.setAttribute("data-seo-key", key);
+}
+
+function upsertLink({ key, rel, href }) {
+  const selector = `link[${MANAGED_ATTR}="${MANAGED_VALUE}"][rel="${rel}"]`;
+  let el = document.head.querySelector(selector);
+
+  if (!el) {
+    el = document.createElement("link");
+    el.setAttribute(MANAGED_ATTR, MANAGED_VALUE);
+    el.setAttribute("rel", rel);
+    document.head.appendChild(el);
+  }
+
+  el.setAttribute("href", href);
+  el.setAttribute("data-seo-key", key);
+}
+
+function upsertJsonLd({ key, data }) {
+  const selector = `script[type="application/ld+json"][${MANAGED_ATTR}="${MANAGED_VALUE}"][data-seo-key="${key}"]`;
+  let el = document.head.querySelector(selector);
+
+  if (!el) {
+    el = document.createElement("script");
+    el.type = "application/ld+json";
+    el.setAttribute(MANAGED_ATTR, MANAGED_VALUE);
+    el.setAttribute("data-seo-key", key);
+    document.head.appendChild(el);
+  }
+
+  el.textContent = JSON.stringify(data);
+}
+
+function removeManagedJsonLdExcept(keysToKeep) {
+  const scripts = document.head.querySelectorAll(
+    `script[type="application/ld+json"][${MANAGED_ATTR}="${MANAGED_VALUE}"]`
+  );
+
+  scripts.forEach((script) => {
+    const key = script.getAttribute("data-seo-key");
+    if (!keysToKeep.includes(key)) {
+      script.remove();
+    }
+  });
+}
+
+function buildPersonSchema({
+  name,
+  role,
+  location,
+  url,
+  image,
+  sameAs,
+  knowsAbout = [],
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name,
+    url,
+    image,
+    jobTitle: role,
+    worksFor: {
+      "@type": "Organization",
+      name: "Freelancer",
+    },
+    homeLocation: {
+      "@type": "Place",
+      name: location,
+    },
+    sameAs,
+    knowsAbout,
+  };
+}
+
+function buildWebsiteSchema({ name, url }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name,
+    url,
+  };
+}
+
+export default function useSEO({
   title,
   description,
-  path = "",
-  name = DEFAULT_CONFIG.name,
-  role = DEFAULT_CONFIG.role,
-  location = DEFAULT_CONFIG.location,
-  keywords = "",
-  ogImage = DEFAULT_CONFIG.ogImage,
-  ogType = "website",
-  twitterHandle = DEFAULT_CONFIG.twitterHandle,
+  path = DEFAULTS.defaultPath,
+  author = DEFAULTS.author,
+  siteName = DEFAULTS.siteName,
+  role = DEFAULTS.role,
+  location = DEFAULTS.location,
+  locale = DEFAULTS.locale,
+  image = DEFAULTS.defaultImage,
+  imageAlt = DEFAULTS.defaultImageAlt,
+  imageWidth = "1200",
+  imageHeight = "630",
+  keywords = [],
+  type = "website",
+  twitterHandle = DEFAULTS.twitterHandle,
   noindex = false,
+  nofollow = false,
+  schema = "person", // "person" | "website" | "both" | "none"
+  schemaData = {},
 } = {}) {
   useEffect(() => {
     if (!title || !description) {
@@ -54,130 +170,132 @@ function useSEO({
       return;
     }
 
-    const fullUrl = `${SITE_URL}${path}`;
+    const url = buildUrl(path);
+    const robots = `${noindex ? "noindex" : "index"}, ${nofollow ? "nofollow" : "follow"}`;
+    const mergedKeywords = uniqueKeywords([
+      ...DEFAULTS.defaultKeywords,
+      ...keywords,
+    ]).join(", ");
 
-    // Set document title
     document.title = title;
 
-    // Helper function to set or create meta tags
-    const setMetaTag = (name, content, isProperty = false) => {
-      const attribute = isProperty ? "property" : "name";
-      const selector = `meta[${attribute}="${name}"]`;
+    // Basic meta
+    upsertMeta({ key: "description", attr: "name", value: "description", content: description });
+    upsertMeta({ key: "author", attr: "name", value: "author", content: author });
+    upsertMeta({ key: "robots", attr: "name", value: "robots", content: robots });
+    upsertMeta({ key: "googlebot", attr: "name", value: "googlebot", content: robots });
+    upsertMeta({ key: "theme-color", attr: "name", value: "theme-color", content: DEFAULTS.themeColor });
 
-      let element = document.querySelector(selector);
+    // Optional / low-priority meta
+    if (mergedKeywords) {
+      upsertMeta({ key: "keywords", attr: "name", value: "keywords", content: mergedKeywords });
+    }
 
-      if (!element) {
-        element = document.createElement("meta");
-        element.setAttribute(attribute, name);
-        document.head.appendChild(element);
-      }
+    // Open Graph
+    upsertMeta({ key: "og:title", attr: "property", value: "og:title", content: title });
+    upsertMeta({ key: "og:description", attr: "property", value: "og:description", content: description });
+    upsertMeta({ key: "og:url", attr: "property", value: "og:url", content: url });
+    upsertMeta({ key: "og:type", attr: "property", value: "og:type", content: type });
+    upsertMeta({ key: "og:site_name", attr: "property", value: "og:site_name", content: siteName });
+    upsertMeta({ key: "og:locale", attr: "property", value: "og:locale", content: locale });
+    upsertMeta({ key: "og:image", attr: "property", value: "og:image", content: image });
+    upsertMeta({ key: "og:image:alt", attr: "property", value: "og:image:alt", content: imageAlt });
+    upsertMeta({ key: "og:image:width", attr: "property", value: "og:image:width", content: imageWidth });
+    upsertMeta({ key: "og:image:height", attr: "property", value: "og:image:height", content: imageHeight });
 
-      element.setAttribute("content", content);
-    };
+    // Twitter
+    upsertMeta({ key: "twitter:card", attr: "name", value: "twitter:card", content: DEFAULTS.twitterCard });
+    upsertMeta({ key: "twitter:title", attr: "name", value: "twitter:title", content: title });
+    upsertMeta({ key: "twitter:description", attr: "name", value: "twitter:description", content: description });
+    upsertMeta({ key: "twitter:image", attr: "name", value: "twitter:image", content: image });
+    upsertMeta({ key: "twitter:image:alt", attr: "name", value: "twitter:image:alt", content: imageAlt });
 
-    // Helper function for link tags
-    const setLinkTag = (rel, href) => {
-      let element = document.querySelector(`link[rel="${rel}"]`);
-
-      if (!element) {
-        element = document.createElement("link");
-        element.setAttribute("rel", rel);
-        document.head.appendChild(element);
-      }
-
-      element.setAttribute("href", href);
-    };
-
-    // Basic Meta Tags
-    setMetaTag("description", description);
-    setMetaTag("author", name);
-    setMetaTag("viewport", "width=device-width, initial-scale=1.0");
-
-    // Keywords
-    const keywordsList = [
-      role,
-      "React Developer",
-      "PHP Developer",
-      "Laravel Developer",
-      "Web Developer",
-      location,
-      ...(keywords ? keywords.split(",").map((k) => k.trim()) : []),
-    ]
-      .filter(Boolean)
-      .join(", ");
-
-    setMetaTag("keywords", keywordsList);
-
-    // Open Graph Tags
-    setMetaTag("og:title", title, true);
-    setMetaTag("og:description", description, true);
-    setMetaTag("og:url", fullUrl, true);
-    setMetaTag("og:type", ogType, true);
-    setMetaTag("og:image", ogImage, true);
-    setMetaTag("og:image:width", "1200", true);
-    setMetaTag("og:image:height", "630", true);
-    setMetaTag("og:site_name", name, true);
-
-    // Twitter Card Tags
-    setMetaTag("twitter:card", "summary_large_image");
-    setMetaTag("twitter:title", title);
-    setMetaTag("twitter:description", description);
-    setMetaTag("twitter:image", ogImage);
     if (twitterHandle) {
-      setMetaTag("twitter:creator", twitterHandle);
+      upsertMeta({
+        key: "twitter:creator",
+        attr: "name",
+        value: "twitter:creator",
+        content: twitterHandle,
+      });
+      upsertMeta({
+        key: "twitter:site",
+        attr: "name",
+        value: "twitter:site",
+        content: twitterHandle,
+      });
     }
 
-    // Additional Meta Tags for Better SEO
-    setMetaTag("theme-color", "#ffffff");
-    setMetaTag("robots", noindex ? "noindex, nofollow" : "index, follow");
+    // Canonical
+    upsertLink({ key: "canonical", rel: "canonical", href: url });
 
-    // Canonical Link
-    setLinkTag("canonical", fullUrl);
+    // Structured data
+    const keysToKeep = [];
 
-    // Structured Data (JSON-LD)
-    const structuredData = {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      name: name,
-      url: SITE_URL,
-      jobTitle: role,
-      worksFor: {
-        "@type": "Organization",
-        name: "Freelancer",
-      },
-      areaServed: location,
-      knowsAbout: [
-        "React",
-        "PHP",
-        "Laravel",
-        "Web Development",
-        "Frontend Development",
-      ],
-      sameAs: [
-        "https://github.com/IsmailMarkhi",
-        "https://www.linkedin.com/in/ismail-markhi-a67033317/",
-        "https://www.instagram.com/ismailmarkhi",
-      ],
-    };
-
-    let structuredDataElement = document.querySelector(
-      'script[type="application/ld+json"]'
-    );
-
-    if (!structuredDataElement) {
-      structuredDataElement = document.createElement("script");
-      structuredDataElement.setAttribute("type", "application/ld+json");
-      document.head.appendChild(structuredDataElement);
+    if (schema === "person" || schema === "both") {
+      upsertJsonLd({
+        key: "person",
+        data: buildPersonSchema({
+          name: siteName,
+          role,
+          location,
+          url,
+          image,
+          sameAs: DEFAULTS.sameAs,
+          knowsAbout: [
+            "React",
+            "Laravel",
+            "PHP",
+            "Python",
+            "Web Development",
+            "Frontend Development",
+          ],
+          ...schemaData.person,
+        }),
+      });
+      keysToKeep.push("person");
     }
 
-    structuredDataElement.textContent = JSON.stringify(structuredData);
+    if (schema === "website" || schema === "both") {
+      upsertJsonLd({
+        key: "website",
+        data: buildWebsiteSchema({
+          name: siteName,
+          url: SITE_URL,
+          ...schemaData.website,
+        }),
+      });
+      keysToKeep.push("website");
+    }
 
-    // Cleanup function to prevent memory leaks
+    if (schema === "none") {
+      removeManagedJsonLdExcept([]);
+    } else {
+      removeManagedJsonLdExcept(keysToKeep);
+    }
+
     return () => {
-      // Optional: Remove meta tags on unmount
-      // This is useful if the same page renders multiple SEO hooks
+      // Keep managed tags in place for SPA route transitions.
+      // The next route call overwrites them deterministically.
     };
-  }, [title, description, path, name, role, location, keywords, ogImage, ogType, twitterHandle, noindex]);
+  }, [
+    title,
+    description,
+    path,
+    author,
+    siteName,
+    role,
+    location,
+    locale,
+    image,
+    imageAlt,
+    imageWidth,
+    imageHeight,
+    keywords,
+    type,
+    twitterHandle,
+    noindex,
+    nofollow,
+    schema,
+    schemaData,
+  ]);
 }
-
-export default useSEO;

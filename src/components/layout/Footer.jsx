@@ -2,112 +2,95 @@ import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { SiFiverr } from "react-icons/si";
 
 const socialLinks = [
-  { name: "GitHub", href: "https://github.com/IsmailMarkhi", icon: FaGithub },
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/ismail-markhi-a67033317", icon: FaLinkedin },
-  { name: "Fiverr", href: "https://www.fiverr.com/ismail1markhi", icon: SiFiverr },
-  { name: "Instagram", href: "https://www.instagram.com/ismailmarkhi", icon: FaInstagram }
+  {
+    name: "GitHub",
+    href: "https://github.com/IsmailMarkhi",
+    icon: FaGithub,
+  },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/in/ismail-markhi-a67033317",
+    icon: FaLinkedin,
+  },
+  {
+    name: "Fiverr",
+    href: "https://www.fiverr.com/ismail1markhi",
+    icon: SiFiverr,
+  },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/ismailmarkhi",
+    icon: FaInstagram,
+  },
+];
+
+const navLinks = [
+  { label: "Home", href: "#home" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Footer() {
-
   return (
-    <footer className="border-t border-zinc-200 bg-white">
-
-      <div className="max-w-6xl mx-auto px-6 py-16">
-
-        {/* Top */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-10">
-
+    <footer className="border-t border-zinc-800 bg-black">
+      <div className="mx-auto max-w-6xl px-5 py-14 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           {/* Brand */}
-          <div className="text-center md:text-left">
-
-            <h3 className="text-xl font-semibold tracking-tight">
-              Ismail <span className="text-purple-600">Markhi</span>
+          <div className="max-w-md">
+            <h3 className="text-xl font-semibold tracking-tight text-white">
+              Ismail <span className="text-purple-500">Markhi</span>
             </h3>
 
-            <p className="text-sm text-zinc-500 mt-2 max-w-sm">
-              Web developer building modern web applications
-              with React, Laravel and Python.
+            <p className="mt-3 text-sm leading-7 text-zinc-400">
+              Web developer focused on building modern, scalable, and clean web
+              applications.
             </p>
-
           </div>
-
 
           {/* Navigation */}
-          <div className="flex gap-8 text-sm text-zinc-600">
-
-            <a
-              href="#home"
-              className="hover:text-purple-600 transition"
-            >
-              Home
-            </a>
-
-            <a
-              href="#projects"
-              className="hover:text-purple-600 transition"
-            >
-              Projects
-            </a>
-
-            <a
-              href="#contact"
-              className="hover:text-purple-600 transition"
-            >
-              Contact
-            </a>
-
-          </div>
-
+          <nav
+            aria-label="Footer Navigation"
+            className="flex flex-wrap items-center gap-x-6 gap-y-3"
+          >
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-sm font-medium text-zinc-400 transition hover:text-white"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
 
           {/* Social */}
-          <div className="flex gap-4">
-
+          <div className="flex items-center gap-3">
             {socialLinks.map(({ name, href, icon: Icon }) => (
-
               <a
                 key={name}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={name}
                 className="
-                w-10 h-10
-                flex items-center justify-center
-                rounded-lg
-                border border-zinc-200
-                text-zinc-600
-                hover:text-purple-600
-                hover:border-purple-300
-                transition
+                  flex h-10 w-10 items-center justify-center
+                  rounded-xl border border-zinc-800
+                  bg-zinc-900 text-zinc-400
+                  transition hover:border-purple-500 hover:text-white
                 "
               >
-
-                <Icon size={18} />
-
+                <Icon size={17} />
               </a>
-
             ))}
-
           </div>
-
         </div>
-
 
         {/* Bottom */}
-        <div className="mt-12 pt-6 border-t border-zinc-200 flex flex-col md:flex-row items-center justify-between text-xs text-zinc-500 gap-3">
-
-          <p>
-            © {new Date().getFullYear()} Ismail Markhi
-          </p>
-
-          <p>
-            Built with React • Tailwind • Vite
-          </p>
-
+        <div className="mt-10 flex flex-col gap-3 border-t border-zinc-800 pt-5 text-xs text-zinc-500 md:flex-row md:items-center md:justify-between">
+          <p>© {new Date().getFullYear()} Ismail Markhi</p>
+          <p>Built with React, Tailwind, and Vite</p>
         </div>
-
       </div>
-
     </footer>
   );
 }

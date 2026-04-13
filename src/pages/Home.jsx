@@ -1,57 +1,35 @@
 import Hero from "../components/sections/Hero";
 import TechStack from "../components/sections/TechStack";
 import Services from "../components/sections/Services";
-import Projects from "./Projects";
-import Contact from "./Contact";
+import Projects from "../components/sections/Projects";
+import Contact from "../pages/Contact";
 import useSEO from "../hooks/useSEO";
 
 export default function Home() {
-
   useSEO({
     title: "Ismail Markhi | Web Developer",
-    description: "Portfolio of Ismail Markhi.",
+    description:
+      "Portfolio of Ismail Markhi, a web developer building modern, scalable web applications with React, Laravel, PHP, and Python.",
     path: "/",
+    schema: "both",
+    keywords: [
+      "Ismail Markhi",
+      "Web Developer",
+      "React Developer",
+      "Laravel Developer",
+      "Portfolio",
+      "Frontend Developer",
+      "Morocco",
+    ],
   });
 
   return (
     <main className="flex flex-col">
-
-      <section
-        id="home"
-        className="scroll-mt-24"
-      >
-        <Hero />
-      </section>
-
-      <section
-        id="services"
-        className="scroll-mt-24 py-20"
-      >
-        <Services />
-      </section>
-
-      <section
-        id="tech"
-        className="scroll-mt-24 py-20"
-      >
-        <TechStack />
-      </section>
-
-
-      <section
-        id="projects"
-        className="scroll-mt-24 py-20"
-      >
-        <Projects />
-      </section>
-
-      <section
-        id="contact"
-        className="scroll-mt-24 py-20"
-      >
-        <Contact />
-      </section>
-
+      <Hero />
+      <Services />
+      <TechStack />
+      <Projects />
+      <Contact />
     </main>
   );
 }

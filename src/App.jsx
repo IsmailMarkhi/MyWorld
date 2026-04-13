@@ -1,4 +1,10 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+  matchRoutes,
+} from "react-router-dom";
 
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -8,36 +14,38 @@ import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
+const appRoutes = [
+  { path: "/" },
+  { path: "/projects" },
+  { path: "/contact" },
+];
+
+function AppLayout() {
+  const location = useLocation();
+
+  const matchedRoute = matchRoutes(appRoutes, location);
+  const isNotFoundPage = !matchedRoute;
+
+  return (
+    <div className="min-h-screen bg-black text-white">
+      {!isNotFoundPage && <Navbar />}
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+
+      {!isNotFoundPage && <Footer />}
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <BrowserRouter>
-
-      <div className="
-        min-h-screen
-        flex
-        flex-col
-        bg-gradient-to-b
-        from-white
-        via-indigo-50
-        to-white
-        text-slate-900
-      ">
-
-        <Navbar />
-
-        <main className="flex-1 pt-16">
-
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-
-        </main>
-
-        <Footer />
-
-      </div>
-
+      <AppLayout />
     </BrowserRouter>
   );
 }
