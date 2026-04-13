@@ -16,13 +16,7 @@ const links = [
   { type: "anchor", to: "/#home", label: "Home", icon: Home },
   { type: "anchor", to: "/#services", label: "Services", icon: Briefcase },
   { type: "anchor", to: "/#tech", label: "Tech", icon: Cpu },
-  {
-    type: "hybrid",
-    to: "/projects",
-    section: "/#projects",
-    label: "Projects",
-    icon: FolderKanban,
-  },
+  { type: "anchor", to: "/#projects", label: "Projects", icon: FolderKanban },
   { type: "anchor", to: "/#contact", label: "Contact", icon: Mail },
 ];
 
@@ -64,10 +58,9 @@ export default function Navbar() {
       setScrolled(window.scrollY > 24);
 
       for (const link of links) {
-        if (link.type !== "anchor" && link.type !== "hybrid") continue;
+        if (link.type !== "anchor") continue;
 
-        const targetSection = link.section || link.to;
-        const id = targetSection.replace("/#", "#");
+        const id = link.to.replace("/#", "#");
         const section = document.querySelector(id);
 
         if (!section) continue;
@@ -75,7 +68,7 @@ export default function Navbar() {
         const rect = section.getBoundingClientRect();
 
         if (rect.top <= 140 && rect.bottom >= 140) {
-          setActive(targetSection);
+          setActive(link.to);
           break;
         }
       }
@@ -87,7 +80,6 @@ export default function Navbar() {
     };
 
     handleScrollSpy();
-
     window.addEventListener("scroll", handleScrollSpy);
     window.addEventListener("hashchange", handleHashChange);
 
@@ -101,9 +93,7 @@ export default function Navbar() {
     const Icon = link.icon;
 
     const isActive =
-      link.type === "hybrid"
-        ? location.pathname === link.to || active === link.section
-        : link.type === "route"
+      link.type === "route"
         ? location.pathname === link.to
         : location.pathname === "/" && active === link.to;
 
@@ -137,7 +127,7 @@ export default function Navbar() {
       </>
     );
 
-    if (link.type === "route" || link.type === "hybrid") {
+    if (link.type === "route") {
       return mobile ? (
         <motion.li
           key={link.to}

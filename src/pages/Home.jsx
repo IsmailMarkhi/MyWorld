@@ -2,7 +2,7 @@ import Hero from "../components/sections/Hero";
 import TechStack from "../components/sections/TechStack";
 import Services from "../components/sections/Services";
 import Projects from "../components/sections/Projects";
-import Contact from "../pages/Contact";
+import Contact from "./Contact";
 import useSEO from "../hooks/useSEO";
 
 export default function Home() {

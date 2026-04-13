@@ -2,10 +2,6 @@ import useSEO from "../../hooks/useSEO";
 import { memo, useMemo } from "react";
 import { ExternalLink, Github } from "lucide-react";
 
-/* ===========================
-   PROJECT DATA
-=========================== */
-
 const projects = [
   {
     id: 0,
@@ -60,10 +56,6 @@ const projects = [
   },
 ];
 
-/* ===========================
-   BADGE COMPONENT
-=========================== */
-
 const StatusBadge = memo(({ status, badge }) => {
   const statusConfig = {
     Latest: "bg-blue-100 text-blue-700",
@@ -91,10 +83,6 @@ const StatusBadge = memo(({ status, badge }) => {
   );
 });
 
-/* ===========================
-   PROJECT CARD
-=========================== */
-
 const ProjectCard = memo(({ project }) => {
   const isFeatured = project.badge === "Featured";
 
@@ -113,38 +101,33 @@ const ProjectCard = memo(({ project }) => {
         ${isFeatured ? "lg:col-span-2" : ""}
       `}
     >
-      {/* Background glow */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-br from-purple-50 via-white to-purple-100 transition duration-500" />
+      <div className="absolute inset-0 opacity-0 bg-gradient-to-br from-purple-50 via-white to-purple-100 transition duration-500 group-hover:opacity-100" />
 
-      {/* Top line accent */}
-      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-purple-500/0 via-purple-400 to-purple-500/0 opacity-0 group-hover:opacity-100 transition duration-500" />
+      <div className="absolute left-0 top-0 h-[2px] w-full bg-gradient-to-r from-purple-500/0 via-purple-400 to-purple-500/0 opacity-0 transition duration-500 group-hover:opacity-100" />
 
-      <div className="relative z-10 flex flex-col h-full justify-between space-y-5">
-        {/* Content */}
+      <div className="relative z-10 flex h-full flex-col justify-between space-y-5">
         <div>
-          <h3 className="text-lg font-semibold text-zinc-900 mb-2">
+          <h3 className="mb-2 text-lg font-semibold text-zinc-900">
             {project.title}
           </h3>
 
-          <p className="text-zinc-600 text-sm leading-relaxed">
+          <p className="text-sm leading-relaxed text-zinc-600">
             {project.desc}
           </p>
         </div>
 
-        {/* Stack */}
         <div className="flex flex-wrap gap-2">
           {project.stack.map((tech) => (
             <span
               key={tech}
-              className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-zinc-700"
+              className="rounded-full border border-zinc-200 bg-zinc-100 px-2.5 py-1 text-[11px] font-medium text-zinc-700"
             >
               {tech}
             </span>
           ))}
         </div>
 
-        {/* Footer */}
-        <div className="flex items-center justify-between pt-4 border-t border-zinc-100">
+        <div className="flex items-center justify-between border-t border-zinc-100 pt-4">
           <StatusBadge status={project.status} badge={project.badge} />
 
           <div className="flex gap-4">
@@ -152,6 +135,7 @@ const ProjectCard = memo(({ project }) => {
               <a
                 href={project.demo}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-1 text-sm text-zinc-800 hover:text-purple-600"
               >
                 <ExternalLink size={16} />
@@ -163,6 +147,7 @@ const ProjectCard = memo(({ project }) => {
               <a
                 href={project.github}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-1 text-sm text-zinc-600 hover:text-zinc-900"
               >
                 <Github size={16} />
@@ -175,10 +160,6 @@ const ProjectCard = memo(({ project }) => {
     </article>
   );
 });
-
-/* ===========================
-   MAIN COMPONENT
-=========================== */
 
 export default memo(function Projects() {
   useSEO({
@@ -196,28 +177,27 @@ export default memo(function Projects() {
   }, []);
 
   return (
-    <section className="px-4 sm:px-6 py-24 bg-gradient-to-b from-white via-zinc-50 to-white">
-      <div className="max-w-6xl mx-auto">
-
-        {/* HEADER */}
-        <header className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-zinc-900 mb-4">
+    <section
+      id="projects"
+      className="px-4 sm:px-6 py-24 bg-gradient-to-b from-white via-zinc-50 to-white"
+    >
+      <div className="mx-auto max-w-6xl">
+        <header className="mb-16 text-center">
+          <h2 className="mb-4 text-4xl font-bold text-zinc-900">
             Selected Work
           </h2>
 
-          <p className="text-zinc-600 max-w-xl mx-auto">
-            A curated selection of projects focused on building clean,
-            scalable, and user-centered web applications.
+          <p className="mx-auto max-w-xl text-zinc-600">
+            A curated selection of projects focused on building clean, scalable,
+            and user-centered web applications.
           </p>
         </header>
 
-        {/* GRID */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
+        <div className="grid auto-rows-fr gap-8 md:grid-cols-2 lg:grid-cols-3">
           {sortedProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
-
       </div>
     </section>
   );
