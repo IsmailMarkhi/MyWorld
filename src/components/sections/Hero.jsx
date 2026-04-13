@@ -72,7 +72,7 @@ export default function Hero() {
               className="text-[2.6rem] font-bold leading-[0.98] tracking-tight text-zinc-900 sm:text-5xl md:text-6xl xl:text-7xl"
             >
               Building clean,
-              <span className="mt-2 block bg-gradient-to-r from-zinc-900 via-zinc-800 to-purple-700 bg-clip-text text-transparent">
+              <span className="mt-2 block bg-gradient-to-r from-zinc-900 via-zinc-800 to-purple-700 bg-clip-text">
                 modern web experiences
               </span>
             </motion.h1>
