@@ -163,11 +163,18 @@ const ProjectCard = memo(({ project }) => {
 
 export default memo(function Projects() {
   useSEO({
-    title: "Projects | Ismail Markhi",
-    description:
-      "Explore modern web development projects focused on clean UI and scalable systems.",
-    path: "/projects",
-  });
+  title: "Projects | Ismail Markhi | React & Laravel Web Developer",
+  description:
+    "Explore web development projects by Ismail Markhi, a full-stack developer in Morocco. Projects include React, Laravel, Tailwind CSS, and scalable web applications.",
+  path: "/projects",
+  keywords: [
+    "Ismail Markhi projects",
+    "React projects portfolio",
+    "Laravel projects",
+    "Web developer Morocco portfolio",
+  ],
+  schema: "all",
+});
 
   const sortedProjects = useMemo(() => {
     return [...projects].sort((a, b) => {

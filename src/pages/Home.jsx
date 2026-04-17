@@ -19,21 +19,22 @@ function SectionFallback({ height = "h-64" }) {
 
 export default function Home() {
   useSEO({
-    title: "Ismail Markhi | Web Developer",
-    description:
-      "Portfolio of Ismail Markhi, a web developer building modern, scalable web applications with React, Laravel, PHP, and Python.",
-    path: "/",
-    schema: "both",
-    keywords: [
-      "Ismail Markhi",
-      "Web Developer",
-      "React Developer",
-      "Laravel Developer",
-      "Portfolio",
-      "Frontend Developer",
-      "Morocco",
-    ],
-  });
+  title: "Ismail Markhi | Web Developer in Morocco | React & Laravel Specialist",
+  description:
+    "Ismail Markhi is a web developer in Morocco specializing in React, Laravel, Tailwind CSS, and scalable full-stack web applications. Explore projects, skills, and portfolio work.",
+  path: "/",
+  schema: "all",
+  keywords: [
+    "Ismail Markhi",
+    "Ismail Markhi portfolio",
+    "Web Developer Morocco",
+    "React Developer Morocco",
+    "Laravel Developer Morocco",
+    "Full Stack Developer Morocco",
+    "Tailwind CSS developer",
+    "JavaScript developer portfolio",
+  ],
+});
 
   return (
     <main className="flex flex-col">

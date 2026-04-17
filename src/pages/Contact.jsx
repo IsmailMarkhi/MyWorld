@@ -59,11 +59,19 @@ const fadeUp = {
 
 export default function Contact() {
   useSEO({
-    title: "Contact | Ismail Markhi",
-    description:
-      "Get in touch with Ismail Markhi to discuss freelance work, internships, and web development projects.",
-    path: "/contact",
-  });
+  title: "Contact | Ismail Markhi | Web Developer",
+  description:
+    "Contact Ismail Markhi, a web developer in Morocco, for freelance work, internships, portfolio collaborations, and React or Laravel web development projects.",
+  path: "/contact",
+  keywords: [
+    "Contact Ismail Markhi",
+    "Ismail Markhi web developer",
+    "React developer Morocco",
+    "Laravel developer Morocco",
+    "freelance web developer contact",
+  ],
+  schema: "all",
+});
 
   return (
     <section
