@@ -39,7 +39,7 @@ const projects = [
     title: "Personal Challenge Website",
     desc: "A personal website built to practice real-world web development, focusing on clarity and usability.",
     stack: ["React", "Tailwind", "SEO"],
-    demo: "https://my-world-teal.vercel.app/",
+    demo: "https://www.ismailmarkhi.dev",
     github: "#",
     status: "Live",
     color: "from-green-50 to-emerald-50",
