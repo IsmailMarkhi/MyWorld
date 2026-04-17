@@ -5,7 +5,7 @@ import useSEO from "../hooks/useSEO";
 const Services = lazy(() => import("../components/sections/Services"));
 const TechStack = lazy(() => import("../components/sections/TechStack"));
 const Projects = lazy(() => import("../components/sections/Projects"));
-const Contact = lazy(() => import("./Contact"));
+const ContactSection = lazy(() => import("../components/sections/ContactSection"));
 
 function SectionFallback({ height = "h-64" }) {
   return (
@@ -53,7 +53,7 @@ export default function Home() {
       </Suspense>
 
       <Suspense fallback={<SectionFallback height="h-80" />}>
-        <Contact />
+        <ContactSection />
       </Suspense>
     </main>
   );
