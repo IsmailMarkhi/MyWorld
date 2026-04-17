@@ -1,32 +1,36 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Charset & viewport -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary SEO -->
-    <title>Ismail Markhi | Web Developer Portfolio | React, Laravel, Python</title>
+    <title>Ismail Markhi | Web Developer in Morocco (React & Laravel)</title>
+
     <meta
       name="description"
-      content="Ismail Markhi is a web developer building modern, responsive, and scalable applications with React, Laravel, Tailwind CSS, and Python. Explore projects, skills, and portfolio work."
+      content="Ismail Markhi is a web developer in Morocco specializing in React, Laravel, Tailwind CSS, and scalable full-stack applications. Explore projects and portfolio."
     />
-    <meta
-      name="keywords"
-      content="Ismail Markhi, Web Developer, React Developer, Laravel Developer, Python Developer, Full Stack Developer, Portfolio, Tailwind CSS, JavaScript, Morocco"
-    />
+
     <meta name="author" content="Ismail Markhi" />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <!-- ⚠️ Remove keywords (Google ignores it) -->
+
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+
     <meta name="theme-color" content="#0f172a" />
 
     <!-- Canonical -->
     <link rel="canonical" href="https://www.ismailmarkhi.dev/" />
 
-    <!-- Favicons -->
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <!-- ✅ Favicons (clean, no duplication) -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="IM" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Open Graph -->
@@ -34,25 +38,29 @@
     <meta property="og:site_name" content="Ismail Markhi Portfolio" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:url" content="https://www.ismailmarkhi.dev/" />
-    <meta property="og:title" content="Ismail Markhi | Web Developer Portfolio" />
+    <meta property="og:title" content="Ismail Markhi | Web Developer" />
+
     <meta
       property="og:description"
-      content="Portfolio of Ismail Markhi, a web developer building modern applications with React, Laravel, Tailwind CSS, and Python."
+      content="Web Developer in Morocco building modern React and Laravel applications with clean UI and scalable architecture."
     />
+
     <meta property="og:image" content="https://www.ismailmarkhi.dev/image.png" />
-    <meta property="og:image:alt" content="Preview of Ismail Markhi portfolio website" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Ismail Markhi portfolio preview" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Ismail Markhi | Web Developer Portfolio" />
+    <meta name="twitter:title" content="Ismail Markhi | Web Developer" />
     <meta
       name="twitter:description"
-      content="Explore the portfolio of Ismail Markhi, a web developer specialized in React, Laravel, Tailwind CSS, and Python."
+      content="Portfolio of Ismail Markhi, Web Developer specializing in React and Laravel."
     />
     <meta name="twitter:image" content="https://www.ismailmarkhi.dev/image.png" />
-    <meta name="twitter:image:alt" content="Preview of Ismail Markhi portfolio website" />
+
+    <!-- Performance -->
+    <link rel="preconnect" href="https://www.ismailmarkhi.dev" />
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -63,7 +71,11 @@
         "url": "https://www.ismailmarkhi.dev/",
         "image": "https://www.ismailmarkhi.dev/image.png",
         "jobTitle": "Web Developer",
-        "description": "Web developer building modern, responsive, and scalable applications with React, Laravel, Tailwind CSS, and Python.",
+        "description": "Web developer in Morocco specializing in React, Laravel, and scalable web applications.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "MA"
+        },
         "sameAs": [
           "https://www.linkedin.com/in/ismail-markhi-a67033317/",
           "https://github.com/IsmailMarkhi"
@@ -73,45 +85,34 @@
   </head>
 
   <body>
+    <!-- Accessibility -->
     <a
       href="#main-content"
-      style="
-        position:absolute;
-        left:-9999px;
-        top:auto;
-        width:1px;
-        height:1px;
-        overflow:hidden;
-      "
-      onfocus="this.style.left='16px';this.style.top='16px';this.style.width='auto';this.style.height='auto';this.style.padding='12px 16px';this.style.background='#fff';this.style.color='#000';this.style.zIndex='9999';"
-      onblur="this.style.left='-9999px';this.style.width='1px';this.style.height='1px';"
+      style="position:absolute;left:-9999px;"
+      onfocus="this.style.left='16px';this.style.top='16px';this.style.padding='10px';this.style.background='#fff';this.style.zIndex='9999';"
+      onblur="this.style.left='-9999px';"
     >
       Skip to main content
     </a>
 
+    <!-- No JS fallback -->
     <noscript>
       <header>
         <h1>Ismail Markhi - Web Developer</h1>
       </header>
 
       <main id="main-content">
-        <section>
-          <p>
-            This portfolio showcases the work, skills, and projects of Ismail Markhi,
-            a web developer focused on React, Laravel, Tailwind CSS, and Python.
-          </p>
-          <p>
-            JavaScript is required to view the full interactive version of this website.
-          </p>
-        </section>
+        <p>
+          Portfolio of Ismail Markhi, Web Developer specializing in React,
+          Laravel, and modern web applications.
+        </p>
       </main>
-
-      <footer>
-        <p>Portfolio of Ismail Markhi</p>
-      </footer>
     </noscript>
 
+    <!-- React root -->
     <div id="root"></div>
+
+    <!-- App -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
