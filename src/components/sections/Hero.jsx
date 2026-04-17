@@ -52,125 +52,88 @@ export default function Hero() {
       <Container>
         <div className="relative grid items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14 xl:gap-18">
           {/* LEFT */}
-          <div className="max-w-3xl">
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              custom={0.05}
-              className="mb-5 inline-flex items-center gap-2 rounded-full border border-purple-200/80 bg-white/90 px-4 py-2 text-xs font-semibold tracking-wide text-purple-700 shadow-sm backdrop-blur sm:text-sm"
-            >
-              <Sparkles size={15} />
-              Freelance Web Developer
-            </motion.div>
+          <header className="max-w-3xl">
+  {/* Badge */}
+  <motion.p
+    variants={fadeUp}
+    initial="hidden"
+    animate="show"
+    custom={0.05}
+    className="mb-5 inline-flex items-center gap-2 rounded-full border border-purple-200/80 bg-white/90 px-4 py-2 text-xs font-semibold tracking-wide text-purple-700 shadow-sm backdrop-blur sm:text-sm"
+  >
+    <Sparkles size={15} />
+    Freelance Web Developer
+  </motion.p>
 
-            <motion.h1
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              custom={0.12}
-              className="text-[2.6rem] font-bold leading-[0.98] tracking-tight text-zinc-900 sm:text-5xl md:text-6xl xl:text-7xl"
-            >
-              Building clean,
-              <span className="mt-2 block bg-gradient-to-r from-zinc-900 via-zinc-800 to-purple-700 bg-clip-text">
-                modern web experiences
-              </span>
-            </motion.h1>
+  {/* ✅ FIXED H1 */}
+  <motion.h1
+    variants={fadeUp}
+    initial="hidden"
+    animate="show"
+    custom={0.12}
+    className="text-[2.6rem] font-bold leading-[1.05] tracking-tight text-zinc-900 sm:text-5xl md:text-6xl xl:text-7xl"
+  >
+    Ismail Markhi
+    <span className="mt-2 block bg-gradient-to-r from-zinc-900 via-zinc-800 to-purple-700 bg-clip-text text-transparent">
+      Web Developer in Morocco
+    </span>
+  </motion.h1>
 
-            <motion.p
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              custom={0.2}
-              className="mt-6 max-w-2xl text-base leading-7 text-zinc-600 sm:text-lg sm:leading-8 md:text-xl"
-            >
-              I’m{" "}
-              <span className="font-semibold text-zinc-900">Ismail Markhi</span>,
-              a web developer focused on scalable interfaces, clean structure,
-              and practical digital products built with React, Laravel, and Python.
-            </motion.p>
+  {/* ✅ SEO PARAGRAPH */}
+  <motion.p
+    variants={fadeUp}
+    initial="hidden"
+    animate="show"
+    custom={0.2}
+    className="mt-6 max-w-2xl text-base leading-7 text-zinc-600 sm:text-lg sm:leading-8 md:text-xl"
+  >
+    I’m <strong className="text-zinc-900">Ismail Markhi</strong>, a web developer in Morocco
+    specializing in <strong>React</strong>, <strong>Laravel</strong>, and scalable
+    full-stack web applications. I build modern, responsive, and user-focused
+    digital products with clean architecture and strong UI systems.
+  </motion.p>
 
-            {/* CTA */}
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              custom={0.28}
-              className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
-            >
-              <a
-                href="#projects"
-                className="
-                  inline-flex items-center justify-center gap-2 rounded-2xl
-                  bg-purple-600 px-6 py-3.5 text-sm font-semibold text-white
-                  shadow-[0_10px_30px_rgba(147,51,234,0.22)]
-                  transition-all duration-300 hover:-translate-y-[1px] hover:bg-purple-700
-                "
-              >
-                View Projects
-                <ArrowRight size={17} />
-              </a>
+  {/* CTA */}
+  <nav
+    aria-label="Primary actions"
+    className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+  >
+    <a href="#projects" className="btn-primary">
+      View Projects <ArrowRight size={17} />
+    </a>
 
-              <a
-                href="/resume.pdf"
-                download="Ismail-Markhi-Resume.pdf"
-                className="
-                  inline-flex items-center justify-center gap-2 rounded-2xl
-                  border border-zinc-200 bg-white px-5 py-3.5 text-sm font-semibold
-                  text-zinc-700 shadow-sm transition-all duration-300
-                  hover:-translate-y-[1px] hover:border-purple-300 hover:text-purple-700
-                "
-              >
-                <Download size={17} />
-                Download CV
-              </a>
+    <a href="/resume.pdf" download className="btn-secondary">
+      <Download size={17} />
+      Download CV
+    </a>
 
-              <a
-                href="#contact"
-                className="
-                  inline-flex items-center justify-center rounded-2xl
-                  border border-zinc-200 bg-white/90 px-5 py-3.5 text-sm font-semibold
-                  text-zinc-700 shadow-sm transition-all duration-300
-                  hover:-translate-y-[1px] hover:border-purple-300 hover:text-purple-700
-                "
-              >
-                Contact Me
-              </a>
-            </motion.div>
+    <a href="#contact" className="btn-secondary">
+      Contact Me
+    </a>
+  </nav>
 
-            {/* Social + note */}
-            <motion.div
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              custom={0.36}
-              className="mt-8 flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between"
-            >
-              <div className="flex items-center gap-3">
-                {socialLinks.map(({ href, icon: Icon, label }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    className="
-                      inline-flex h-11 w-11 items-center justify-center rounded-2xl
-                      border border-zinc-200 bg-white text-zinc-600 shadow-sm
-                      transition-all duration-300 hover:-translate-y-[2px]
-                      hover:border-purple-300 hover:text-purple-700
-                    "
-                  >
-                    <Icon size={17} />
-                  </a>
-                ))}
-              </div>
+  {/* Social */}
+  <div className="mt-8 flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+    <div className="flex items-center gap-3">
+      {socialLinks.map(({ href, icon: Icon, label }) => (
+        <a
+          key={label}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={label}
+          className="social-btn"
+        >
+          <Icon size={17} />
+        </a>
+      ))}
+    </div>
 
-              <p className="max-w-md text-sm leading-6 text-zinc-500">
-                Available for freelance work, internships, and modern frontend projects.
-              </p>
-            </motion.div>
-          </div>
+    <p className="max-w-md text-sm leading-6 text-zinc-500">
+      Available for freelance work, internships, and React or Laravel projects.
+    </p>
+  </div>
+</header>
 
           {/* RIGHT */}
           <motion.div
