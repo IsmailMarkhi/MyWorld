@@ -1,8 +1,15 @@
 {
-  "rewrites": [
+  "redirects": [
     {
       "source": "/(.*)",
-      "destination": "/"
+      "has": [
+        {
+          "type": "host",
+          "value": "my-world-teal.vercel.app"
+        }
+      ],
+      "destination": "https://ismailmarkhi.dev/$1",
+      "permanent": true
     }
   ]
 }
