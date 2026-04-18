@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ismailmarkhi.dev/sitemap.xml
+Host: ismailmarkhi.dev
