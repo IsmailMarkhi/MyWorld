@@ -20,6 +20,14 @@ const links = [
   { type: "anchor", to: "/#contact", label: "Contact", icon: Mail },
 ];
 
+const titles = {
+  "/#home": "Home | Ismail Markhi | React & Laravel Web Developer",
+  "/#services": "Services | Ismail Markhi | React & Laravel Web Developer",
+  "/#tech": "Tech | Ismail Markhi | React & Laravel Web Developer",
+  "/#projects": "Projects | Ismail Markhi | React & Laravel Web Developer",
+  "/#contact": "Contact | Ismail Markhi | React & Laravel Web Developer",
+};
+
 export default function Navbar() {
   const location = useLocation();
 
@@ -51,11 +59,21 @@ export default function Navbar() {
       return;
     }
 
-    const hash = window.location.hash;
-    setActive(hash ? `/${hash}` : "/#home");
+    const handleHashChange = () => {
+      const nextHash = window.location.hash || "#home";
+      setActive(`/${nextHash}`);
+    };
 
     const handleScrollSpy = () => {
       setScrolled(window.scrollY > 24);
+
+      // Critical fix: force Home when page is at top
+      if (window.scrollY < 120) {
+        setActive("/#home");
+        return;
+      }
+
+      let currentSection = "/#home";
 
       for (const link of links) {
         if (link.type !== "anchor") continue;
@@ -68,26 +86,39 @@ export default function Navbar() {
         const rect = section.getBoundingClientRect();
 
         if (rect.top <= 140 && rect.bottom >= 140) {
-          setActive(link.to);
+          currentSection = link.to;
           break;
         }
       }
+
+      setActive(currentSection);
     };
 
-    const handleHashChange = () => {
-      const nextHash = window.location.hash || "#home";
-      setActive(`/${nextHash}`);
-    };
+    // Initial state
+    if (!window.location.hash && window.scrollY < 120) {
+      setActive("/#home");
+    } else {
+      const hash = window.location.hash;
+      setActive(hash ? `/${hash}` : "/#home");
+    }
 
-    handleScrollSpy();
+    const raf = requestAnimationFrame(() => {
+      handleScrollSpy();
+    });
+
     window.addEventListener("scroll", handleScrollSpy);
     window.addEventListener("hashchange", handleHashChange);
 
     return () => {
+      cancelAnimationFrame(raf);
       window.removeEventListener("scroll", handleScrollSpy);
       window.removeEventListener("hashchange", handleHashChange);
     };
   }, [location.pathname]);
+
+  useEffect(() => {
+    document.title = titles[active] || titles["/#home"];
+  }, [active]);
 
   const renderNavLink = (link, mobile = false, index = 0) => {
     const Icon = link.icon;
