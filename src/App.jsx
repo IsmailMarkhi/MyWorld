@@ -1,10 +1,4 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  useLocation,
-  matchRoutes,
-} from "react-router-dom";
+import { Routes, Route, useLocation, matchRoutes } from "react-router-dom";
 
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
@@ -43,9 +37,5 @@ function AppLayout() {
 }
 
 export default function App() {
-  return (
-    <BrowserRouter>
-      <AppLayout />
-    </BrowserRouter>
-  );
+  return <AppLayout />;
 }

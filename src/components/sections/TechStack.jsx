@@ -26,7 +26,6 @@ const item = {
 export default function TechStack() {
   return (
     <section
-      id="tech"
       className="
         relative overflow-hidden
         py-24 sm:py-28

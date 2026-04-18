@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
   Home,
-  Briefcase,
-  Cpu,
   FolderKanban,
   Mail,
   Github,
@@ -13,26 +11,13 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
-  { type: "anchor", to: "/#home", label: "Home", icon: Home },
-  { type: "anchor", to: "/#services", label: "Services", icon: Briefcase },
-  { type: "anchor", to: "/#tech", label: "Tech", icon: Cpu },
-  { type: "anchor", to: "/#projects", label: "Projects", icon: FolderKanban },
-  { type: "anchor", to: "/#contact", label: "Contact", icon: Mail },
+  { to: "/", label: "Home", icon: Home, end: true },
+  { to: "/projects", label: "Projects", icon: FolderKanban },
+  { to: "/contact", label: "Contact", icon: Mail },
 ];
 
-const titles = {
-  "/#home": "Home | Ismail Markhi | React & Laravel Web Developer",
-  "/#services": "Services | Ismail Markhi | React & Laravel Web Developer",
-  "/#tech": "Tech | Ismail Markhi | React & Laravel Web Developer",
-  "/#projects": "Projects | Ismail Markhi | React & Laravel Web Developer",
-  "/#contact": "Contact | Ismail Markhi | React & Laravel Web Developer",
-};
-
 export default function Navbar() {
-  const location = useLocation();
-
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("/#home");
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -43,98 +28,25 @@ export default function Navbar() {
   }, [open]);
 
   useEffect(() => {
-    const updateScrolled = () => {
-      setScrolled(window.scrollY > 24);
-    };
-
-    updateScrolled();
-    window.addEventListener("scroll", updateScrolled);
-
-    return () => window.removeEventListener("scroll", updateScrolled);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    if (location.pathname !== "/") {
-      setActive(location.pathname);
-      return;
-    }
-
-    const handleHashChange = () => {
-      const nextHash = window.location.hash || "#home";
-      setActive(`/${nextHash}`);
-    };
-
-    const handleScrollSpy = () => {
-      setScrolled(window.scrollY > 24);
-
-      // Critical fix: force Home when page is at top
-      if (window.scrollY < 120) {
-        setActive("/#home");
-        return;
-      }
-
-      let currentSection = "/#home";
-
-      for (const link of links) {
-        if (link.type !== "anchor") continue;
-
-        const id = link.to.replace("/#", "#");
-        const section = document.querySelector(id);
-
-        if (!section) continue;
-
-        const rect = section.getBoundingClientRect();
-
-        if (rect.top <= 140 && rect.bottom >= 140) {
-          currentSection = link.to;
-          break;
-        }
-      }
-
-      setActive(currentSection);
-    };
-
-    // Initial state
-    if (!window.location.hash && window.scrollY < 120) {
-      setActive("/#home");
-    } else {
-      const hash = window.location.hash;
-      setActive(hash ? `/${hash}` : "/#home");
-    }
-
-    const raf = requestAnimationFrame(() => {
-      handleScrollSpy();
-    });
-
-    window.addEventListener("scroll", handleScrollSpy);
-    window.addEventListener("hashchange", handleHashChange);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", handleScrollSpy);
-      window.removeEventListener("hashchange", handleHashChange);
-    };
-  }, [location.pathname]);
-
-  useEffect(() => {
-    document.title = titles[active] || titles["/#home"];
-  }, [active]);
-
-  const renderNavLink = (link, mobile = false, index = 0) => {
-    const Icon = link.icon;
-
-    const isActive =
-      link.type === "route"
-        ? location.pathname === link.to
-        : location.pathname === "/" && active === link.to;
-
-    const baseDesktop = `
-      relative z-10 flex items-center gap-2 rounded-xl px-4 py-2.5
+  const desktopLinkClass = ({ isActive }) =>
+    `
+      relative z-10 inline-flex items-center gap-2 rounded-xl px-4 py-2.5
       text-sm font-medium transition-all duration-300
-      ${isActive ? "text-purple-700" : "text-zinc-600 hover:text-zinc-900"}
+      ${
+        isActive
+          ? "text-purple-700"
+          : "text-zinc-600 hover:text-zinc-900"
+      }
     `;
 
-    const baseMobile = `
+  const mobileLinkClass = ({ isActive }) =>
+    `
       flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-medium
       transition-all duration-300
       ${
@@ -143,70 +55,6 @@ export default function Navbar() {
           : "text-zinc-700 hover:bg-zinc-50 hover:text-zinc-900"
       }
     `;
-
-    const content = (
-      <>
-        {isActive && !mobile && (
-          <motion.span
-            layoutId="nav-active-pill"
-            className="absolute inset-0 -z-10 rounded-xl border border-purple-200/70 bg-purple-50 shadow-sm"
-            transition={{ type: "spring", stiffness: 380, damping: 32 }}
-          />
-        )}
-        <Icon size={mobile ? 18 : 16} />
-        {link.label}
-      </>
-    );
-
-    if (link.type === "route") {
-      return mobile ? (
-        <motion.li
-          key={link.to}
-          initial={{ opacity: 0, x: 18 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.05 + index * 0.05 }}
-        >
-          <Link
-            to={link.to}
-            onClick={() => setOpen(false)}
-            className={baseMobile}
-          >
-            {content}
-          </Link>
-        </motion.li>
-      ) : (
-        <li key={link.to} className="relative">
-          <Link to={link.to} className={baseDesktop}>
-            {content}
-          </Link>
-        </li>
-      );
-    }
-
-    return mobile ? (
-      <motion.li
-        key={link.to}
-        initial={{ opacity: 0, x: 18 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.05 + index * 0.05 }}
-      >
-        <a
-          href={link.to}
-          onClick={() => setOpen(false)}
-          className={baseMobile}
-        >
-          <Icon size={18} />
-          {link.label}
-        </a>
-      </motion.li>
-    ) : (
-      <li key={link.to} className="relative">
-        <a href={link.to} className={baseDesktop}>
-          {content}
-        </a>
-      </li>
-    );
-  };
 
   return (
     <>
@@ -225,11 +73,20 @@ export default function Navbar() {
         `}
       >
         <nav className="flex h-[72px] items-center justify-between px-4 sm:px-6">
-          <a
-            href="/#home"
+          {/* Logo */}
+          <NavLink
+            to="/"
+            end
             className="group flex items-center gap-3 rounded-2xl px-2 py-2 transition"
           >
-            <div className="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-2xl border border-purple-200/70 bg-gradient-to-br from-purple-100 via-white to-fuchsia-100 shadow-sm">
+            <div
+              className="
+                relative flex h-11 w-11 items-center justify-center overflow-hidden
+                rounded-2xl border border-purple-200/70
+                bg-gradient-to-br from-purple-100 via-white to-fuchsia-100
+                shadow-sm transition duration-300 group-hover:scale-[1.03]
+              "
+            >
               <img
                 src="/preview.png"
                 alt="Ismail Markhi logo"
@@ -243,11 +100,42 @@ export default function Navbar() {
               </span>
               <span className="text-[11px] text-zinc-500">Web Developer</span>
             </div>
-          </a>
+          </NavLink>
 
+          {/* Desktop */}
           <div className="hidden items-center gap-3 md:flex">
             <ul className="flex items-center gap-1 rounded-2xl border border-zinc-200/70 bg-white/70 p-1.5 backdrop-blur-xl">
-              {links.map((link) => renderNavLink(link))}
+              {links.map((link) => {
+                const Icon = link.icon;
+
+                return (
+                  <li key={link.to} className="relative">
+                    <NavLink
+                      to={link.to}
+                      end={link.end}
+                      className={desktopLinkClass}
+                    >
+                      {({ isActive }) => (
+                        <>
+                          {isActive && (
+                            <motion.span
+                              layoutId="nav-active-pill"
+                              className="absolute inset-0 -z-10 rounded-xl border border-purple-200/70 bg-purple-50 shadow-sm"
+                              transition={{
+                                type: "spring",
+                                stiffness: 380,
+                                damping: 32,
+                              }}
+                            />
+                          )}
+                          <Icon size={16} />
+                          {link.label}
+                        </>
+                      )}
+                    </NavLink>
+                  </li>
+                );
+              })}
             </ul>
 
             <a
@@ -266,8 +154,9 @@ export default function Navbar() {
             </a>
           </div>
 
+          {/* Mobile Button */}
           <button
-            aria-label="Open Menu"
+            aria-label="Open menu"
             onClick={() => setOpen(true)}
             className="
               inline-flex h-11 w-11 items-center justify-center rounded-2xl
@@ -280,6 +169,7 @@ export default function Navbar() {
         </nav>
       </motion.header>
 
+      {/* Mobile Menu */}
       <AnimatePresence>
         {open && (
           <>
@@ -313,7 +203,7 @@ export default function Navbar() {
                 </div>
 
                 <button
-                  aria-label="Close Menu"
+                  aria-label="Close menu"
                   onClick={() => setOpen(false)}
                   className="
                     inline-flex h-11 w-11 items-center justify-center rounded-2xl
@@ -326,13 +216,34 @@ export default function Navbar() {
               </div>
 
               <ul className="space-y-2">
-                {links.map((link, index) => renderNavLink(link, true, index))}
+                {links.map((link, index) => {
+                  const Icon = link.icon;
+
+                  return (
+                    <motion.li
+                      key={link.to}
+                      initial={{ opacity: 0, x: 18 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.05 + index * 0.05 }}
+                    >
+                      <NavLink
+                        to={link.to}
+                        end={link.end}
+                        onClick={() => setOpen(false)}
+                        className={mobileLinkClass}
+                      >
+                        <Icon size={18} />
+                        {link.label}
+                      </NavLink>
+                    </motion.li>
+                  );
+                })}
               </ul>
 
               <motion.a
                 initial={{ opacity: 0, x: 18 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.35 }}
+                transition={{ delay: 0.3 }}
                 href="https://github.com/IsmailMarkhi"
                 target="_blank"
                 rel="noopener noreferrer"

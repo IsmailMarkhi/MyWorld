@@ -72,7 +72,6 @@ const fadeUp = {
 export default function Services() {
   return (
     <section
-      id="services"
       className="relative overflow-hidden bg-gradient-to-b from-white via-zinc-50/80 to-white py-20 sm:py-24 lg:py-28"
     >
       {/* soft background accents */}

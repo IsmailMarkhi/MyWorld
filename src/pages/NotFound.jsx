@@ -13,7 +13,7 @@ export default function NotFound() {
   });
 
   return (
-    <section
+    <main
       className="
         relative min-h-screen overflow-hidden
         bg-gradient-to-b from-black via-zinc-950 to-black
@@ -21,7 +21,6 @@ export default function NotFound() {
         flex items-center justify-center
       "
     >
-      {/* Background atmosphere */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-[10%] top-20 h-64 w-64 rounded-full bg-purple-700/20 blur-3xl" />
         <div className="absolute right-[10%] bottom-16 h-64 w-64 rounded-full bg-fuchsia-700/20 blur-3xl" />
@@ -40,7 +39,6 @@ export default function NotFound() {
           shadow-[0_20px_80px_rgba(0,0,0,0.35)]
         "
       >
-        {/* Icon */}
         <div
           className="
             mx-auto mb-6 flex h-16 w-16 items-center justify-center
@@ -51,7 +49,6 @@ export default function NotFound() {
           <SearchX size={28} />
         </div>
 
-        {/* 404 number */}
         <p className="text-sm font-semibold uppercase tracking-[0.22em] text-purple-300">
           Error
         </p>
@@ -69,7 +66,6 @@ export default function NotFound() {
           link is incorrect.
         </p>
 
-        {/* Actions */}
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link
             to="/"
@@ -107,11 +103,10 @@ export default function NotFound() {
           </button>
         </div>
 
-        {/* Small note */}
         <p className="mt-8 text-sm text-zinc-500">
           Return to the homepage to continue exploring the portfolio.
         </p>
       </div>
-    </section>
+    </main>
   );
 }

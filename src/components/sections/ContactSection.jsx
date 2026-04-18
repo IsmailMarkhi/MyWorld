@@ -59,7 +59,6 @@ const fadeUp = {
 export default function ContactSection() {
   return (
     <section
-      id="contact"
       aria-labelledby="contact-title"
       className="relative overflow-hidden bg-gradient-to-b from-black via-zinc-950 to-black py-24 sm:py-28"
     >

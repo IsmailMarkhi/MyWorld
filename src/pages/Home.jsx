@@ -1,11 +1,10 @@
 import { lazy, Suspense } from "react";
+import { Link } from "react-router-dom";
 import Hero from "../components/sections/Hero";
 import useSEO from "../hooks/useSEO";
 
 const Services = lazy(() => import("../components/sections/Services"));
 const TechStack = lazy(() => import("../components/sections/TechStack"));
-const Projects = lazy(() => import("../components/sections/Projects"));
-const ContactSection = lazy(() => import("../components/sections/ContactSection"));
 
 function SectionFallback({ height = "h-64" }) {
   return (
@@ -17,24 +16,78 @@ function SectionFallback({ height = "h-64" }) {
   );
 }
 
+function HomeCTASection() {
+  return (
+    <section className="w-full py-20">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
+        <div className="grid gap-6 md:grid-cols-2">
+          <div className="rounded-[28px] border border-zinc-200 bg-white p-8 shadow-sm">
+            <span className="mb-3 inline-block rounded-full border border-purple-200 bg-purple-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-purple-700">
+              Projects
+            </span>
+
+            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 sm:text-3xl">
+              Explore selected work
+            </h2>
+
+            <p className="mt-3 text-sm leading-7 text-zinc-600 sm:text-base">
+              See practical frontend and full-stack projects built with React,
+              Laravel, Tailwind CSS, and scalable UI architecture.
+            </p>
+
+            <Link
+              to="/projects"
+              className="mt-6 inline-flex items-center rounded-2xl bg-zinc-900 px-5 py-3 text-sm font-medium text-white transition hover:bg-purple-700"
+            >
+              View Projects
+            </Link>
+          </div>
+
+          <div className="rounded-[28px] border border-zinc-200 bg-white p-8 shadow-sm">
+            <span className="mb-3 inline-block rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-700">
+              Contact
+            </span>
+
+            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 sm:text-3xl">
+              Let’s build something clean and useful
+            </h2>
+
+            <p className="mt-3 text-sm leading-7 text-zinc-600 sm:text-base">
+              Need a portfolio, landing page, frontend interface, or a scalable
+              web application structure? Get in touch through the contact page.
+            </p>
+
+            <Link
+              to="/contact"
+              className="mt-6 inline-flex items-center rounded-2xl border border-zinc-300 px-5 py-3 text-sm font-medium text-zinc-800 transition hover:border-purple-300 hover:text-purple-700"
+            >
+              Contact Me
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   useSEO({
-  title: "Ismail Markhi | Web Developer in Morocco | React & Laravel Specialist",
-  description:
-    "Ismail Markhi is a web developer in Morocco specializing in React, Laravel, Tailwind CSS, and scalable full-stack web applications. Explore projects, skills, and portfolio work.",
-  path: "/",
-  schema: "all",
-  keywords: [
-    "Ismail Markhi",
-    "Ismail Markhi portfolio",
-    "Web Developer Morocco",
-    "React Developer Morocco",
-    "Laravel Developer Morocco",
-    "Full Stack Developer Morocco",
-    "Tailwind CSS developer",
-    "JavaScript developer portfolio",
-  ],
-});
+    title: "Home | Ismail Markhi | Web Developer in Morocco",
+    description:
+      "Ismail Markhi is a web developer in Morocco specializing in React, Laravel, Tailwind CSS, and scalable full-stack web applications. Explore services, technology stack, and selected work.",
+    path: "/",
+    schema: "all",
+    keywords: [
+      "Ismail Markhi",
+      "Ismail Markhi portfolio",
+      "Web Developer Morocco",
+      "React Developer Morocco",
+      "Laravel Developer Morocco",
+      "Full Stack Developer Morocco",
+      "Tailwind CSS developer",
+      "JavaScript developer portfolio",
+    ],
+  });
 
   return (
     <main className="flex flex-col">
@@ -48,13 +101,7 @@ export default function Home() {
         <TechStack />
       </Suspense>
 
-      <Suspense fallback={<SectionFallback height="h-[32rem]" />}>
-        <Projects />
-      </Suspense>
-
-      <Suspense fallback={<SectionFallback height="h-80" />}>
-        <ContactSection />
-      </Suspense>
+      <HomeCTASection />
     </main>
   );
 }
