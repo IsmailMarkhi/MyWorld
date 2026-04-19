@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
   Home,
+  Briefcase,
   FolderKanban,
   Mail,
   Github,
@@ -13,6 +14,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const links = [
   { to: "/", label: "Home", icon: Home, end: true },
   { to: "/projects", label: "Projects", icon: FolderKanban },
+  { to: "/services", label: "Services", icon: Briefcase },
   { to: "/contact", label: "Contact", icon: Mail },
 ];
 

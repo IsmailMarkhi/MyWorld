@@ -7,9 +7,11 @@ import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import Services from "./pages/Services"
 
 const appRoutes = [
   { path: "/" },
+  { path: "/services" },
   { path: "/projects" },
   { path: "/contact" },
 ];
@@ -26,6 +28,7 @@ function AppLayout() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/services" element={<Services />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />

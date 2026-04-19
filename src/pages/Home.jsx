@@ -20,13 +20,37 @@ function HomeCTASection() {
   return (
     <section className="w-full py-20">
       <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 md:grid-cols-3">
+          {/* Services */}
+          <div className="rounded-[28px] border border-zinc-200 bg-white p-8 shadow-sm">
+            <span className="mb-3 inline-block rounded-full border border-purple-200 bg-purple-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-purple-700">
+              Services
+            </span>
+
+            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900">
+              Discover my services
+            </h2>
+
+            <p className="mt-3 text-sm leading-7 text-zinc-600 sm:text-base">
+              Explore practical web development services focused on clean UI,
+              strong structure, and scalable modern applications.
+            </p>
+
+            <Link
+              to="/services"
+              className="mt-6 inline-flex items-center rounded-2xl bg-zinc-900 px-5 py-3 text-sm font-medium text-white transition hover:bg-purple-700"
+            >
+              View Services
+            </Link>
+          </div>
+
+          {/* Projects */}
           <div className="rounded-[28px] border border-zinc-200 bg-white p-8 shadow-sm">
             <span className="mb-3 inline-block rounded-full border border-purple-200 bg-purple-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-purple-700">
               Projects
             </span>
 
-            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 sm:text-3xl">
+            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900">
               Explore selected work
             </h2>
 
@@ -43,12 +67,13 @@ function HomeCTASection() {
             </Link>
           </div>
 
+          {/* Contact */}
           <div className="rounded-[28px] border border-zinc-200 bg-white p-8 shadow-sm">
             <span className="mb-3 inline-block rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-700">
               Contact
             </span>
 
-            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 sm:text-3xl">
+            <h2 className="text-2xl font-semibold tracking-tight text-zinc-900">
               Let’s build something clean and useful
             </h2>
 
@@ -92,11 +117,7 @@ export default function Home() {
   return (
     <main className="flex flex-col">
       <Hero />
-
-      <Suspense fallback={<SectionFallback height="h-80" />}>
-        <Services />
-      </Suspense>
-
+      
       <Suspense fallback={<SectionFallback height="h-72" />}>
         <TechStack />
       </Suspense>
