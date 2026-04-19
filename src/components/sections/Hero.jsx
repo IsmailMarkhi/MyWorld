@@ -1,8 +1,15 @@
 import Container from "../ui/Container";
+import { Link } from "react-router-dom";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiFiverr } from "react-icons/si";
 import { motion } from "framer-motion";
-import { ArrowRight, Download, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  Download,
+  Sparkles,
+  CheckCircle2,
+  BadgeCheck,
+} from "lucide-react";
 import myImage from "../../assets/image.png";
 
 const socialLinks = [
@@ -39,7 +46,6 @@ const fadeUp = {
 export default function Hero() {
   return (
     <section
-      id="home"
       aria-labelledby="hero-title"
       className="relative overflow-hidden bg-gradient-to-b from-white via-zinc-50/70 to-white pt-32 pb-20 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28"
     >
@@ -51,19 +57,26 @@ export default function Hero() {
       </div>
 
       <Container>
-        <div className="relative grid items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14 xl:gap-18">
+        <div className="relative grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 xl:gap-20">
           {/* LEFT */}
           <header className="max-w-3xl">
-            <motion.p
+            <motion.div
               variants={fadeUp}
               initial="hidden"
               animate="show"
-              custom={0.05}
-              className="mb-5 inline-flex items-center gap-2 rounded-full border border-purple-200/80 bg-white/90 px-4 py-2 text-xs font-semibold tracking-wide text-purple-700 shadow-sm backdrop-blur sm:text-sm"
+              custom={0.04}
+              className="mb-5 flex flex-wrap items-center gap-3"
             >
-              <Sparkles size={15} />
-              Freelance Web Developer
-            </motion.p>
+              <p className="inline-flex items-center gap-2 rounded-full border border-purple-200/80 bg-white/90 px-4 py-2 text-xs font-semibold tracking-wide text-purple-700 shadow-sm backdrop-blur sm:text-sm">
+                <Sparkles size={15} />
+                Freelance Web Developer
+              </p>
+
+              <span className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-3 py-2 text-[11px] font-medium text-zinc-600 shadow-sm">
+                <BadgeCheck size={14} className="text-purple-600" />
+                Available for projects
+              </span>
+            </motion.div>
 
             <motion.h1
               id="hero-title"
@@ -71,7 +84,7 @@ export default function Hero() {
               initial="hidden"
               animate="show"
               custom={0.12}
-              className="text-[2.6rem] font-bold leading-[0.98] tracking-tight text-zinc-900 sm:text-5xl md:text-6xl xl:text-7xl"
+              className="text-[2.65rem] font-bold leading-[0.96] tracking-tight text-zinc-900 sm:text-5xl md:text-6xl xl:text-7xl"
             >
               Ismail Markhi
               <span className="mt-2 block bg-gradient-to-r from-zinc-900 via-zinc-800 to-purple-700 bg-clip-text text-transparent">
@@ -86,30 +99,47 @@ export default function Hero() {
               custom={0.2}
               className="mt-6 max-w-2xl text-base leading-7 text-zinc-600 sm:text-lg sm:leading-8 md:text-xl"
             >
-              I’m{" "}
-              <strong className="font-semibold text-zinc-900">
-                Ismail Markhi
-              </strong>
-              , a web developer in Morocco focused on scalable interfaces, clean
-              structure, and practical digital products built with{" "}
-              <strong className="font-semibold text-zinc-900">React</strong>,{" "}
-              <strong className="font-semibold text-zinc-900">Laravel</strong>,
-              {" "}and{" "}
-              <strong className="font-semibold text-zinc-900">Python</strong>.
-              I build modern, responsive, and user-focused web applications with
-              strong UI systems and clean architecture.
+              I build modern websites and web applications with
+              <strong className="font-semibold text-zinc-900"> React</strong>,
+              <strong className="font-semibold text-zinc-900"> Laravel</strong>,
+              and
+              <strong className="font-semibold text-zinc-900"> Tailwind CSS</strong>.
+              My focus is simple: clean UI, strong structure, responsive layouts,
+              and practical digital products that feel professional and stay easy
+              to scale.
             </motion.p>
+
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              custom={0.26}
+              className="mt-7 flex flex-wrap gap-3 text-sm text-zinc-500"
+            >
+              <span className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-3 py-2 shadow-sm">
+                <CheckCircle2 size={15} className="text-purple-600" />
+                Clean architecture
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-3 py-2 shadow-sm">
+                <CheckCircle2 size={15} className="text-purple-600" />
+                Responsive by default
+              </span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white px-3 py-2 shadow-sm">
+                <CheckCircle2 size={15} className="text-purple-600" />
+                Serious quality
+              </span>
+            </motion.div>
 
             <motion.nav
               variants={fadeUp}
               initial="hidden"
               animate="show"
-              custom={0.28}
+              custom={0.32}
               aria-label="Primary actions"
               className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
             >
-              <a
-                href="#projects"
+              <Link
+                to="/projects"
                 className="
                   inline-flex items-center justify-center gap-2 rounded-2xl
                   bg-purple-600 px-6 py-3.5 text-sm font-semibold text-white
@@ -119,7 +149,7 @@ export default function Hero() {
               >
                 View Projects
                 <ArrowRight size={17} />
-              </a>
+              </Link>
 
               <a
                 href="/resume.pdf"
@@ -135,8 +165,8 @@ export default function Hero() {
                 Download CV
               </a>
 
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="
                   inline-flex items-center justify-center rounded-2xl
                   border border-zinc-200 bg-white/90 px-5 py-3.5 text-sm font-semibold
@@ -145,20 +175,17 @@ export default function Hero() {
                 "
               >
                 Contact Me
-              </a>
+              </Link>
             </motion.nav>
 
             <motion.div
               variants={fadeUp}
               initial="hidden"
               animate="show"
-              custom={0.36}
+              custom={0.38}
               className="mt-8 flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between"
             >
-              <nav
-                aria-label="Social links"
-                className="flex items-center gap-3"
-              >
+              <nav aria-label="Social links" className="flex items-center gap-3">
                 {socialLinks.map(({ href, icon: Icon, label }) => (
                   <a
                     key={label}
@@ -179,8 +206,8 @@ export default function Hero() {
               </nav>
 
               <p className="max-w-md text-sm leading-6 text-zinc-500">
-                Available for freelance work, internships, and modern React or
-                Laravel projects.
+                Available for freelance work, portfolio websites, frontend
+                interfaces, landing pages, and modern Laravel or React projects.
               </p>
             </motion.div>
           </header>
@@ -190,10 +217,10 @@ export default function Hero() {
             variants={fadeUp}
             initial="hidden"
             animate="show"
-            custom={0.2}
-            className="relative mx-auto w-full max-w-[38rem]"
+            custom={0.18}
+            className="relative mx-auto w-full max-w-[40rem]"
           >
-            <div className="overflow-hidden rounded-[28px] border border-zinc-200/90 bg-white shadow-[0_20px_70px_rgba(0,0,0,0.08)]">
+            <div className="overflow-hidden rounded-[30px] border border-zinc-200/90 bg-white shadow-[0_22px_80px_rgba(0,0,0,0.08)]">
               {/* top bar */}
               <div className="flex items-center justify-between border-b border-zinc-200 px-4 py-4 sm:px-5">
                 <div className="flex items-center gap-2" aria-hidden="true">
@@ -207,9 +234,9 @@ export default function Hero() {
               </div>
 
               <div className="grid gap-5 p-4 sm:p-5 md:gap-6 md:p-6">
-                {/* Photo block */}
-                <article className="relative overflow-hidden rounded-[24px] border border-zinc-200 bg-gradient-to-br from-zinc-100 via-white to-purple-50 p-4">
-                  <div className="grid items-center gap-4 sm:grid-cols-[110px_1fr]">
+                {/* Photo and intro */}
+                <article className="relative overflow-hidden rounded-[24px] border border-zinc-200 bg-gradient-to-br from-zinc-100 via-white to-purple-50 p-4 sm:p-5">
+                  <div className="grid items-center gap-4 sm:grid-cols-[118px_1fr]">
                     <div className="mx-auto h-24 w-24 overflow-hidden rounded-2xl border border-white bg-zinc-200 shadow-sm sm:h-28 sm:w-28">
                       <img
                         src={myImage}
@@ -251,8 +278,8 @@ export default function Hero() {
                   </pre>
                 </article>
 
-                {/* Stats */}
-                <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                {/* Bottom cards */}
+                <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
                   <article className="rounded-[24px] border border-zinc-200 bg-zinc-50 p-4 text-center sm:p-5">
                     <p className="text-xl font-bold tracking-tight text-zinc-900 sm:text-2xl">
                       2.5+
@@ -270,11 +297,21 @@ export default function Hero() {
                       Projects Built
                     </p>
                   </article>
+
+                  <article className="rounded-[24px] border border-zinc-200 bg-zinc-50 p-4 text-center sm:p-5">
+                    <p className="text-xl font-bold tracking-tight text-zinc-900 sm:text-2xl">
+                      100%
+                    </p>
+                    <p className="mt-1 text-[11px] font-semibold uppercase tracking-wide text-zinc-500 sm:text-xs">
+                      Responsive Focus
+                    </p>
+                  </article>
                 </div>
               </div>
             </div>
 
             <div className="pointer-events-none absolute -right-4 -top-4 h-20 w-20 rounded-full bg-purple-200/60 blur-2xl sm:-right-6 sm:-top-6 sm:h-24 sm:w-24" />
+            <div className="pointer-events-none absolute -left-4 -bottom-4 h-20 w-20 rounded-full bg-fuchsia-200/50 blur-2xl sm:-left-6 sm:-bottom-6 sm:h-24 sm:w-24" />
           </motion.div>
         </div>
       </Container>
