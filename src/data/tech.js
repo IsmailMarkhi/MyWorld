@@ -12,6 +12,7 @@ import {
   FaCode,
   FaMicrosoft,
   FaBrain,
+  FaJava
 } from "react-icons/fa";
 
 import {
@@ -33,11 +34,12 @@ import {
 } from "react-icons/si";
 
 export const techStack = [
+  { name: "JAVA", icon: FaJava, color: "text-white", category: "programming language", level: 20 },
   { name: "HTML", icon: FaHtml5, color: "text-orange-500", category: "frontend", level: 100 },
   { name: "CSS", icon: FaCss3Alt, color: "text-blue-500", category: "frontend", level: 90 },
   { name: "Bootstrap", icon: SiBootstrap, color: "text-purple-500", category: "frontend", level: 95 },
   { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-sky-400", category: "frontend", level: 85 },
-  { name: "JavaScript", icon: FaJs, color: "text-yellow-400", category: "frontend", level: 75 },
+  { name: "JavaScript", icon: FaJs, color: "text-yellow-400", category: "programming language", level: 75 },
   { name: "jQuery", icon: SiJquery, color: "text-blue-400", category: "frontend", level: 90 },
   { name: "React", icon: FaReact, color: "text-cyan-400", category: "frontend", level: 80 },
   { name: "Next.js", icon: SiNextdotjs, color: "text-white", category: "frontend", level: 45 },
@@ -47,7 +49,7 @@ export const techStack = [
   { name: "Laravel", icon: SiLaravel, color: "text-red-500", category: "backend", level: 70 },
   { name: "Node.js", icon: FaNodeJs, color: "text-green-500", category: "backend", level: 55 },
   { name: "Express.js", icon: SiExpress, color: "text-zinc-300", category: "backend", level: 60 },
-  { name: "Python", icon: FaPython, color: "text-yellow-500", category: "backend", level: 66 },
+  { name: "Python", icon: FaPython, color: "text-yellow-500", category: "programming language", level: 66 },
 
   { name: "MySQL", icon: SiMysql, color: "text-blue-600", category: "database", level: 70 },
   { name: "MongoDB", icon: SiMongodb, color: "text-green-500", category: "database", level: 20 },
