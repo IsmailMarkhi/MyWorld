@@ -3,15 +3,17 @@ import { memo, useMemo } from "react";
 import { ExternalLink, Github } from "lucide-react";
 
 const projects = [
+  // Main / Ready Projects
   {
     id: 0,
     title: "FeatureShoes E-commerce",
-    desc: "Modern football shoes e-commerce website with dynamic UI, product interactions, product pages, and real-world store structure. Focused on performance, clean UX, and responsive shopping experience.",
-    stack: ["React", "Tailwind", "E-commerce UI", "UX"],
+    desc: "Modern football shoes e-commerce website with dynamic UI, product interactions, product pages, cart flow, checkout experience, and responsive shopping interface.",
+    stack: ["React", "Tailwind", "E-commerce UI", "Cart", "Checkout"],
     demo: "https://markhifs.vercel.app",
     github: "https://github.com/IsmailMarkhi/fsh",
     status: "Live",
     badge: "Featured",
+    type: "Main Project",
     color: "from-purple-50 to-indigo-50",
   },
   {
@@ -23,78 +25,147 @@ const projects = [
     github: "https://github.com/IsmailMarkhi/MyWorld",
     status: "Live",
     badge: "Featured",
+    type: "Main Project",
     color: "from-green-50 to-emerald-50",
   },
   {
     id: 2,
+    title: "Order Tracking System",
+    desc: "Full-stack order tracking system designed to manage order states, backend logic, monitoring interface, and workflow organization through a clean scalable structure.",
+    stack: ["React", "Tailwind", "Laravel", "MySQL", "XAMPP"],
+    demo: "#",
+    github: "https://github.com/IsmailMarkhi/ordertrack",
+    status: "Completed",
+    type: "Main Project",
+    color: "from-emerald-50 to-teal-50",
+  },
+
+  // Landing Pages
+  {
+    id: 3,
     title: "Landing Page 25",
     desc: "Modern landing page project focused on responsive layout, clean section structure, and frontend UI practice for real-world presentation pages.",
     stack: ["React", "Vite", "Landing Page"],
     demo: "https://landingpage25.vercel.app",
     github: "#",
     status: "Live",
+    type: "Landing Page",
     color: "from-violet-50 to-purple-50",
   },
   {
-    id: 3,
+    id: 4,
     title: "Dentist Landing Page",
     desc: "A modern landing page built for a dental clinic to present services, improve trust, and guide visitors toward appointment or contact actions.",
     stack: ["JavaScript", "Responsive", "Landing Page"],
     demo: "https://dentist-woad.vercel.app/",
     github: "https://github.com/IsmailMarkhi/Dentist",
     status: "Completed",
+    type: "Landing Page",
     color: "from-blue-50 to-cyan-50",
   },
+
+  // Volunteer / Concept Projects
   {
-    id: 4,
+    id: 5,
+    title: "Les Jardins de Versailles / Verdura",
+    desc: "Volunteer-style professional landing page for a landscaping and garden services brand, focused on responsive presentation, modern sections, service showcase, and polished user experience.",
+    stack: ["React", "Tailwind", "Landing Page", "Responsive UI"],
+    demo: "#",
+    github: "#",
+    status: "Volunteer",
+    type: "Volunteer Project",
+    color: "from-lime-50 to-green-50",
+  },
+  {
+    id: 6,
+    title: "GDP Public Debt Management",
+    desc: "Government-style dashboard concept for public debt management, including loans, credit notices, debit notices, payment orders, user roles, modular UI, and enterprise-style navigation.",
+    stack: ["React", "Tailwind", "Dashboard", "Government UI"],
+    demo: "#",
+    github: "https://github.com/IsmailMarkhi/Gdp-pfe-test",
+    status: "Volunteer",
+    type: "Volunteer Project",
+    color: "from-blue-50 to-slate-50",
+  },
+
+  // Learning / Practice
+  {
+    id: 7,
     title: "Python OOP Web App",
-    desc: "A learning project exploring object-oriented programming concepts in Python with practical logic organization and backend-oriented thinking.",
+    desc: "Learning project exploring object-oriented programming concepts in Python with practical logic organization and backend-oriented thinking.",
     stack: ["Python", "OOP", "Backend Logic"],
     demo: "https://poo-sandy.vercel.app/",
     github: "https://github.com/IsmailMarkhi/Poo",
     status: "Learning Project",
+    type: "Learning Project",
     color: "from-amber-50 to-orange-50",
   },
   {
-    id: 5,
-    title: "OrderFlow",
-    desc: "A full-stack order management system designed to streamline order tracking, status updates, and workflow organization through a clean and scalable interface.",
-    stack: ["Laravel", "Blade", "MySQL", "Order Management"],
-    demo: "#",
-    github: "https://github.com/IsmailMarkhi/ordertrack",
-    status: "Completed",
-    color: "from-emerald-50 to-teal-50",
-  },
-  {
-    id: 6,
+    id: 8,
     title: "StopWatch",
     desc: "Real-time stopwatch project built to practice timing logic, DOM interaction, and clean UI behavior using JavaScript and Tailwind CSS.",
     stack: ["HTML", "JavaScript", "Tailwind"],
     demo: "#",
     github: "https://github.com/IsmailMarkhi/StopWatch",
     status: "Practice",
+    type: "Practice",
     color: "from-slate-50 to-zinc-50",
   },
   {
-    id: 7,
+    id: 9,
     title: "Current Time App",
     desc: "Responsive real-time clock web app displaying year, month, day, hour, minute, and second using JavaScript and Tailwind CSS.",
     stack: ["HTML", "JavaScript", "Tailwind"],
     demo: "#",
     github: "https://github.com/IsmailMarkhi/Current-Time",
     status: "Practice",
+    type: "Practice",
     color: "from-sky-50 to-blue-50",
   },
+  {
+  id: 10,
+  title: "FeatureShoes Static Version",
+  desc: "Old static version of the FeatureShoes e-commerce website built with HTML, CSS, and JavaScript before the newer React and Tailwind version.",
+  stack: ["HTML", "CSS", "JavaScript", "Static Website"],
+  demo: "https://featureshoes-st-v.vercel.app/index.html",
+  github: "https://github.com/IsmailMarkhi/featureshoes-website",
+  status: "Old Version",
+  type: "Practice",
+  color: "from-orange-50 to-amber-50",
+},
+{
+  id: 11,
+  title: "OrderFlow Frontend",
+  desc: "Frontend interface for the OrderFlow system, focused on order tracking screens, responsive UI, dashboard structure, and user-facing workflow presentation.",
+  stack: ["React", "Tailwind", "Dashboard UI", "Frontend"],
+  demo: "#",
+  github: "https://github.com/IsmailMarkhi/OrFrontend",
+  status: "Completed",
+  type: "Frontend",
+  color: "from-blue-50 to-cyan-50",
+},
+{
+  id: 12,
+  title: "OrderFlow Backend",
+  desc: "Backend layer for the OrderFlow system, focused on order lifecycle logic, data handling, API structure, and server-side workflow management.",
+  stack: ["Laravel", "PHP", "MySQL", "Backend"],
+  demo: "#",
+  github: "https://github.com/IsmailMarkhi/OrBackend",
+  status: "Completed",
+  type: "Backend",
+  color: "from-emerald-50 to-teal-50",
+},
 ];
 
 const StatusBadge = memo(({ status, badge }) => {
   const statusConfig = {
-    Latest: "bg-blue-100 text-blue-700",
-    "Learning Project": "bg-amber-100 text-amber-700",
-    Live: "bg-green-100 text-green-700",
-    Completed: "bg-gray-100 text-gray-700",
-    Practice: "bg-purple-100 text-purple-700",
-  };
+  Latest: "bg-blue-100 text-blue-700",
+  "Learning Project": "bg-amber-100 text-amber-700",
+  Live: "bg-green-100 text-green-700",
+  Completed: "bg-gray-100 text-gray-700",
+  Practice: "bg-purple-100 text-purple-700",
+  Volunteer: "bg-lime-100 text-lime-700",
+};
 
   return (
     <div className="flex flex-wrap gap-2">
@@ -144,6 +215,9 @@ const ProjectCard = memo(({ project }) => {
           <h3 className="mb-2 text-lg font-semibold text-zinc-900">
             {project.title}
           </h3>
+          <p className="mb-3 text-xs font-medium uppercase tracking-wide text-purple-600">
+  {project.type}
+</p>
 
           <p className="text-sm leading-relaxed text-zinc-600">
             {project.desc}
