@@ -6,7 +6,7 @@ const projects = [
   {
     id: 0,
     title: "FeatureShoes E-commerce",
-    desc: "Modern football shoes e-commerce website with dynamic UI, product interactions, and real-world store structure. Focused on performance and clean UX.",
+    desc: "Modern football shoes e-commerce website with dynamic UI, product interactions, product pages, and real-world store structure. Focused on performance, clean UX, and responsive shopping experience.",
     stack: ["React", "Tailwind", "E-commerce UI", "UX"],
     demo: "https://markhifs.vercel.app",
     github: "https://github.com/IsmailMarkhi/fsh",
@@ -16,18 +16,39 @@ const projects = [
   },
   {
     id: 1,
-    title: "Dentist Landing Page",
-    desc: "A modern landing page built for a dental clinic to present services and encourage appointment requests.",
-    stack: ["React", "Tailwind", "Responsive"],
-    demo: "https://dentist-woad.vercel.app/",
-    github: "https://github.com/IsmailMarkhi/Dentist",
-    status: "Latest",
-    color: "from-blue-50 to-cyan-50",
+    title: "MyWorld Portfolio",
+    desc: "Personal developer portfolio for Ismail Markhi with semantic sections, SEO optimization, sitemap setup, favicon configuration, project showcase, and production deployment.",
+    stack: ["React", "Tailwind", "SEO", "Vite"],
+    demo: "https://ismailmarkhi.dev",
+    github: "https://github.com/IsmailMarkhi/MyWorld",
+    status: "Live",
+    badge: "Featured",
+    color: "from-green-50 to-emerald-50",
   },
   {
     id: 2,
+    title: "Landing Page 25",
+    desc: "Modern landing page project focused on responsive layout, clean section structure, and frontend UI practice for real-world presentation pages.",
+    stack: ["React", "Vite", "Landing Page"],
+    demo: "https://landingpage25.vercel.app",
+    github: "#",
+    status: "Live",
+    color: "from-violet-50 to-purple-50",
+  },
+  {
+    id: 3,
+    title: "Dentist Landing Page",
+    desc: "A modern landing page built for a dental clinic to present services, improve trust, and guide visitors toward appointment or contact actions.",
+    stack: ["JavaScript", "Responsive", "Landing Page"],
+    demo: "https://dentist-woad.vercel.app/",
+    github: "https://github.com/IsmailMarkhi/Dentist",
+    status: "Completed",
+    color: "from-blue-50 to-cyan-50",
+  },
+  {
+    id: 4,
     title: "Python OOP Web App",
-    desc: "A learning project exploring object-oriented programming concepts in Python.",
+    desc: "A learning project exploring object-oriented programming concepts in Python with practical logic organization and backend-oriented thinking.",
     stack: ["Python", "OOP", "Backend Logic"],
     demo: "https://poo-sandy.vercel.app/",
     github: "https://github.com/IsmailMarkhi/Poo",
@@ -35,24 +56,34 @@ const projects = [
     color: "from-amber-50 to-orange-50",
   },
   {
-    id: 3,
-    title: "Personal Challenge Website",
-    desc: "A personal website built to practice real-world web development, focusing on clarity and usability.",
-    stack: ["React", "Tailwind", "SEO"],
-    demo: "https://www.ismailmarkhi.dev",
-    github: "#",
-    status: "Live",
-    color: "from-green-50 to-emerald-50",
-  },
-  {
-    id: 4,
+    id: 5,
     title: "OrderFlow",
-    desc: "A full-stack order management system built with Laravel, React, and Tailwind CSS, designed to streamline order tracking, status updates, and workflow organization through a clean, scalable interface.",
-    stack: ["Laravel", "React", "Tailwind CSS", "MySQL"],
+    desc: "A full-stack order management system designed to streamline order tracking, status updates, and workflow organization through a clean and scalable interface.",
+    stack: ["Laravel", "Blade", "MySQL", "Order Management"],
     demo: "#",
-    github: "https://github.com/IsmailMarkhi/ordertrack#",
+    github: "https://github.com/IsmailMarkhi/ordertrack",
     status: "Completed",
     color: "from-emerald-50 to-teal-50",
+  },
+  {
+    id: 6,
+    title: "StopWatch",
+    desc: "Real-time stopwatch project built to practice timing logic, DOM interaction, and clean UI behavior using JavaScript and Tailwind CSS.",
+    stack: ["HTML", "JavaScript", "Tailwind"],
+    demo: "#",
+    github: "https://github.com/IsmailMarkhi/StopWatch",
+    status: "Practice",
+    color: "from-slate-50 to-zinc-50",
+  },
+  {
+    id: 7,
+    title: "Current Time App",
+    desc: "Responsive real-time clock web app displaying year, month, day, hour, minute, and second using JavaScript and Tailwind CSS.",
+    stack: ["HTML", "JavaScript", "Tailwind"],
+    demo: "#",
+    github: "https://github.com/IsmailMarkhi/Current-Time",
+    status: "Practice",
+    color: "from-sky-50 to-blue-50",
   },
 ];
 
@@ -62,10 +93,11 @@ const StatusBadge = memo(({ status, badge }) => {
     "Learning Project": "bg-amber-100 text-amber-700",
     Live: "bg-green-100 text-green-700",
     Completed: "bg-gray-100 text-gray-700",
+    Practice: "bg-purple-100 text-purple-700",
   };
 
   return (
-    <div className="flex gap-2">
+    <div className="flex flex-wrap gap-2">
       <span
         className={`text-xs font-medium px-2.5 py-1 rounded-full ${
           statusConfig[status] || "bg-gray-100 text-gray-700"
@@ -101,7 +133,9 @@ const ProjectCard = memo(({ project }) => {
         ${isFeatured ? "lg:col-span-2" : ""}
       `}
     >
-      <div className="absolute inset-0 opacity-0 bg-gradient-to-br from-purple-50 via-white to-purple-100 transition duration-500 group-hover:opacity-100" />
+      <div
+        className={`absolute inset-0 opacity-0 bg-gradient-to-br ${project.color} transition duration-500 group-hover:opacity-100`}
+      />
 
       <div className="absolute left-0 top-0 h-[2px] w-full bg-gradient-to-r from-purple-500/0 via-purple-400 to-purple-500/0 opacity-0 transition duration-500 group-hover:opacity-100" />
 
@@ -163,40 +197,50 @@ const ProjectCard = memo(({ project }) => {
 
 export default memo(function Projects() {
   useSEO({
-  title: "Projects | Ismail Markhi | React & Laravel Web Developer",
-  description:
-    "Explore web development projects by Ismail Markhi, a full-stack developer in Morocco. Projects include React, Laravel, Tailwind CSS, and scalable web applications.",
-  path: "/projects",
-  keywords: [
-    "Ismail Markhi projects",
-    "React projects portfolio",
-    "Laravel projects",
-    "Web developer Morocco portfolio",
-  ],
-  schema: "all",
-});
+    title: "Projects | Ismail Markhi | React & Laravel Web Developer",
+    description:
+      "Explore web development projects by Ismail Markhi, a full-stack developer in Morocco. Projects include React, Laravel, Tailwind CSS, SEO, landing pages, and scalable web applications.",
+    path: "/projects",
+    keywords: [
+      "Ismail Markhi projects",
+      "React projects portfolio",
+      "Laravel projects",
+      "Web developer Morocco portfolio",
+      "Tailwind CSS projects",
+    ],
+    schema: "all",
+  });
 
   const sortedProjects = useMemo(() => {
     return [...projects].sort((a, b) => {
-      const order = { Featured: 0, Live: 1 };
-      return (order[a.badge] ?? 999) - (order[b.badge] ?? 999);
+      const order = {
+        Featured: 0,
+        Live: 1,
+        Completed: 2,
+        Practice: 3,
+        "Learning Project": 4,
+      };
+
+      return (order[a.badge || a.status] ?? 999) - (order[b.badge || b.status] ?? 999);
     });
   }, []);
 
   return (
     <section
       id="projects"
+      aria-labelledby="projects-title"
       className="px-4 sm:px-6 py-24 bg-gradient-to-b from-white via-zinc-50 to-white"
     >
       <div className="mx-auto max-w-6xl">
         <header className="mb-16 text-center">
-          <h2 className="mb-4 text-4xl font-bold text-zinc-900">
+          <h2 id="projects-title" className="mb-4 text-4xl font-bold text-zinc-900">
             Selected Work
           </h2>
 
-          <p className="mx-auto max-w-xl text-zinc-600">
-            A curated selection of projects focused on building clean, scalable,
-            and user-centered web applications.
+          <p className="mx-auto max-w-2xl text-zinc-600">
+            A curated selection of projects by Ismail Markhi focused on building
+            clean, scalable, and user-centered web applications with React,
+            Laravel, Tailwind CSS, SEO, and practical frontend architecture.
           </p>
         </header>
 
