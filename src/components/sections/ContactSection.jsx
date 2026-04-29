@@ -26,7 +26,7 @@ const contacts = [
   {
     name: "LinkedIn",
     icon: FaLinkedin,
-    href: "https://www.linkedin.com/in/ismail-markhi-a67033317/",
+    href: "https://www.linkedin.com/in/ismailmarkhi",
     textColor: "text-blue-400",
     hoverBorder: "group-hover:border-blue-500/50",
     hoverGlow: "group-hover:shadow-[0_0_30px_rgba(59,130,246,0.18)]",

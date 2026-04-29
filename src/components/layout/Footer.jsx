@@ -5,7 +5,7 @@ import { ArrowUpRight, Sparkles } from "lucide-react";
 
 const socialLinks = [
   { name: "GitHub", href: "https://github.com/IsmailMarkhi", icon: FaGithub },
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/ismail-markhi-a67033317", icon: FaLinkedin },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/ismailmarkhi", icon: FaLinkedin },
   { name: "Fiverr", href: "https://www.fiverr.com/ismail1markhi", icon: SiFiverr },
   { name: "Instagram", href: "https://www.instagram.com/ismailmarkhi", icon: FaInstagram },
 ];
