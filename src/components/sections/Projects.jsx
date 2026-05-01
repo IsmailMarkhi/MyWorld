@@ -7,10 +7,10 @@ import {
   Crown,
   Layers3,
   Code2,
+  ArrowRight,
 } from "lucide-react";
 
 const projects = [
-  // Main / Ready Projects
   {
     id: 0,
     title: "FeatureShoes E-commerce",
@@ -21,7 +21,7 @@ const projects = [
     status: "Live",
     badge: "Featured",
     type: "Main Project",
-    color: "from-purple-50 to-indigo-50",
+    color: "from-purple-100 via-white to-indigo-100",
   },
   {
     id: 1,
@@ -33,7 +33,7 @@ const projects = [
     status: "Live",
     badge: "Featured",
     type: "Main Project",
-    color: "from-green-50 to-emerald-50",
+    color: "from-emerald-100 via-white to-green-100",
   },
   {
     id: 2,
@@ -44,10 +44,8 @@ const projects = [
     github: "https://github.com/IsmailMarkhi/ordertrack",
     status: "Completed",
     type: "Main Project",
-    color: "from-emerald-50 to-teal-50",
+    color: "from-teal-100 via-white to-emerald-100",
   },
-
-  // Landing Pages
   {
     id: 3,
     title: "Landing Page 25",
@@ -57,7 +55,7 @@ const projects = [
     github: "#",
     status: "Live",
     type: "Landing Page",
-    color: "from-violet-50 to-purple-50",
+    color: "from-violet-100 via-white to-purple-100",
   },
   {
     id: 4,
@@ -68,10 +66,8 @@ const projects = [
     github: "https://github.com/IsmailMarkhi/Dentist",
     status: "Completed",
     type: "Landing Page",
-    color: "from-blue-50 to-cyan-50",
+    color: "from-blue-100 via-white to-cyan-100",
   },
-
-  // Volunteer / Concept Projects
   {
     id: 5,
     title: "Les Jardins de Versailles / Verdura",
@@ -81,7 +77,7 @@ const projects = [
     github: "#",
     status: "Volunteer",
     type: "Volunteer Project",
-    color: "from-lime-50 to-green-50",
+    color: "from-lime-100 via-white to-green-100",
   },
   {
     id: 6,
@@ -92,10 +88,8 @@ const projects = [
     github: "https://github.com/IsmailMarkhi/Gdp-pfe-test",
     status: "Volunteer",
     type: "Volunteer Project",
-    color: "from-blue-50 to-slate-50",
+    color: "from-slate-100 via-white to-blue-100",
   },
-
-  // Learning / Practice
   {
     id: 7,
     title: "Python OOP Web App",
@@ -105,7 +99,7 @@ const projects = [
     github: "https://github.com/IsmailMarkhi/Poo",
     status: "Learning Project",
     type: "Learning Project",
-    color: "from-amber-50 to-orange-50",
+    color: "from-amber-100 via-white to-orange-100",
   },
   {
     id: 8,
@@ -116,7 +110,7 @@ const projects = [
     github: "https://github.com/IsmailMarkhi/StopWatch",
     status: "Practice",
     type: "Practice",
-    color: "from-slate-50 to-zinc-50",
+    color: "from-zinc-100 via-white to-slate-100",
   },
   {
     id: 9,
@@ -127,7 +121,7 @@ const projects = [
     github: "https://github.com/IsmailMarkhi/Current-Time",
     status: "Practice",
     type: "Practice",
-    color: "from-sky-50 to-blue-50",
+    color: "from-sky-100 via-white to-blue-100",
   },
   {
     id: 10,
@@ -138,7 +132,7 @@ const projects = [
     github: "https://github.com/IsmailMarkhi/featureshoes-website",
     status: "Old Version",
     type: "Practice",
-    color: "from-orange-50 to-amber-50",
+    color: "from-orange-100 via-white to-amber-100",
   },
   {
     id: 11,
@@ -149,7 +143,7 @@ const projects = [
     github: "https://github.com/IsmailMarkhi/OrFrontend",
     status: "Completed",
     type: "Frontend",
-    color: "from-blue-50 to-cyan-50",
+    color: "from-blue-100 via-white to-cyan-100",
   },
   {
     id: 12,
@@ -160,23 +154,22 @@ const projects = [
     github: "https://github.com/IsmailMarkhi/OrBackend",
     status: "Completed",
     type: "Backend",
-    color: "from-emerald-50 to-teal-50",
+    color: "from-emerald-100 via-white to-teal-100",
   },
   {
-  id: 13,
-  title: "WordPress Course & Practice",
-  desc: "WordPress learning and practice project created during a WordPress course, covering local setup, theme usage, content management, dashboard configuration, pages, posts, and basic website deployment workflow.",
-  stack: ["WordPress", "CMS", "PHP", "MySQL", "Course Practice"],
-  demo: "https://worpress.vercel.app/",
-  github: "https://github.com/IsmailMarkhi/worpress",
-  status: "Learning Project",
-  type: "Learning Project",
-  color: "from-indigo-50 to-blue-50",
-}
+    id: 13,
+    title: "WordPress Course & Practice",
+    desc: "WordPress learning and practice project created during a WordPress course, covering local setup, theme usage, content management, dashboard configuration, pages, posts, and basic website deployment workflow.",
+    stack: ["WordPress", "CMS", "PHP", "MySQL", "Course Practice"],
+    demo: "https://worpress.vercel.app/",
+    github: "https://github.com/IsmailMarkhi/worpress",
+    status: "Learning Project",
+    type: "Learning Project",
+    color: "from-indigo-100 via-white to-blue-100",
+  },
 ];
 
 const statusConfig = {
-  Featured: "bg-zinc-950 text-white border-zinc-800",
   Live: "bg-emerald-50 text-emerald-700 border-emerald-200",
   Completed: "bg-blue-50 text-blue-700 border-blue-200",
   Practice: "bg-purple-50 text-purple-700 border-purple-200",
@@ -185,26 +178,30 @@ const statusConfig = {
   "Old Version": "bg-orange-50 text-orange-700 border-orange-200",
 };
 
-const StatusBadge = memo(({ status, badge }) => {
-  return (
-    <div className="flex flex-wrap items-center gap-2">
-      {badge && (
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-800 bg-zinc-950 px-3 py-1 text-[11px] font-semibold text-white shadow-sm">
-          <Crown size={12} />
-          {badge}
-        </span>
-      )}
+const stats = [
+  { value: "10+", label: "Projects" },
+  { value: "2y 9m", label: "Learning & Building" },
+  { value: "Full", label: "Stack Focus" },
+];
 
-      <span
-        className={`rounded-full border px-3 py-1 text-[11px] font-semibold ${
-          statusConfig[status] || "bg-zinc-50 text-zinc-600 border-zinc-200"
-        }`}
-      >
-        {status}
+const StatusBadge = memo(({ status, badge }) => (
+  <div className="flex flex-wrap items-center gap-2">
+    {badge && (
+      <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-900 bg-zinc-950 px-3 py-1 text-[11px] font-bold text-white shadow-sm">
+        <Crown size={12} />
+        {badge}
       </span>
-    </div>
-  );
-});
+    )}
+
+    <span
+      className={`rounded-full border px-3 py-1 text-[11px] font-bold ${
+        statusConfig[status] || "border-zinc-200 bg-zinc-50 text-zinc-600"
+      }`}
+    >
+      {status}
+    </span>
+  </div>
+));
 
 const ProjectCard = memo(({ project }) => {
   const isFeatured = project.badge === "Featured";
@@ -212,39 +209,36 @@ const ProjectCard = memo(({ project }) => {
   return (
     <article
       className={`
-        group relative overflow-hidden rounded-[32px]
-        border border-white/70 bg-white/80 p-[1px]
-        shadow-[0_20px_70px_rgba(24,24,27,0.08)]
+        group relative overflow-hidden rounded-[36px]
+        border border-white/70 bg-white/75 p-[1px]
+        shadow-[0_22px_70px_rgba(24,24,27,0.08)]
         backdrop-blur-xl transition-all duration-500
-        hover:-translate-y-2 hover:shadow-[0_30px_100px_rgba(88,28,135,0.18)]
+        hover:-translate-y-2 hover:shadow-[0_34px_110px_rgba(88,28,135,0.20)]
         ${isFeatured ? "lg:col-span-2" : ""}
       `}
     >
       <div
-        className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-70 transition duration-500 group-hover:opacity-100`}
+        className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-75 transition duration-500 group-hover:opacity-100`}
       />
 
-      <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent opacity-70" />
+      <div className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-purple-500/70 to-transparent" />
+      <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-purple-300/20 blur-3xl transition duration-500 group-hover:bg-purple-300/35" />
 
-      <div className="relative z-10 flex h-full flex-col justify-between rounded-[31px] border border-zinc-200/70 bg-white/80 p-6 backdrop-blur-xl sm:p-7">
+      <div className="relative z-10 flex h-full flex-col justify-between rounded-[35px] border border-zinc-200/70 bg-white/86 p-6 backdrop-blur-xl sm:p-7">
         <div>
-          <div className="mb-5 flex items-start justify-between gap-4">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-zinc-200 bg-white shadow-sm">
-              {isFeatured ? (
-                <Sparkles size={20} className="text-purple-700" />
-              ) : (
-                <Code2 size={20} className="text-zinc-700" />
-              )}
+          <div className="mb-6 flex items-start justify-between gap-4">
+            <div className="flex h-13 w-13 items-center justify-center rounded-2xl border border-zinc-200 bg-white text-purple-700 shadow-[0_10px_28px_rgba(24,24,27,0.08)] transition duration-300 group-hover:scale-105 group-hover:shadow-[0_14px_35px_rgba(88,28,135,0.16)]">
+              {isFeatured ? <Sparkles size={21} /> : <Code2 size={21} />}
             </div>
 
             <StatusBadge status={project.status} badge={project.badge} />
           </div>
 
-          <p className="mb-3 inline-flex rounded-full border border-purple-100 bg-purple-50 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-purple-700">
+          <p className="mb-3 inline-flex rounded-full border border-purple-100 bg-purple-50 px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-purple-700">
             {project.type}
           </p>
 
-          <h3 className="text-xl font-black tracking-tight text-zinc-950">
+          <h3 className="text-2xl font-black tracking-[-0.03em] text-zinc-950">
             {project.title}
           </h3>
 
@@ -253,19 +247,19 @@ const ProjectCard = memo(({ project }) => {
           </p>
         </div>
 
-        <div className="mt-6 flex flex-wrap gap-2">
+        <div className="mt-7 flex flex-wrap gap-2">
           {project.stack.map((tech) => (
             <span
               key={tech}
-              className="rounded-full border border-zinc-200 bg-white/90 px-3 py-1.5 text-[11px] font-semibold text-zinc-700 shadow-sm"
+              className="rounded-full border border-zinc-200 bg-white/90 px-3 py-1.5 text-[11px] font-bold text-zinc-700 shadow-sm"
             >
               {tech}
             </span>
           ))}
         </div>
 
-        <div className="mt-7 flex items-center justify-between border-t border-zinc-200/80 pt-5">
-          <div className="flex items-center gap-2 text-xs font-medium text-zinc-500">
+        <div className="mt-8 flex items-center justify-between border-t border-zinc-200/80 pt-5">
+          <div className="flex items-center gap-2 text-xs font-bold text-zinc-500">
             <Layers3 size={14} />
             Portfolio Project
           </div>
@@ -276,7 +270,7 @@ const ProjectCard = memo(({ project }) => {
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-zinc-200 bg-white text-zinc-700 shadow-sm transition hover:-translate-y-1 hover:border-purple-300 hover:text-purple-700"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-zinc-200 bg-white text-zinc-700 shadow-sm transition hover:-translate-y-1 hover:border-purple-300 hover:text-purple-700"
                 aria-label={`${project.title} live demo`}
               >
                 <ExternalLink size={17} />
@@ -288,7 +282,7 @@ const ProjectCard = memo(({ project }) => {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-zinc-200 bg-zinc-950 text-white shadow-sm transition hover:-translate-y-1 hover:bg-purple-700"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-zinc-950 bg-zinc-950 text-white shadow-sm transition hover:-translate-y-1 hover:bg-purple-700"
                 aria-label={`${project.title} source code`}
               >
                 <Github size={17} />
@@ -339,57 +333,63 @@ export default memo(function Projects() {
     <section
       id="projects"
       aria-labelledby="projects-title"
-      className="relative overflow-hidden bg-[radial-gradient(circle_at_top,rgba(147,51,234,0.10),transparent_34%),linear-gradient(to_bottom,#ffffff,#fafafa,#ffffff)] px-4 py-24 sm:px-6 lg:py-32"
+      className="relative min-h-screen overflow-hidden bg-[#fbf7ff] px-4 py-24 sm:px-6 lg:py-32"
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="absolute left-[8%] top-20 h-64 w-64 rounded-full bg-purple-200/40 blur-3xl" />
-        <div className="absolute right-[6%] top-48 h-72 w-72 rounded-full bg-fuchsia-200/30 blur-3xl" />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(24,24,27,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(24,24,27,0.035)_1px,transparent_1px)] bg-[size:46px_46px]" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(88,28,135,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(88,28,135,0.055)_1px,transparent_1px)] bg-[size:46px_46px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_12%,rgba(168,85,247,0.16),transparent_38%)]" />
+
+        <div className="absolute left-[16%] top-24 h-72 w-72 rounded-full bg-purple-200/35 blur-3xl" />
+        <div className="absolute right-[12%] top-40 h-80 w-80 rounded-full bg-fuchsia-200/30 blur-3xl" />
+        <div className="absolute bottom-10 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-white/80 blur-3xl" />
+
+        <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-white/85 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-white/85 to-transparent" />
       </div>
 
       <div className="relative mx-auto max-w-7xl">
         <header className="mx-auto mb-16 max-w-3xl text-center">
-          <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-purple-200 bg-white/80 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-purple-700 shadow-sm backdrop-blur">
+          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-purple-200 bg-white/90 px-4 py-2 text-xs font-black uppercase tracking-[0.22em] text-purple-700 shadow-[0_8px_25px_rgba(88,28,135,0.12)] backdrop-blur">
             <Sparkles size={14} />
             Project Showcase
           </p>
 
           <h2
             id="projects-title"
-            className="text-4xl font-black tracking-[-0.04em] text-zinc-950 sm:text-5xl lg:text-6xl"
+            className="text-5xl font-black tracking-[-0.06em] text-zinc-950 sm:text-6xl lg:text-7xl"
           >
             Selected Work
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-zinc-600 sm:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-zinc-600 sm:text-lg">
             A curated collection of 10+ projects focused on React, Laravel,
             Tailwind CSS, SEO, dashboards, landing pages, WordPress practice,
             and practical full-stack development.
           </p>
 
-          <div className="mt-8 grid gap-3 sm:grid-cols-3">
-            <div className="rounded-3xl border border-zinc-200 bg-white/80 p-5 shadow-sm backdrop-blur">
-              <p className="text-3xl font-black text-zinc-950">10+</p>
-              <p className="mt-1 text-xs font-bold uppercase tracking-wide text-zinc-500">
-                Projects
-              </p>
-            </div>
-
-            <div className="rounded-3xl border border-zinc-200 bg-white/80 p-5 shadow-sm backdrop-blur">
-              <p className="text-3xl font-black text-zinc-950">2y 9m</p>
-              <p className="mt-1 text-xs font-bold uppercase tracking-wide text-zinc-500">
-                Learning & Building
-              </p>
-            </div>
-
-            <div className="rounded-3xl border border-zinc-200 bg-white/80 p-5 shadow-sm backdrop-blur">
-              <p className="text-3xl font-black text-zinc-950">Full</p>
-              <p className="mt-1 text-xs font-bold uppercase tracking-wide text-zinc-500">
-                Stack Focus
-              </p>
-            </div>
+          <div className="mx-auto mt-10 grid max-w-3xl gap-3 sm:grid-cols-3">
+            {stats.map((item) => (
+              <div
+                key={item.label}
+                className="rounded-3xl border border-zinc-200/80 bg-white/80 p-5 shadow-[0_12px_35px_rgba(24,24,27,0.08)] backdrop-blur"
+              >
+                <p className="text-3xl font-black text-zinc-950">
+                  {item.value}
+                </p>
+                <p className="mt-1 text-xs font-black uppercase tracking-wide text-zinc-500">
+                  {item.label}
+                </p>
+              </div>
+            ))}
           </div>
         </header>
+
+        <div className="mb-10 flex justify-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-white/80 px-4 py-2 text-sm font-semibold text-zinc-600 shadow-sm backdrop-blur">
+            <ArrowRight size={15} className="text-purple-700" />
+            Featured projects appear first
+          </div>
+        </div>
 
         <div className="grid auto-rows-fr gap-7 md:grid-cols-2 lg:grid-cols-3">
           {sortedProjects.map((project) => (
