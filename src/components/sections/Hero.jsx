@@ -1,8 +1,10 @@
 import Container from "../ui/Container";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiFiverr } from "react-icons/si";
-import { motion } from "framer-motion";
+
 import {
   ArrowRight,
   Download,
@@ -13,45 +15,133 @@ import {
   Layers3,
   Rocket,
 } from "lucide-react";
+
 import myImage from "../../assets/image.png";
+
+/* ---------------------------------- */
+/* Social Links */
+/* ---------------------------------- */
 
 const socialLinks = [
   {
+    label: "GitHub",
     href: "https://github.com/IsmailMarkhi",
     icon: FaGithub,
-    label: "GitHub",
   },
   {
+    label: "LinkedIn",
     href: "https://www.linkedin.com/in/ismail-markhi-a67033317",
     icon: FaLinkedin,
-    label: "LinkedIn",
   },
   {
+    label: "Fiverr",
     href: "https://www.fiverr.com/sellers/ismail1markhi",
     icon: SiFiverr,
-    label: "Fiverr",
   },
 ];
 
+/* ---------------------------------- */
+/* Highlights */
+/* ---------------------------------- */
+
 const highlights = [
-  "10+ projects built",
-  "React & Laravel focus",
+  "10+ Projects Built",
+  "React & Laravel Focus",
   "Responsive UI",
 ];
 
-const techStack = ["React", "Tailwind", "Laravel", "MySQL", "PHP", "Vite"];
+/* ---------------------------------- */
+/* Tech Stack */
+/* ---------------------------------- */
+
+const techStack = [
+  "React",
+  "Tailwind",
+  "Laravel",
+  "MySQL",
+  "PHP",
+  "Vite",
+];
+
+/* ---------------------------------- */
+/* Statistics */
+/* ---------------------------------- */
+
+const stats = [
+  {
+    value: "10+",
+    label: "Projects",
+    icon: Layers3,
+  },
+  {
+    value: "2Y 9M",
+    label: "Experience",
+    icon: Code2,
+  },
+  {
+    value: "Open",
+    label: "To Work",
+    icon: Rocket,
+  },
+];
+
+/* ---------------------------------- */
+/* Animation Variants */
+/* ---------------------------------- */
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: {
+    opacity: 0,
+    y: 30,
+  },
+
   show: (delay = 0) => ({
     opacity: 1,
     y: 0,
+
     transition: {
       delay,
-      duration: 0.75,
+      duration: 0.8,
       ease: [0.22, 1, 0.36, 1],
     },
   }),
+};
+
+const floatingAnimation = {
+  animate: {
+    y: [0, -12, 0],
+  },
+
+  transition: {
+    duration: 4,
+    repeat: Infinity,
+    ease: "easeInOut",
+  },
+};
+
+const cardHover = {
+  whileHover: {
+    y: -6,
+    scale: 1.02,
+  },
+
+  transition: {
+    duration: 0.3,
+  },
+};
+
+/* ---------------------------------- */
+/* Developer Object */
+/* ---------------------------------- */
+
+const developer = {
+  name: "Ismail Markhi",
+  role: "Junior Full-Stack Web Developer",
+  experience: "2 years 9 months",
+  projects: "10+",
+  location: "Morocco",
+  stack: ["React", "Laravel", "Tailwind", "MySQL"],
+  openToWork: true,
 };
 
 export default function Hero() {
@@ -69,7 +159,17 @@ export default function Hero() {
       </div>
 
       <Container>
-        <div className="relative grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 xl:gap-24">
+        <div
+  className="
+  relative
+  grid
+  items-center
+  gap-20
+  lg:grid-cols-[1fr_1.1fr]
+  lg:gap-24
+  xl:gap-32
+"
+>
           {/* LEFT */}
           <header className="max-w-3xl">
             <motion.div
@@ -96,7 +196,11 @@ export default function Hero() {
               initial="hidden"
               animate="show"
               custom={0.12}
-              className="text-[2.7rem] font-black leading-[0.95] tracking-[-0.055em] text-zinc-950 sm:text-5xl md:text-6xl xl:text-7xl"
+              className="text-[2.7rem] font-black leading-[0.95] tracking-[-0.055em] bg-gradient-to-r
+from-purple-600
+to-fuchsia-600
+bg-clip-text
+text-transparent sm:text-5xl md:text-6xl xl:text-7xl"
             >
               Ismail Markhi
               <span className="mt-3 block bg-gradient-to-r from-zinc-950 via-purple-800 to-fuchsia-700 bg-clip-text text-transparent">
@@ -112,14 +216,30 @@ export default function Hero() {
               className="mt-6 max-w-2xl text-base leading-7 text-zinc-600 sm:text-lg sm:leading-8 md:text-xl"
             >
               I build responsive and practical web applications using{" "}
-              <strong className="font-semibold text-zinc-950">React</strong>,{" "}
-              <strong className="font-semibold text-zinc-950">Laravel</strong>,
+              <strong className="font-semibold bg-gradient-to-r
+from-purple-600
+to-fuchsia-600
+bg-clip-text
+text-transparent">React</strong>,{" "}
+              <strong className="font-semibold bg-gradient-to-r
+from-purple-600
+to-fuchsia-600
+bg-clip-text
+text-transparent">Laravel</strong>,
               and{" "}
-              <strong className="font-semibold text-zinc-950">
+              <strong className="font-semibold bg-gradient-to-r
+from-purple-600
+to-fuchsia-600
+bg-clip-text
+text-transparent">
                 Tailwind CSS
               </strong>
               . With more than{" "}
-              <strong className="font-semibold text-zinc-950">
+              <strong className="font-semibold bg-gradient-to-r
+from-purple-600
+to-fuchsia-600
+bg-clip-text
+text-transparent">
                 2 years and 9 months
               </strong>{" "}
               of learning and project-building experience, I focus on clean
@@ -183,7 +303,10 @@ export default function Hero() {
             >
               <Link
                 to="/projects"
-                className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-zinc-950 px-6 py-3.5 text-sm font-semibold text-white shadow-[0_18px_45px_rgba(24,24,27,0.22)] transition-all duration-300 hover:-translate-y-[2px] hover:bg-purple-700"
+                className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-br
+from-zinc-950
+via-[#111827]
+to-[#0f172a] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_18px_45px_rgba(24,24,27,0.22)] transition-all duration-300 hover:-translate-y-[2px] hover:bg-purple-700"
               >
                 View 10+ Projects
                 <ArrowRight
@@ -244,11 +367,44 @@ export default function Hero() {
             initial="hidden"
             animate="show"
             custom={0.18}
-            className="relative mx-auto w-full max-w-[40rem]"
+            className="
+relative
+mx-auto
+w-full
+max-w-[50rem]
+"
           >
-            <div className="absolute -inset-1 rounded-[34px] bg-gradient-to-br from-purple-200 via-fuchsia-100 to-zinc-100 opacity-80 blur-xl" />
+            <div
+className="
+absolute
+-inset-2
+rounded-[44px]
+bg-gradient-to-br
+from-purple-300
+via-fuchsia-200
+to-indigo-200
+opacity-80
+blur-3xl
+"
+/>
 
-            <div className="relative overflow-hidden rounded-[32px] border border-white/80 bg-white/85 shadow-[0_28px_90px_rgba(24,24,27,0.12)] backdrop-blur-xl">
+<div
+className="
+absolute
+left-1/2
+top-1/2
+h-[400px]
+w-[400px]
+-translate-x-1/2
+-translate-y-1/2
+rounded-full
+bg-purple-400/20
+blur-[120px]
+"
+/>
+
+            <div className="relative overflow-hidden rounded-[40px] border border-white/80 bg-white/70
+backdrop-blur-3xl lg:grid-cols-[180px_1fr] backdrop-blur-xl">
               <div className="flex items-center justify-between border-b border-zinc-200/80 px-4 py-4 sm:px-5">
                 <div className="flex items-center gap-2" aria-hidden="true">
                   <span className="h-2.5 w-2.5 rounded-full bg-red-300" />
@@ -267,12 +423,13 @@ export default function Hero() {
                     <Code2 size={18} />
                   </div>
 
-                  <div className="grid items-center gap-4 sm:grid-cols-[120px_1fr]">
-                    <div className="mx-auto h-24 w-24 overflow-hidden rounded-3xl border-4 border-white bg-zinc-200 shadow-md sm:h-28 sm:w-28">
+                  <div className="grid items-center gap-4 lg:grid-cols-[180px_1fr]">
+                    <div className="mx-auto h-24 w-24 overflow-hidden rounded-[36px] border-4 border-white bg-zinc-200 shadow-[0_30px_80px_rgba(168,85,247,.25)] sm:h-28 sm:w-28">
                       <img
                         src={myImage}
                         alt="Portrait of Ismail Markhi"
-                        className="h-full w-full object-cover transition duration-700 ease-out hover:scale-[1.05]"
+                        className="h-full w-full object-cover transition duration-700 ease-out hover:scale-[1.08]
+duration-700"
                       />
                     </div>
 
@@ -281,7 +438,11 @@ export default function Hero() {
                         Developer Portfolio
                       </p>
 
-                      <h2 className="mt-2 text-lg font-bold text-zinc-950 sm:text-xl">
+                      <h2 className="mt-2 text-lg font-bold bg-gradient-to-r
+from-purple-600
+to-fuchsia-600
+bg-clip-text
+text-transparent sm:text-xl">
                         Junior developer building real-world web projects.
                       </h2>
 
@@ -294,7 +455,10 @@ export default function Hero() {
                   </div>
                 </article>
 
-                <article className="overflow-hidden rounded-[26px] bg-zinc-950 text-white shadow-inner">
+                <article className="overflow-hidden rounded-[26px] bg-gradient-to-br
+from-zinc-950
+via-[#111827]
+to-[#0f172a] text-white shadow-inner">
                   <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
                     <span className="text-xs text-zinc-400">
                       developer.profile
@@ -318,12 +482,16 @@ export default function Hero() {
                   </pre>
                 </article>
 
-                <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
-                  <article className="group rounded-[24px] border border-zinc-200 bg-white p-4 text-center shadow-sm transition hover:-translate-y-1 hover:border-purple-200 hover:shadow-md sm:p-5">
+                <div className="grid gap-3 md:grid-cols-3 sm:gap-4">
+                  <article className="group rounded-[28px] border border-zinc-200 bg-white p-4 text-center shadow-sm transition hover:-translate-y-1 hover:border-purple-200 hover:shadow-[0_30px_80px_rgba(168,85,247,.25)] sm:p-5">
                     <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-2xl bg-purple-50 text-purple-700">
                       <Layers3 size={18} />
                     </div>
-                    <p className="text-xl font-black tracking-tight text-zinc-950 sm:text-2xl">
+                    <p className="text-xl font-black tracking-tight bg-gradient-to-r
+from-purple-600
+to-fuchsia-600
+bg-clip-text
+text-transparent sm:text-2xl">
                       10+
                     </p>
                     <p className="mt-1 text-[11px] font-bold uppercase tracking-wide text-zinc-500 sm:text-xs">
@@ -331,11 +499,15 @@ export default function Hero() {
                     </p>
                   </article>
 
-                  <article className="group rounded-[24px] border border-zinc-200 bg-white p-4 text-center shadow-sm transition hover:-translate-y-1 hover:border-purple-200 hover:shadow-md sm:p-5">
+                  <article className="group rounded-[28px] border border-zinc-200 bg-white p-4 text-center shadow-sm transition hover:-translate-y-1 hover:border-purple-200 hover:shadow-[0_30px_80px_rgba(168,85,247,.25)] sm:p-5">
                     <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-2xl bg-purple-50 text-purple-700">
                       <Code2 size={18} />
                     </div>
-                    <p className="text-xl font-black tracking-tight text-zinc-950 sm:text-2xl">
+                    <p className="text-xl font-black tracking-tight bg-gradient-to-r
+from-purple-600
+to-fuchsia-600
+bg-clip-text
+text-transparent sm:text-2xl">
                       2y 9m
                     </p>
                     <p className="mt-1 text-[11px] font-bold uppercase tracking-wide text-zinc-500 sm:text-xs">
@@ -343,11 +515,15 @@ export default function Hero() {
                     </p>
                   </article>
 
-                  <article className="group rounded-[24px] border border-zinc-200 bg-white p-4 text-center shadow-sm transition hover:-translate-y-1 hover:border-purple-200 hover:shadow-md sm:p-5">
+                  <article className="group rounded-[28px] border border-zinc-200 bg-white p-4 text-center shadow-sm transition hover:-translate-y-1 hover:border-purple-200 hover:shadow-[0_30px_80px_rgba(168,85,247,.25)] sm:p-5">
                     <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-2xl bg-purple-50 text-purple-700">
                       <Rocket size={18} />
                     </div>
-                    <p className="text-xl font-black tracking-tight text-zinc-950 sm:text-2xl">
+                    <p className="text-xl font-black tracking-tight bg-gradient-to-r
+from-purple-600
+to-fuchsia-600
+bg-clip-text
+text-transparent sm:text-2xl">
                       Open
                     </p>
                     <p className="mt-1 text-[11px] font-bold uppercase tracking-wide text-zinc-500 sm:text-xs">
