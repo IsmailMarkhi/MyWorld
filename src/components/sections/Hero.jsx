@@ -7,7 +7,7 @@ import { SiFiverr } from "react-icons/si";
 
 import {
   ArrowRight,
-  Download,
+  // Download,
   Sparkles,
   CheckCircle2,
   BadgeCheck,
@@ -315,14 +315,14 @@ to-[#0f172a] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_18px_45px_rg
                 />
               </Link>
 
-              <a
+              {/* <a
                 href="/resume.pdf"
                 download="Ismail-Markhi-Resume.pdf"
                 className="inline-flex items-center justify-center gap-2 rounded-2xl border border-zinc-200 bg-white/90 px-5 py-3.5 text-sm font-semibold text-zinc-700 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-[2px] hover:border-purple-300 hover:text-purple-700"
               >
                 <Download size={17} />
                 Download CV
-              </a>
+              </a> */}
 
               <Link
                 to="/contact"
