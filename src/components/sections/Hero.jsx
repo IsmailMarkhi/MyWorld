@@ -31,7 +31,7 @@ const socialLinks = [
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/ismail-markhi-a67033317",
+    href: "https://www.linkedin.com/in/ismailmarkhi",
     icon: FaLinkedin,
   },
   {
@@ -176,8 +176,8 @@ const AvatarIcon = () => (
   >
     <defs>
       <linearGradient id="avatarGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#a855f7" />
-        <stop offset="100%" stopColor="#ec4899" />
+        <stop offset="0%" stopColor="#000000" />
+        <stop offset="100%" stopColor="#00ff77" />
       </linearGradient>
     </defs>
     

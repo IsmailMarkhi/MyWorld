@@ -18,7 +18,7 @@ const socialLinks = [
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/in/ismail-markhi-a67033317",
+    href: "https://www.linkedin.com/in/ismailmarkhi",
     icon: FaLinkedin,
   },
   {
