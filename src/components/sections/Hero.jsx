@@ -300,13 +300,14 @@ const TechBadge = ({ tech, delay }) => (
     custom={delay}
     className="inline-flex items-center gap-2 rounded-xl border border-purple-200/50 bg-gradient-to-r from-purple-50 to-fuchsia-50 px-3 py-1.5 text-xs font-semibold text-purple-700 shadow-sm hover:border-purple-300 hover:shadow-md transition-all duration-300"
   >
-    <span className="h-1.5 w-1.5 rounded-full bg-[rgb(109, 71, 197)] cursor-pointer" />
+    <span className="h-1.5 w-1.5 rounded-full bg-[rgb(79, 59, 228)] cursor-pointer" />
     {tech}
   </motion.span>
 );
 
 /* ---------------------------------- */
 /* Highlight Badge Component */
+
 /* ---------------------------------- */
 
 const HighlightBadge = ({ item, delay }) => (
@@ -317,7 +318,7 @@ const HighlightBadge = ({ item, delay }) => (
     custom={delay}
     className="inline-flex items-center gap-2 rounded-full border border-purple-200/40 bg-white/60 px-3.5 py-2 text-sm text-zinc-700 shadow-sm backdrop-blur transition-all duration-300 hover:border-purple-300 hover:bg-white/80 hover:text-purple-700 hover:shadow-md"
   >
-    <CheckCircle2 size={16} className="text-[rgb(109, 71, 197)] flex-shrink-0 cursor-pointer" />
+    <CheckCircle2 size={16} className="text-[rgb(79, 59, 228)] flex-shrink-0 cursor-pointer" />
     {item}
   </motion.span>
 );
@@ -525,7 +526,7 @@ export default function Hero() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={label}
-                      className="inline-flex h-12 w-12 items-center justify-center rounded-xl border-2 border-purple-200/50 bg-white/70 text-zinc-600 shadow-md backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-purple-400 hover:text-purple-600 hover:shadow-lg active:translate-y-0"
+                      className="inline-flex h-12 w-12 items-center justify-center rounded-xl border-2 border-purple-200/50 bg-white/70 text-zinc-600 shadow-md backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-purple-400 hover:text-[rgb(79, 59, 228)] hover:shadow-lg active:translate-y-0"
                     >
                       <Icon size={18} />
                     </a>
