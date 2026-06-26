@@ -436,7 +436,7 @@ export default function Hero() {
                 <span className="font-semibold bg-gradient-to-r from-purple-600 to-fuchsia-600 bg-clip-text text-transparent">
                   3+ years
                 </span>{" "}
-                of hands-on experience, I focus on clean architecture, intuitive UI, and real-world implementation.
+                of hands-on experience.
               </motion.p>
 
               <motion.p
@@ -534,7 +534,7 @@ export default function Hero() {
                 </nav>
 
                 <p className="max-w-sm text-sm leading-relaxed text-zinc-600">
-                  Available for internships, junior roles, and engaging web projects. Let's build something great together.
+                  Available for internships, s, and engaging web projects. Let's build something great together.
                 </p>
               </motion.div>
             </header>
@@ -617,10 +617,10 @@ export default function Hero() {
 {`const ismail = {
   stack: [
     "React", "Laravel",
-    "Tailwind", "MySQL"
+    "Tailwind", "MySQL", "NoSQL", "InertiaJs"
   ],
   focus: "Full-Stack Dev",
-  experience: "2y 9m",
+  experience: "3 years",
   projects: "10+",
   hiring: true
 };`}
