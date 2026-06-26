@@ -7,7 +7,7 @@ import { SiFiverr } from "react-icons/si";
 
 import {
   ArrowRight,
-  // Download,
+  Download,
   Sparkles,
   CheckCircle2,
   BadgeCheck,
