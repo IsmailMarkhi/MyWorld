@@ -76,7 +76,7 @@ const stats = [
     icon: Layers3,
   },
   {
-    value: "2Y 9M",
+    value: "3 Years",
     label: "Experience",
     icon: Code2,
   },
