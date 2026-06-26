@@ -140,7 +140,7 @@ export default function Navbar() {
                 </span>
 
                 <span className="mt-1 block truncate text-[11px] font-semibold text-zinc-500">
-                  Junior Full-Stack Developer
+                  Full-Stack Developer
                 </span>
               </div>
             </NavLink>

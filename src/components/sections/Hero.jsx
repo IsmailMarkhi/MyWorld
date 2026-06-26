@@ -156,11 +156,11 @@ const cardHover = {
 
 const developer = {
   name: "Ismail Markhi",
-  role: "Junior Full-Stack Web Developer",
-  experience: "2 years 9 months",
+  role: "Full-Stack Web Developer",
+  experience: "3 Years",
   projects: "10+",
   location: "Morocco",
-  stack: ["React", "Laravel", "Tailwind", "MySQL"],
+  stack: ["React","InertiaJs", "Laravel", "Tailwind", "MySQL", "NoSQL"],
   openToWork: true,
 };
 
@@ -176,8 +176,8 @@ const AvatarIcon = () => (
   >
     <defs>
       <linearGradient id="avatarGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#000000" />
-        <stop offset="100%" stopColor="#00ff77" />
+        <stop offset="0%" stopColor="rgb(55, 27, 68)" />
+        <stop offset="100%" stopColor="rgb(79, 59, 228)" />
       </linearGradient>
     </defs>
     
@@ -300,7 +300,7 @@ const TechBadge = ({ tech, delay }) => (
     custom={delay}
     className="inline-flex items-center gap-2 rounded-xl border border-purple-200/50 bg-gradient-to-r from-purple-50 to-fuchsia-50 px-3 py-1.5 text-xs font-semibold text-purple-700 shadow-sm hover:border-purple-300 hover:shadow-md transition-all duration-300"
   >
-    <span className="h-1.5 w-1.5 rounded-full bg-purple-600" />
+    <span className="h-1.5 w-1.5 rounded-full bg-[rgb(109, 71, 197)] cursor-pointer" />
     {tech}
   </motion.span>
 );
@@ -317,7 +317,7 @@ const HighlightBadge = ({ item, delay }) => (
     custom={delay}
     className="inline-flex items-center gap-2 rounded-full border border-purple-200/40 bg-white/60 px-3.5 py-2 text-sm text-zinc-700 shadow-sm backdrop-blur transition-all duration-300 hover:border-purple-300 hover:bg-white/80 hover:text-purple-700 hover:shadow-md"
   >
-    <CheckCircle2 size={16} className="text-purple-600 flex-shrink-0" />
+    <CheckCircle2 size={16} className="text-[rgb(109, 71, 197)] flex-shrink-0 cursor-pointer" />
     {item}
   </motion.span>
 );
@@ -389,12 +389,12 @@ export default function Hero() {
               >
                 <div className="inline-flex items-center gap-2 rounded-full border border-purple-300 bg-gradient-to-r from-purple-50 to-fuchsia-50 px-4 py-2 text-xs font-semibold tracking-wide text-purple-700 shadow-sm backdrop-blur">
                   <Sparkles size={16} />
-                  Junior Full-Stack Developer
+                  Full-Stack Developer
                 </div>
 
                 <div className="inline-flex items-center gap-2 rounded-full border border-purple-200/50 bg-white/70 px-3 py-2 text-[11px] font-medium text-zinc-600 shadow-sm backdrop-blur">
                   <BadgeCheck size={14} className="text-purple-600" />
-                  Open to internship & junior roles
+                  Open to internship 
                 </div>
               </motion.div>
 
@@ -433,7 +433,7 @@ export default function Hero() {
                 </span>
                 , and modern web technologies. With{" "}
                 <span className="font-semibold bg-gradient-to-r from-purple-600 to-fuchsia-600 bg-clip-text text-transparent">
-                  2+ years
+                  3+ years
                 </span>{" "}
                 of hands-on experience, I focus on clean architecture, intuitive UI, and real-world implementation.
               </motion.p>
