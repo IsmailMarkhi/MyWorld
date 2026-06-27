@@ -180,7 +180,7 @@ const statusConfig = {
 
 const stats = [
   { value: "10+", label: "Projects" },
-  { value: "2y 9m", label: "Learning & Building" },
+  { value: "3 years", label: "Learning & Building" },
   { value: "Full", label: "Stack Focus" },
 ];
 
