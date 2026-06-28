@@ -257,7 +257,7 @@ disabled:opacity-50
     shadow-sm
   "
 >
-        <div className="flex justify-between">
+        <div className="flex justify-between items-center">
           <span>Account</span>
           <span>{customerEmail}</span>
         </div>
