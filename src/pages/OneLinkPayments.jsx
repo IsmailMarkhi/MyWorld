@@ -127,7 +127,7 @@ export default function OneLinkPayments() {
           </div>
 
           <h2 className="text-6xl font-bold">
-            $15
+            $9.99
           </h2>
 
           <p className="mt-3 text-zinc-500">
@@ -155,54 +155,201 @@ export default function OneLinkPayments() {
             ))}
           </div>
 
-        <div className="mt-10">
+          <div className="mt-10">
   {joined ? (
-    <div className="mx-auto max-w-xl rounded-3xl border border-green-200 bg-green-50 p-8 text-center shadow-sm">
-      <div className="mb-4 flex justify-center">
-        <div className="flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
-          <span className="text-2xl text-green-600">
-            ✓
+    <div className="overflow-hidden rounded-3xl border border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 p-8 shadow-lg">
+      {/* Success Icon */}
+      <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
+        <svg
+          className="h-10 w-10 text-green-600"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2.5}
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M5 13l4 4L19 7"
+          />
+        </svg>
+      </div>
+
+      {/* Heading */}
+      <h2 className="mt-6 text-center text-4xl font-bold text-green-700">
+        Welcome to OneLink Beta
+      </h2>
+
+      {/* Description */}
+      <p className="mt-4 text-center text-xl text-green-700">
+        Your account has been reserved.
+      </p>
+
+      <p className="mt-2 text-center text-green-600">
+        Complete checkout to activate your
+        OneLink Beta access.
+      </p>
+
+      {/* User info */}
+      <div className="mx-auto mt-8 max-w-md rounded-2xl border border-green-200 bg-white p-5 shadow-sm">
+        <div className="flex items-center justify-between">
+          <span className="text-zinc-500">
+            Account
+          </span>
+
+          <span className="font-semibold text-zinc-900">
+            {email}
+          </span>
+        </div>
+
+        <div className="mt-4 flex items-center justify-between">
+          <span className="text-zinc-500">
+            Plan
+          </span>
+
+          <span className="font-semibold text-violet-700">
+            Beta • $9.99/month
           </span>
         </div>
       </div>
 
-      <h3 className="text-2xl font-bold text-green-700">
-        Welcome to OneLink Beta
-      </h3>
+      {/* Features */}
+      <div className="mx-auto mt-8 grid max-w-xl gap-3 sm:grid-cols-2">
+        {[
+          "Unlimited payment links",
+          "Hosted checkout pages",
+          "Analytics dashboard",
+          "Visa & Mastercard",
+          "Apple Pay & Google Pay",
+          "Priority support",
+        ].map((feature) => (
+          <div
+            key={feature}
+            className="flex items-center gap-3 rounded-xl bg-white p-3 shadow-sm"
+          >
+            <span className="text-green-600">
+              ✓
+            </span>
 
-      <p className="mt-3 text-green-700">
-        Your beta access has been reserved.
-      </p>
-
-      <p className="mt-2 text-sm text-green-600">
-        Account: <strong>{email}</strong>
-      </p>
-
-      <div className="mt-8">
-        <a
-          href="https://YOUR-LEMON-SQUEEZY-CHECKOUT-URL"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="
-            inline-flex
-            items-center
-            justify-center
-            rounded-xl
-            bg-violet-600
-            px-8
-            py-4
-            text-lg
-            font-semibold
-            text-white
-            transition
-            hover:bg-violet-700
-          "
-        >
-          Continue to Secure Checkout →
-        </a>
+            <span className="text-zinc-700">
+              {feature}
+            </span>
+          </div>
+        ))}
       </div>
 
-      <p className="mt-4 text-xs text-zinc-500">
+      {/* Checkout Button */}
+     <div className="mt-12 flex flex-col items-center gap-4">
+  <a
+    href="https://onelinkpay.lemonsqueezy.com/checkout/buy/5cd255c1-4efd-426b-b21f-27ce433c621b?discount=0"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Activate OneLink Beta Access"
+    className="
+      group
+      relative
+      inline-flex
+      items-center
+      justify-center
+      gap-4
+      overflow-hidden
+      rounded-2xl
+      bg-gradient-to-r
+      from-violet-600
+      via-purple-600
+      to-fuchsia-600
+      px-8
+      py-5
+      shadow-[0_20px_60px_-15px_rgba(124,58,237,0.5)]
+      transition-all
+      duration-300
+      hover:-translate-y-1
+      hover:shadow-[0_30px_80px_-15px_rgba(124,58,237,0.65)]
+      focus:outline-none
+      focus:ring-4
+      focus:ring-violet-300
+    "
+  >
+    {/* Glow */}
+    <div
+      className="
+        absolute
+        inset-0
+        bg-white/10
+        opacity-0
+        transition-opacity
+        duration-300
+        group-hover:opacity-100
+      "
+    />
+
+    {/* Text */}
+    <div className="relative flex flex-col items-start">
+      <span className="text-xl font-bold text-white">
+        Activate Beta Access
+      </span>
+
+      <span className="text-sm text-white/80">
+        Cancel anytime • Instant access
+      </span>
+    </div>
+
+    {/* Price Badge */}
+    <div
+      className="
+        relative
+        rounded-xl
+        border
+        border-white/20
+        bg-white/10
+        px-4
+        py-2
+        backdrop-blur
+      "
+    >
+      <div className="text-lg font-bold text-white">
+        $9.99
+      </div>
+
+      <div className="text-xs text-white/70">
+        /month
+      </div>
+    </div>
+
+    {/* Arrow */}
+    <svg
+      className="
+        relative
+        h-6
+        w-6
+        text-white
+        transition-transform
+        duration-300
+        group-hover:translate-x-1
+      "
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2.5}
+      viewBox="0 0 24 24"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M5 12h14M13 5l7 7-7 7"
+      />
+    </svg>
+  </a>
+
+  {/* Trust indicators */}
+  <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-zinc-500">
+    <span> Secure checkout</span>
+    <span> Card & PayPal</span>
+    <span> Instant beta access</span>
+  </div>
+</div>
+
+      {/* Footer */}
+      <p className="mt-6 text-center text-sm text-zinc-500">
         Secure payment powered by Lemon Squeezy.
       </p>
     </div>
@@ -225,6 +372,8 @@ export default function OneLinkPayments() {
           outline-none
           transition
           focus:border-violet-600
+          focus:ring-4
+          focus:ring-violet-100
         "
       />
 
@@ -244,13 +393,12 @@ export default function OneLinkPayments() {
           disabled:opacity-50
         "
       >
-        {loading
-          ? "Reserving..."
-          : "Reserve Beta Access"}
+        {loading ? "Reserving..." : "Reserve Beta Access"}
       </button>
     </div>
   )}
 </div>
+
         </div>
       </section>
 
