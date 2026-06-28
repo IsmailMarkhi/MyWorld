@@ -257,10 +257,15 @@ disabled:opacity-50
     shadow-sm
   "
 >
-        <div className="flex justify-between items-center">
-          <span>Account</span>
-          <span>{customerEmail}</span>
-        </div>
+        <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+  <span className="text-sm text-muted-foreground">
+    Account
+  </span>
+
+  <span className="max-w-full break-all font-medium sm:text-right">
+    {customerEmail}
+  </span>
+</div>
 
         <div className="mt-3 flex justify-between">
           <span>Plan</span>
