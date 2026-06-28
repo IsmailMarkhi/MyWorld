@@ -127,7 +127,7 @@ export default function OneLinkPayments() {
           </div>
 
           <h2 className="text-6xl font-bold">
-            $9.99
+            99 MAD
           </h2>
 
           <p className="mt-3 text-zinc-500">
@@ -208,7 +208,7 @@ export default function OneLinkPayments() {
           </span>
 
           <span className="font-semibold text-violet-700">
-            Beta • $9.99/month
+            Beta • 99 MAD/month
           </span>
         </div>
       </div>
@@ -308,7 +308,7 @@ export default function OneLinkPayments() {
       "
     >
       <div className="text-lg font-bold text-white">
-        $9.99
+        99 MAD
       </div>
 
       <div className="text-xs text-white/70">
