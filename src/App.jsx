@@ -7,14 +7,16 @@ import Footer from "./components/layout/Footer";
 const Home = lazy(() => import("./pages/Home"));
 const Projects = lazy(() => import("./pages/Projects"));
 const Services = lazy(() => import("./pages/Services"));
+const OneLinkPayments = lazy(() => import("./pages/OneLinkPayments"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-
+//<OneLinkPayments />
 const appRoutes = [
   { path: "/" },
   { path: "/services" },
   { path: "/projects" },
   { path: "/contact" },
+  { path: "/onelink-payments" },
 ];
 
 function PageLoader() {
@@ -47,6 +49,7 @@ const AppLayout = memo(function AppLayout() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/onelink-payments" element={<OneLinkPayments />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
