@@ -10,31 +10,33 @@ import {
 import { db } from "../lib/firebase";
 
 /**
- * Join OneLink beta waitlist
+ * Join OneLink Beta Waitlist
  */
 export async function joinWaitlist(email) {
+  // Normalize email
+  const normalizedEmail = email
+    ?.toLowerCase()
+    .trim();
+
+  // Validation
+  if (!normalizedEmail) {
+    throw new Error(
+      "Email address is required."
+    );
+  }
+
+  const emailRegex =
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (
+    !emailRegex.test(normalizedEmail)
+  ) {
+    throw new Error(
+      "Please enter a valid email address."
+    );
+  }
+
   try {
-    // Normalize email
-    const normalizedEmail = email
-      ?.toLowerCase()
-      .trim();
-
-    // Validate
-    if (!normalizedEmail) {
-      throw new Error(
-        "Email address is required."
-      );
-    }
-
-    const emailRegex =
-      /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailRegex.test(normalizedEmail)) {
-      throw new Error(
-        "Please enter a valid email address."
-      );
-    }
-
     // Collection reference
     const waitlistRef = collection(
       db,
@@ -44,7 +46,11 @@ export async function joinWaitlist(email) {
     // Check duplicates
     const existingQuery = query(
       waitlistRef,
-      where("email", "==", normalizedEmail)
+      where(
+        "email",
+        "==",
+        normalizedEmail
+      )
     );
 
     const existingUser =
@@ -56,33 +62,43 @@ export async function joinWaitlist(email) {
       );
     }
 
-    // Create user
+    // Create record
     const docRef = await addDoc(
       waitlistRef,
       {
+        // identity
         email: normalizedEmail,
 
-        // plan info
-        plan: "30-day-subscription",
+        // business
+        plan: "beta-monthly",
         source: "landing-page",
+
+        // lifecycle
+        status: "reserved",
+        paymentStatus: "pending",
+        subscriptionStatus:
+          "inactive",
+
+        // Lemon Squeezy
+        lemonCustomerId: null,
+        lemonOrderId: null,
+        lemonSubscriptionId:
+          null,
 
         // browser info
         userAgent:
           navigator.userAgent,
-
         language:
           navigator.language,
-
         timezone:
           Intl.DateTimeFormat()
             .resolvedOptions()
             .timeZone,
 
-        platform:
-          navigator.platform,
-
         // timestamps
         createdAt:
+          serverTimestamp(),
+        updatedAt:
           serverTimestamp(),
       }
     );
@@ -90,6 +106,8 @@ export async function joinWaitlist(email) {
     return {
       success: true,
       id: docRef.id,
+      email: normalizedEmail,
+      status: "reserved",
       message:
         "Welcome to OneLink Beta!",
     };
@@ -99,9 +117,6 @@ export async function joinWaitlist(email) {
       error
     );
 
-    throw new Error(
-      error.message ||
-        "Something went wrong. Please try again."
-    );
+    throw error;
   }
 }
