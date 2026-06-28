@@ -17,6 +17,8 @@ export default function OneLinkPayments() {
   const [status, setStatus] = useState("idle");
   const [customerEmail, setCustomerEmail] = useState("");
 
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
+
 
   const handleJoin = async () => {
     const normalizedEmail =
@@ -36,6 +38,13 @@ export default function OneLinkPayments() {
       );
       return;
     }
+    
+    if (!acceptedTerms) {
+  alert(
+    "Please accept the Terms and Privacy Policy."
+  );
+  return;
+}
 
     try {
       setLoading(true);
@@ -129,9 +138,65 @@ focus:ring-violet-100
 "
       />
 
+<div className="flex items-start gap-3 rounded-xl border border-zinc-200 bg-zinc-50 p-4">
+  <input
+    type="checkbox"
+    id="terms"
+    checked={acceptedTerms}
+    onChange={(e) =>
+      setAcceptedTerms(
+        e.target.checked
+      )
+    }
+    className="
+      mt-1
+      h-5
+      w-5
+      rounded
+      border-zinc-300
+      text-violet-600
+    "
+  />
+
+  <label
+    htmlFor="terms"
+    className="text-left text-sm text-zinc-600"
+  >
+    I agree to the{" "}
+    <a
+      href="/terms"
+      target="_blank"
+      className="
+        font-medium
+        text-violet-600
+        hover:underline
+      "
+    >
+      Terms of Service
+    </a>
+    {" "}and{" "}
+    <a
+      href="/privacy"
+      target="_blank"
+      className="
+        font-medium
+        text-violet-600
+        hover:underline
+      "
+    >
+      Privacy Policy
+    </a>
+    .
+  </label>
+</div>
+
       <button
         onClick={handleJoin}
-        disabled={loading || !email.trim()}
+        disabled={
+  loading ||
+  !email.trim() ||
+  !acceptedTerms
+}
         className="
 h-14
 rounded-xl

@@ -4,6 +4,10 @@ import { Routes, Route, useLocation, matchRoutes } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 
+import Terms from "./pages/Terms";
+import Privacy from "./pages/Privacy";
+import Refund from "./pages/Refund";
+
 const Home = lazy(() => import("./pages/Home"));
 const Projects = lazy(() => import("./pages/Projects"));
 const Services = lazy(() => import("./pages/Services"));
@@ -16,6 +20,9 @@ const appRoutes = [
   { path: "/services" },
   { path: "/projects" },
   { path: "/contact" },
+  { path: "/terms" },
+  { path: "/privacy" },
+  { path: "/refund" },
   { path: "/onelink-payments" },
 ];
 
@@ -52,6 +59,9 @@ const AppLayout = memo(function AppLayout() {
           <Route path="/onelink-payments" element={<OneLinkPayments />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/refund" element={<Refund />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
